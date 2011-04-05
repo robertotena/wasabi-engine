@@ -10,7 +10,9 @@
 using namespace WasabiEngine;
 
 ParticleSystem::ParticleSystem(const ParticleSystemDef& def){
-    this->def = def;
+    systemDefinition = def;
+    for(int i = 0; i < def.maxParticles; i++)
+        deadParticles.push_back(new Particle());
 }
 
 ParticleSystem::ParticleSystem(const ParticleSystem& orig) {
@@ -18,6 +20,5 @@ ParticleSystem::ParticleSystem(const ParticleSystem& orig) {
 }
 
 ParticleSystem::~ParticleSystem() {
-    
+    // FIXME: destruir particulas?
 }
-

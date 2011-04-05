@@ -79,8 +79,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/WasabiEngine/Utils/ConfigurationFileParser.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/Light.o \
 	${OBJECTDIR}/Box2D/Dynamics/Joints/b2RevoluteJoint.o \
-	${OBJECTDIR}/Box2D/Dynamics/Contacts/b2CircleContact.o \
 	${OBJECTDIR}/Box2D/Dynamics/Joints/b2PrismaticJoint.o \
+	${OBJECTDIR}/WasabiEngine/GraphicEngine/ParticleSystem.o \
+	${OBJECTDIR}/Box2D/Dynamics/Contacts/b2CircleContact.o \
 	${OBJECTDIR}/Box2D/Dynamics/Joints/b2MouseJoint.o \
 	${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FSLeftShoulder.o \
 	${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FuzzyModule.o \
@@ -126,6 +127,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/WasabiEngine/GameEngine/GameObjectManager.o \
 	${OBJECTDIR}/Box2D/Dynamics/b2Fixture.o \
 	${OBJECTDIR}/WasabiEngine/PhysicEngine/PhysicEngine.o \
+	${OBJECTDIR}/WasabiEngine/GraphicEngine/LinearParticleSystem.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/TextureLoader.o \
 	${OBJECTDIR}/WasabiEngine/AIEngine/Routing/RouteNode.o \
 	${OBJECTDIR}/WasabiEngine/GameEngine/GameSystemManager.o \
@@ -397,15 +399,20 @@ ${OBJECTDIR}/Box2D/Dynamics/Joints/b2RevoluteJoint.o: Box2D/Dynamics/Joints/b2Re
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Box2D/Dynamics/Joints/b2RevoluteJoint.o Box2D/Dynamics/Joints/b2RevoluteJoint.cpp
 
-${OBJECTDIR}/Box2D/Dynamics/Contacts/b2CircleContact.o: Box2D/Dynamics/Contacts/b2CircleContact.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Box2D/Dynamics/Contacts
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Box2D/Dynamics/Contacts/b2CircleContact.o Box2D/Dynamics/Contacts/b2CircleContact.cpp
-
 ${OBJECTDIR}/Box2D/Dynamics/Joints/b2PrismaticJoint.o: Box2D/Dynamics/Joints/b2PrismaticJoint.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Box2D/Dynamics/Joints
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Box2D/Dynamics/Joints/b2PrismaticJoint.o Box2D/Dynamics/Joints/b2PrismaticJoint.cpp
+
+${OBJECTDIR}/WasabiEngine/GraphicEngine/ParticleSystem.o: WasabiEngine/GraphicEngine/ParticleSystem.cpp 
+	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/ParticleSystem.o WasabiEngine/GraphicEngine/ParticleSystem.cpp
+
+${OBJECTDIR}/Box2D/Dynamics/Contacts/b2CircleContact.o: Box2D/Dynamics/Contacts/b2CircleContact.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Box2D/Dynamics/Contacts
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Box2D/Dynamics/Contacts/b2CircleContact.o Box2D/Dynamics/Contacts/b2CircleContact.cpp
 
 ${OBJECTDIR}/Box2D/Dynamics/Joints/b2MouseJoint.o: Box2D/Dynamics/Joints/b2MouseJoint.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Box2D/Dynamics/Joints
@@ -631,6 +638,11 @@ ${OBJECTDIR}/WasabiEngine/PhysicEngine/PhysicEngine.o: WasabiEngine/PhysicEngine
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/PhysicEngine
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/PhysicEngine/PhysicEngine.o WasabiEngine/PhysicEngine/PhysicEngine.cpp
+
+${OBJECTDIR}/WasabiEngine/GraphicEngine/LinearParticleSystem.o: WasabiEngine/GraphicEngine/LinearParticleSystem.cpp 
+	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/LinearParticleSystem.o WasabiEngine/GraphicEngine/LinearParticleSystem.cpp
 
 ${OBJECTDIR}/WasabiEngine/GraphicEngine/TextureLoader.o: WasabiEngine/GraphicEngine/TextureLoader.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine

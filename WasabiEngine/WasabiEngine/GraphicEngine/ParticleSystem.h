@@ -21,6 +21,10 @@
 #ifndef PARTICLESYSTEM_H
 #define	PARTICLESYSTEM_H
 
+#include <list>
+#include <WasabiEngine/GraphicEngine/Particle.h>
+#include <WasabiEngine/GraphicEngine/MovableObject.h>
+
 namespace WasabiEngine
 {
     typedef struct
@@ -39,22 +43,31 @@ namespace WasabiEngine
          * The maximum particles amount the system can emmit per second.
          */
         float emissionRate;
+        /**
+         * 
+         */
         float chaos;
         WasVec3d gravity;
         WasVec3d acceleration;
-        float sizeBase;
+        /**
+         * The base size.
+         */
+        float baseSize;
         float growRate;
     } ParticleSystemDef;
 
-class ParticleSystem {
+class ParticleSystem : public MovableObject {
 private:
-    // FIXME listas 
-    ParticleSystemDef def;
     ParticleSystem(const ParticleSystem& orig);
+protected:
+    std::list<Particle*> aliveParticles;
+    std::list<Particle*> deadParticles;
+    ParticleSystemDef systemDefinition;
 public:
     ParticleSystem(const ParticleSystemDef& def);
     virtual ~ParticleSystem();
-    virtual void updateParticles() = 0;
+    virtual void updateParticles(unsigned int timeElapsed) = 0;
+    void renderObject();
 };
 
 }

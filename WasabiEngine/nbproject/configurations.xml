@@ -255,6 +255,8 @@
         <itemPath>WasabiEngine/GraphicEngine/GraphicObject.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/Light.cpp</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/Light.h</itemPath>
+        <itemPath>WasabiEngine/GraphicEngine/LinearParticleSystem.cpp</itemPath>
+        <itemPath>WasabiEngine/GraphicEngine/LinearParticleSystem.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/Material.cpp</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/Material.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/Mesh.cpp</itemPath>
@@ -268,6 +270,9 @@
         <itemPath>WasabiEngine/GraphicEngine/MovableObject.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/ObjParser.cpp</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/ObjParser.h</itemPath>
+        <itemPath>WasabiEngine/GraphicEngine/Particle.h</itemPath>
+        <itemPath>WasabiEngine/GraphicEngine/ParticleSystem.cpp</itemPath>
+        <itemPath>WasabiEngine/GraphicEngine/ParticleSystem.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/Quaternion.cpp</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/Quaternion.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/RenderSystem.cpp</itemPath>
