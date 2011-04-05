@@ -20,5 +20,10 @@ ParticleSystem::ParticleSystem(const ParticleSystem& orig) {
 }
 
 ParticleSystem::~ParticleSystem() {
-    // FIXME: destruir particulas?
+    // FIXME: destroy particles?
+}
+
+void ParticleSystem::renderObject()
+{
+    
 }

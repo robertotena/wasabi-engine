@@ -25,6 +25,8 @@
 #include <WasabiEngine/GraphicEngine/Particle.h>
 #include <WasabiEngine/GraphicEngine/MovableObject.h>
 
+#include "ColourValue.h"
+
 namespace WasabiEngine
 {
     typedef struct
@@ -36,7 +38,7 @@ namespace WasabiEngine
         int texture;
         float systemLifeSpan;
         /**
-         * The general life span of each particle.
+         * The general life span of each particle (in ms).
          */
         float particleLifeSpan;
         /**
@@ -44,16 +46,27 @@ namespace WasabiEngine
          */
         float emissionRate;
         /**
-         * 
+         * A randomness factor, which is used to initialize the particles's
+         * lifeSpan, growRate and acceleration in a different way.
          */
         float chaos;
+        /**
+         * The gravity which will vary the particles' movement.
+         */
         WasVec3d gravity;
         WasVec3d acceleration;
         /**
-         * The base size.
+         * The particle's base size. All the particles will have this size.
          */
         float baseSize;
+        /**
+         * The speed the baseSize will be changed at.
+         */
         float growRate;
+        /**
+         * The color the particles will have. It's the same color for all of them.
+         */
+        ColourValue color;
     } ParticleSystemDef;
 
 class ParticleSystem : public MovableObject {
