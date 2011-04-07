@@ -16,21 +16,24 @@
  * along with this library; if not, write to the Free Software Foundation,
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
-*/
+ */
 
 #ifndef LINEARPARTICLESYSTEM_H
 #define	LINEARPARTICLESYSTEM_H
 
 #include <WasabiEngine/GraphicEngine/ParticleSystem.h>
 
-class LinearParticleSystem : public ParticleSystem {
-public:
-    LinearParticleSystem();
-    LinearParticleSystem(const LinearParticleSystem& orig);
-    ~LinearParticleSystem();
-    void updateParticles();
+namespace WasabiEngine {
 
-};
+    class LinearParticleSystem : public ParticleSystem {
+    private:
+        LinearParticleSystem(const LinearParticleSystem& orig);
+    public:
+        LinearParticleSystem(const ParticleSystemDef& definition);
+        ~LinearParticleSystem();
+        void updateParticles(unsigned int timeElapsed);
+    };
+}
 
 #endif	/* LINEARPARTICLESYSTEM_H */
 
