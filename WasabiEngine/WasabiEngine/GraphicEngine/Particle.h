@@ -16,24 +16,45 @@
  * along with this library; if not, write to the Free Software Foundation,
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
-*/
+ */
 
 #ifndef PARTICLE_H
 #define	PARTICLE_H
 
-namespace WasabiEngine
-{
+#include <WasabiEngine/Utils/Vectors.h>
 
-typedef struct
-{
-    WasVec3d position;
-    float energy;
-    WasVec3d velocity;
-    WasVec3d velocityDelta;
-    float size;
-    float sizeDelta;
-} Particle;
+namespace WasabiEngine {
 
+    /**
+     * A particle is the simpliest element in any particle system. It can represent
+     * any small object, like a snowflake or a raindrop.
+     */
+    typedef struct {
+        /**
+         * Position of the particle
+         */
+        WasVec3d position;
+        /**
+         * Remaining particle energy (life)
+         */
+        float energy;
+        /**
+         * Current velocity vector
+         */
+        WasVec3d velocity;
+        /**
+         * Current velocity variation
+         */
+        WasVec3d velocityDelta;
+        /**
+         * Size of the particle
+         */
+        float size;
+        /**
+         * Current variation of the particle
+         */
+        float sizeDelta;
+    } Particle;
 }
 
 #endif	/* PARTICLE_H */
