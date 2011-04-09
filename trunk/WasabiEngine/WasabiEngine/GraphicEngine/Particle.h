@@ -33,7 +33,7 @@ namespace WasabiEngine {
         /**
          * Position of the particle
          */
-        WasVec3d position;
+        WasVec2d position;
         /**
          * Remaining particle energy (life)
          */
@@ -41,11 +41,11 @@ namespace WasabiEngine {
         /**
          * Current velocity vector
          */
-        WasVec3d velocity;
+        WasVec2d velocity;
         /**
          * Current velocity variation
          */
-        WasVec3d velocityDelta;
+        WasVec2d velocityDelta;
         /**
          * Size of the particle
          */
