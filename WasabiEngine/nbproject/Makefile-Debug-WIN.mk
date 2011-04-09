@@ -127,8 +127,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/WasabiEngine/GameEngine/GameObjectManager.o \
 	${OBJECTDIR}/Box2D/Dynamics/b2Fixture.o \
 	${OBJECTDIR}/WasabiEngine/PhysicEngine/PhysicEngine.o \
-	${OBJECTDIR}/WasabiEngine/GraphicEngine/LinearParticleSystem.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/TextureLoader.o \
+	${OBJECTDIR}/WasabiEngine/GraphicEngine/LinearParticleSystem.o \
 	${OBJECTDIR}/WasabiEngine/AIEngine/Routing/RouteNode.o \
 	${OBJECTDIR}/WasabiEngine/GameEngine/GameSystemManager.o \
 	${OBJECTDIR}/Box2D/Dynamics/b2ContactManager.o \
@@ -639,15 +639,15 @@ ${OBJECTDIR}/WasabiEngine/PhysicEngine/PhysicEngine.o: WasabiEngine/PhysicEngine
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/PhysicEngine/PhysicEngine.o WasabiEngine/PhysicEngine/PhysicEngine.cpp
 
-${OBJECTDIR}/WasabiEngine/GraphicEngine/LinearParticleSystem.o: WasabiEngine/GraphicEngine/LinearParticleSystem.cpp 
-	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
-	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/LinearParticleSystem.o WasabiEngine/GraphicEngine/LinearParticleSystem.cpp
-
 ${OBJECTDIR}/WasabiEngine/GraphicEngine/TextureLoader.o: WasabiEngine/GraphicEngine/TextureLoader.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/TextureLoader.o WasabiEngine/GraphicEngine/TextureLoader.cpp
+
+${OBJECTDIR}/WasabiEngine/GraphicEngine/LinearParticleSystem.o: WasabiEngine/GraphicEngine/LinearParticleSystem.cpp 
+	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/LinearParticleSystem.o WasabiEngine/GraphicEngine/LinearParticleSystem.cpp
 
 ${OBJECTDIR}/WasabiEngine/AIEngine/Routing/RouteNode.o: WasabiEngine/AIEngine/Routing/RouteNode.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/AIEngine/Routing

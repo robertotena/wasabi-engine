@@ -73,6 +73,9 @@ class ParticleSystem : public MovableObject {
 private:
     ParticleSystem(const ParticleSystem& orig);
 protected:
+    Vertex* vertices;
+    Normal* normals;
+    TexCoord* texCoords;
     std::list<Particle*> aliveParticles;
     std::list<Particle*> deadParticles;
     ParticleSystemDef systemDefinition;
