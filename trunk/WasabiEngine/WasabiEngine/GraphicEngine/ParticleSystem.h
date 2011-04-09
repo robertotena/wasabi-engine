@@ -74,10 +74,10 @@ private:
     ParticleSystem(const ParticleSystem& orig);
 protected:
     Vertex* vertices;
-    Normal* normals;
-    TexCoord* texCoords;
-    std::list<Particle*> aliveParticles;
-    std::list<Particle*> deadParticles;
+    float* colors;
+    std::list<int> aliveParticles;
+    std::list<int> deadParticles;
+    std::vector<Particle> particles;
     ParticleSystemDef systemDefinition;
 public:
     ParticleSystem(const ParticleSystemDef& def);
