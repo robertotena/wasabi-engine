@@ -27,11 +27,12 @@ namespace WasabiEngine {
 
     class LinearParticleSystem : public ParticleSystem {
     private:
+        WasVec2d emissionVelocity;
         LinearParticleSystem(const LinearParticleSystem& orig);
     public:
-        LinearParticleSystem(const ParticleSystemDef& definition);
+        LinearParticleSystem(const ParticleSystemDef& definition, const WasVec2d& emissionVelocity);
         ~LinearParticleSystem();
-        void updateParticles(unsigned int timeElapsed);
+        void updateParticles();
     };
 }
 
