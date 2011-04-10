@@ -19,6 +19,8 @@
 #include <WasabiEngine/GraphicEngine/RenderSystem.h>
 #include <WasabiEngine/GraphicEngine/MeshLoader.h>
 #include <WasabiEngine/GraphicEngine/SceneNode.h>
+#include <WasabiEngine/GraphicEngine/ParticleSystem.h>
+#include <WasabiEngine/GraphicEngine/ParticleSystemDefinitions.h>
 
 
 namespace WasabiEngine {
@@ -36,6 +38,8 @@ namespace WasabiEngine {
         RenderSystem renderSystem;
         ResourceFactory<Entity> entityFactory;
         ResourceFactory<Camera> cameraFactory;
+        // FIXME: apaño hasta tener factorias
+        std::list<ParticleSystem*> particleSystems;
         SceneManager(const SceneManager& orig);
     public:
         SceneManager();
@@ -52,6 +56,8 @@ namespace WasabiEngine {
         Entity* createEntity(const std::string& meshName);
         Entity* createEntity(PrefabType type);
         void destroyEntity(Entity* entity);
+        ParticleSystem* createParticleSystem(const ParticleSystemDef& def);
+        void destroyParticleSystem(ParticleSystem* system);
         void setAmbientLight(const ColourValue& colour, const WasVec3d& position);
         void setFog(FogMode mode, const ColourValue& colour, float density, float linearStart, float linearEnd);
         void setWorldGeometry(const std::string& filePath);

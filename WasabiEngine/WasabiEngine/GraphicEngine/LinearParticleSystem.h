@@ -22,6 +22,7 @@
 #define	LINEARPARTICLESYSTEM_H
 
 #include <WasabiEngine/GraphicEngine/ParticleSystem.h>
+#include <WasabiEngine/GraphicEngine/ParticleSystemDefinitions.h>
 #include <WasabiEngine/Utils/WasabiTime.h>
 #include <WasabiEngine/Utils/MathUtil.h>
 
@@ -29,10 +30,10 @@ namespace WasabiEngine {
 
     class LinearParticleSystem : public ParticleSystem {
     private:
-        WasVec2d emissionVelocity;
+        LinearParticleSystemDef systemDefinition;
         LinearParticleSystem(const LinearParticleSystem& orig);
     public:
-        LinearParticleSystem(const ParticleSystemDef& definition, const WasVec2d& emissionVelocity);
+        LinearParticleSystem(const LinearParticleSystemDef& definition);
         ~LinearParticleSystem();
         void updateParticles();
     };

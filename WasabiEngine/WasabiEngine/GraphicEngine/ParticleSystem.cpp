@@ -10,8 +10,8 @@
 using namespace WasabiEngine;
 
 ParticleSystem::ParticleSystem(const ParticleSystemDef& def) {
-    int i, nVertices;
-    systemDefinition = def;
+    int i;
+    color = def.color;
     nVertices = def.maxParticles * 4;
     vertices = new Vertex[nVertices]; // 4 vertex per particle
     for (int i = 0; i < nVertices; i++) {
@@ -86,8 +86,8 @@ void ParticleSystem::renderObject() {
     glEnable(GL_COLOR_MATERIAL);
 
     // particle materials
-    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, systemDefinition.color.ptr());
-    glMaterialfv(GL_FRONT, GL_SPECULAR, systemDefinition.color.ptr());
+    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, color.ptr());
+    glMaterialfv(GL_FRONT, GL_SPECULAR, color.ptr());
     glMaterialf(GL_FRONT, GL_SHININESS, 80);
 
     glBindTexture(GL_TEXTURE_2D, textureId);
@@ -95,7 +95,7 @@ void ParticleSystem::renderObject() {
     // FIXME: no estoy seguro del stride, yo diria que es 0, pero no me convence el sizeof(Vertex)
     glColorPointer(4, GL_FLOAT, 0, colors);
     glVertexPointer(3, GL_FLOAT, sizeof (Vertex), vertices);
-    glDrawArrays(4, 0, systemDefinition.maxParticles * 4);
+    glDrawArrays(4, 0, nVertices);
 
     // disabling states
     glDisableClientState(GL_VERTEX_ARRAY);

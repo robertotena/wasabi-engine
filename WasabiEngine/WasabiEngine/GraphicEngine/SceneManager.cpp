@@ -7,6 +7,7 @@
 
 #include "SceneManager.h"
 #include "MeshLoader.h"
+#include "LinearParticleSystem.h"
 
 using namespace WasabiEngine;
 
@@ -97,6 +98,24 @@ Entity* SceneManager::createEntity(PrefabType type) {
 
 void SceneManager::destroyEntity(Entity* entity) {
     entityFactory.returnResource(entity);
+}
+
+ParticleSystem* SceneManager::createParticleSystem(const ParticleSystemDef& def)
+{
+    if(def.getType() == PARTICLES_LINEAR)
+        particleSystems.push_back(new LinearParticleSystem(def));
+    else if(def.getType() == PARTICLES_RADIAL)
+        particleSystems.push_back(new RadialParticleSystem(def));
+}
+
+void SceneManager::destroyParticleSystem(ParticleSystem* system)
+{
+    std::list<ParticleSystem*>::iterator it = std::find(particleSystems.begin(), particleSystems.end(), system);
+    if(it != particleSystems.end())
+    {
+        particleSystems.erase(it);
+        delete(*it);
+    }
 }
 
 void SceneManager::setAmbientLight(const ColourValue& colour, const WasVec3d& position) {

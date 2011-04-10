@@ -34,6 +34,7 @@ namespace WasabiEngine {
         std::list<Camera*> cameras;
         std::list<Light*> lights;
         std::list<Entity*> entities;
+        std::list<ParticleSystem*> particleSystems;
         SceneNode* sceneNode;
 
         GraphicObject();
@@ -49,6 +50,8 @@ namespace WasabiEngine {
         Entity* createEntity(const std::string& meshName);
         Entity* createEntity(PrefabType type);
         void destroyEntity(Entity* entity);
+        ParticleSystem* createParticleSystem(const ParticleSystemDef& def);
+        void destroyParticleSystem(ParticleSystem* particleSystem);
         WasVec3d getPosition();
         void setPosition(const WasVec3d& positionRelativeToParent);
         const Quaternion& getOrientation();

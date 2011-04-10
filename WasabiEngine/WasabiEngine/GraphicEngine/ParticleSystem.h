@@ -22,6 +22,7 @@
 #define	PARTICLESYSTEM_H
 
 #include <list>
+#include <WasabiEngine/GraphicEngine/ParticleSystemDefinitions.h>
 #include <WasabiEngine/GraphicEngine/GraphicEngine.h>
 #include <WasabiEngine/GraphicEngine/Particle.h>
 #include <WasabiEngine/GraphicEngine/MovableObject.h>
@@ -32,6 +33,7 @@ namespace WasabiEngine
 
 class ParticleSystem : public MovableObject {
 private:
+    int nVertices;
     ParticleSystem(const ParticleSystem& orig);
 protected:
     Vertex* vertices;
@@ -41,7 +43,7 @@ protected:
     std::list<int> aliveParticles;
     std::list<int> deadParticles;
     std::vector<Particle> particles;
-    ParticleSystemDef systemDefinition;
+    ColourValue color;
 public:
     ParticleSystem(const ParticleSystemDef& definition);
     virtual ~ParticleSystem();
