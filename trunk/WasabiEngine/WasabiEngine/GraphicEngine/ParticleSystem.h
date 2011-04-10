@@ -77,6 +77,7 @@ private:
     ParticleSystem(const ParticleSystem& orig);
 protected:
     Vertex* vertices;
+    TexCoord* texCoords;
     float* colors;
     std::list<int> aliveParticles;
     std::list<int> deadParticles;
