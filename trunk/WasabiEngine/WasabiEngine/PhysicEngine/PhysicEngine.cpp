@@ -16,7 +16,7 @@ PhysicEngine::PhysicEngine() {
 }
 
 PhysicEngine::~PhysicEngine() {
-    clear();
+    finish();
 }
 
 PhysicEngine* PhysicEngine::getInstance() {
@@ -52,6 +52,9 @@ void PhysicEngine::destroyObject(PhysicObject* object) {
     }
 }
 
-void PhysicEngine::clear(){
-    objects.clear();
+void PhysicEngine::finish(){
+    std::list<PhysicObject*> physicObjects = objects.getItems();
+    std::list<PhysicObject*>::iterator it;
+    for(it = physicObjects.begin(); it != physicObjects.end(); it++)
+        destroyObject(*(it));
 }

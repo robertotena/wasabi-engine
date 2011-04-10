@@ -38,6 +38,9 @@ namespace WasabiEngine {
         float getGreen() const;
         float getRed() const;
         float getAlpha() const;
+        /**
+         * Pointer accessor to a float array [r,g,b,a]
+         */
         float* ptr();
     };
 

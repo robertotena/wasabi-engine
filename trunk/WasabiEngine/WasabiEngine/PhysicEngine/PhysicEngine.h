@@ -31,8 +31,7 @@ namespace WasabiEngine {
         void destroyObject(PhysicObject* object);
         std::list<PhysicObject*> queryAABB(const WasVec2d& lowerBound, const WasVec2d& upperBound);
         bool queryIsZoneEmptyAABB(const WasVec2d& lowerBound, const WasVec2d& upperBound);
-
-        void clear();
+        void finish();
         
         friend class PhysicObject;
     };

@@ -132,7 +132,6 @@ void PhysicObject::clear() {
     bodies.clear();
 
     mainBody = NULL;
-    contactListener = NULL;
     generateContactEvents(false);
 }
 
