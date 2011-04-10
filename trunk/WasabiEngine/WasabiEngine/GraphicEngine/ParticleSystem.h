@@ -35,7 +35,7 @@ namespace WasabiEngine
          * The maximum particles amount the system can emmit.
          */
         int maxParticles;
-        unsigned int texture;
+        std::string texturePath;
         float systemLifeSpan;
         /**
          * The general life span of each particle (in ms).
@@ -79,6 +79,7 @@ protected:
     Vertex* vertices;
     TexCoord* texCoords;
     float* colors;
+    unsigned int textureId;
     std::list<int> aliveParticles;
     std::list<int> deadParticles;
     std::vector<Particle> particles;
