@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="69">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="Demo" displayName="Demo" projectFiles="true">
+      <itemPath>Demo/ActorControlHandler.cpp</itemPath>
+      <itemPath>Demo/ActorControlHandler.h</itemPath>
+      <itemPath>Demo/DemoSystemManager.cpp</itemPath>
+      <itemPath>Demo/DemoSystemManager.h</itemPath>
+      <itemPath>Demo/GraphicDemo.cpp</itemPath>
+      <itemPath>Demo/GraphicDemo.h</itemPath>
+      <itemPath>Demo/SimpleActor.cpp</itemPath>
+      <itemPath>Demo/SimpleActor.h</itemPath>
+      <itemPath>Demo/SimpleCamera.cpp</itemPath>
+      <itemPath>Demo/SimpleCamera.h</itemPath>
+      <itemPath>Demo/SimpleCameraControlHandler.cpp</itemPath>
+      <itemPath>Demo/SimpleCameraControlHandler.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true"
+                   kind="SOURCE_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true"
+                   kind="SOURCE_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true"
+                   kind="SOURCE_LOGICAL_FOLDER">
+      <itemPath>main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug-WIN" type="1">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>MinGW|MinGW</compilerSet>
+        <platform>3</platform>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>../WasabiEngine</pElem>
+          </incDir>
+          <commandLine>-mwindows -Dmain=SDLmain</commandLine>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../WasabiEngine"
+                            CT="3"
+                            CN="Debug-WIN"
+                            AC="true"
+                            BL="true"
+                            WD="../WasabiEngine"
+                            BC="${MAKE}  -f Makefile CONF=Debug-WIN"
+                            CC="${MAKE}  -f Makefile CONF=Debug-WIN clean"
+                            OP="dist/Debug-WIN/MinGW-Windows/libwasabiengine.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibLibItem>mingw32</linkerLibLibItem>
+            <linkerLibLibItem>SDLmain</linkerLibLibItem>
+            <linkerLibLibItem>SDL.dll</linkerLibLibItem>
+            <linkerLibLibItem>SDL_image</linkerLibLibItem>
+            <linkerLibLibItem>glu32</linkerLibLibItem>
+            <linkerLibLibItem>opengl32</linkerLibLibItem>
+          </linkerLibItems>
+          <commandLine>-static</commandLine>
+        </linkerTool>
+      </compileType>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>MinGW|MinGW</compilerSet>
+        <platform>3</platform>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+    </conf>
+    <conf name="Debug-LINUX" type="1">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>2</platform>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>../WasabiEngine</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>__UNIX</Elem>
+            <Elem>_GNU_SOURCE=1</Elem>
+            <Elem>_REENTRANT</Elem>
+          </preprocessorList>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="/home/fran/NetBeansProjects/WasabiEngine"
+                            CT="3"
+                            CN="Debug-LINUX"
+                            AC="false"
+                            BL="true"
+                            WD="/home/fran/NetBeansProjects/WasabiEngine"
+                            BC="${MAKE}  -f Makefile CONF=Debug-LINUX"
+                            CC="${MAKE}  -f Makefile CONF=Debug-LINUX clean"
+                            OP="dist/Debug-LINUX/GNU-Linux-x86/libwasabiengine.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerOptionItem>-L/usr/lib -lSDL -lSDL_image -lGL -lGLU</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+    </conf>
+  </confs>
+</configurationDescriptor>
