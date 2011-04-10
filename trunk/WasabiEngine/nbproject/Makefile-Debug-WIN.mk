@@ -120,6 +120,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/WasabiEngine/PhysicEngine/PhysicObject.o \
 	${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FzAnd.o \
 	${OBJECTDIR}/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.o \
+	${OBJECTDIR}/WasabiEngine/GraphicEngine/RadialParticleSystem.o \
 	${OBJECTDIR}/Box2D/Dynamics/b2World.o \
 	${OBJECTDIR}/Box2D/Dynamics/Joints/b2GearJoint.o \
 	${OBJECTDIR}/WasabiEngine/GameEngine/GameWorld3D.o \
@@ -603,6 +604,11 @@ ${OBJECTDIR}/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.o: Box2D/Dynamics
 	${MKDIR} -p ${OBJECTDIR}/Box2D/Dynamics/Contacts
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.o Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp
+
+${OBJECTDIR}/WasabiEngine/GraphicEngine/RadialParticleSystem.o: WasabiEngine/GraphicEngine/RadialParticleSystem.cpp 
+	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/RadialParticleSystem.o WasabiEngine/GraphicEngine/RadialParticleSystem.cpp
 
 ${OBJECTDIR}/Box2D/Dynamics/b2World.o: Box2D/Dynamics/b2World.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Box2D/Dynamics

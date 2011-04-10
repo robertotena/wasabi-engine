@@ -53,8 +53,11 @@ namespace WasabiEngine
         /**
          * The gravity which will vary the particles' movement.
          */
-        WasVec3d gravity;
-        WasVec3d acceleration;
+        float gravity;
+        /**
+         * Acceleration of each particle
+         */
+        float acceleration;
         /**
          * The particle's base size. All the particles will have this size.
          */
@@ -82,7 +85,7 @@ protected:
 public:
     ParticleSystem(const ParticleSystemDef& definition);
     virtual ~ParticleSystem();
-    virtual void updateParticles(unsigned int timeElapsed) = 0;
+    virtual void updateParticles() = 0;
     void renderObject();
 };
 

@@ -275,6 +275,8 @@
         <itemPath>WasabiEngine/GraphicEngine/ParticleSystem.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/Quaternion.cpp</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/Quaternion.h</itemPath>
+        <itemPath>WasabiEngine/GraphicEngine/RadialParticleSystem.cpp</itemPath>
+        <itemPath>WasabiEngine/GraphicEngine/RadialParticleSystem.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/RenderSystem.cpp</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/RenderSystem.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/SceneManager.cpp</itemPath>
