@@ -9,19 +9,23 @@
 
 using namespace WasabiEngine;
 
-ParticleSystem::ParticleSystem(const ParticleSystemDef& def){
+ParticleSystem::ParticleSystem(const ParticleSystemDef& def) {
     int i, nVertices;
     systemDefinition = def;
     nVertices = def.maxParticles * 4;
     vertices = new Vertex[nVertices]; // 4 vertex per particle
-    texCoords = new TexCoord[nVertices]; // 4 texture coords per particle
+    for (int i = 0; i < nVertices; i++) {
+        vertices[i].x = 0;
+        vertices[i].y = 0;
+        vertices[i].z = 0;
+    }
     colors = new float[nVertices * 4]; // r,g,b,a for each vertex, for each particle
-    for(i = 0; i < def.maxParticles; i++)
-        deadParticles.push_back(i);
-    for(i = 0; i < nVertices; i++)
-    {
-        switch (i%4)
-        {
+    for (int i = 0; i < nVertices * 4; i++) {
+        colors = 0;
+    }
+    texCoords = new TexCoord[nVertices]; // 4 texture coords per particle
+    for (i = 0; i < nVertices; i++) {
+        switch (i % 4) {
             case 0:
                 texCoords[i].u = 0.0;
                 texCoords[i].v = 0.0;
@@ -40,6 +44,10 @@ ParticleSystem::ParticleSystem(const ParticleSystemDef& def){
                 break;
         }
     }
+    deadParticles.resize(def.maxParticles);
+    for (i = 0; i < def.maxParticles; i++)
+        deadParticles.push_back(i);
+    aliveParticles.resize(def.maxParticles);
     particles.reserve(def.maxParticles);
 }
 
@@ -51,8 +59,7 @@ ParticleSystem::~ParticleSystem() {
     // FIXME: destroy particles?
 }
 
-void ParticleSystem::renderObject()
-{
+void ParticleSystem::renderObject() {
     glPushMatrix();
 
     SceneNode* parent = getParentSceneNode();
@@ -60,15 +67,13 @@ void ParticleSystem::renderObject()
     Radian radRotation;
     WasVec3d axis;
     // invert previous rotations
-    while(parent != NULL)
-    {    
+    while (parent != NULL) {
         parent->getOrientation().inverse().toAngleAxis(radRotation, axis);
         glRotatef(radRotation.valueDegrees(), axis.x, axis.y, axis.z);
         parent = parent->getParentSceneNode();
     }
     // same rotation as camera
-    if(activeCamera != NULL)
-    {
+    if (activeCamera != NULL) {
         activeCamera->getOrientation().toAngleAxis(radRotation, axis);
         glRotatef(radRotation.valueDegrees(), axis.x, axis.y, axis.z);
     }
@@ -98,20 +103,20 @@ void ParticleSystem::renderObject()
     glDisable(GL_TEXTURE_2D);
     glDisable(GL_COLOR_MATERIAL);
 
-//        // rendering the mesh
-//        glEnableClientState(GL_NORMAL_ARRAY);
-//        glEnableClientState(GL_VERTEX_ARRAY);
-//        if (mesh->hasTexture() && mesh->getTexCoordsArray() != NULL) {
-//            glEnable(GL_TEXTURE_2D);
-//            glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-//            glBindTexture(GL_TEXTURE_2D, mesh->getTextureId());
-//            glTexCoordPointer(2, GL_FLOAT, 0, mesh->getTexCoordsArray()); // Set the vertex pointer to our texCoord data
-//        }
-//        glVertexPointer(3, GL_FLOAT, sizeof (Vertex), mesh->getVertexArray()); // Set the vertex pointer to our vertex data
-//        glNormalPointer(GL_FLOAT, sizeof (Normal), mesh->getNormalArray()); // Set the vertex pointer to our normal data
-//        glDrawArrays(mesh->getPolygonType(), 0, mesh->getVertexCount()); // Draw All Of The Triangles At Once
-//        glDisableClientState(GL_VERTEX_ARRAY);
-//        glDisableClientState(GL_NORMAL_ARRAY);
-//        glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+    //        // rendering the mesh
+    //        glEnableClientState(GL_NORMAL_ARRAY);
+    //        glEnableClientState(GL_VERTEX_ARRAY);
+    //        if (mesh->hasTexture() && mesh->getTexCoordsArray() != NULL) {
+    //            glEnable(GL_TEXTURE_2D);
+    //            glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    //            glBindTexture(GL_TEXTURE_2D, mesh->getTextureId());
+    //            glTexCoordPointer(2, GL_FLOAT, 0, mesh->getTexCoordsArray()); // Set the vertex pointer to our texCoord data
+    //        }
+    //        glVertexPointer(3, GL_FLOAT, sizeof (Vertex), mesh->getVertexArray()); // Set the vertex pointer to our vertex data
+    //        glNormalPointer(GL_FLOAT, sizeof (Normal), mesh->getNormalArray()); // Set the vertex pointer to our normal data
+    //        glDrawArrays(mesh->getPolygonType(), 0, mesh->getVertexCount()); // Draw All Of The Triangles At Once
+    //        glDisableClientState(GL_VERTEX_ARRAY);
+    //        glDisableClientState(GL_NORMAL_ARRAY);
+    //        glDisableClientState(GL_TEXTURE_COORD_ARRAY);
     glPopMatrix();
 }
