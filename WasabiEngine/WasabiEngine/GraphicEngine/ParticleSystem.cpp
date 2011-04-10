@@ -44,6 +44,7 @@ ParticleSystem::ParticleSystem(const ParticleSystemDef& def) {
                 break;
         }
     }
+    textureId = TextureLoader::load(def.texturePath);
     deadParticles.resize(def.maxParticles);
     for (i = 0; i < def.maxParticles; i++)
         deadParticles.push_back(i);
@@ -89,7 +90,7 @@ void ParticleSystem::renderObject() {
     glMaterialfv(GL_FRONT, GL_SPECULAR, systemDefinition.color.ptr());
     glMaterialf(GL_FRONT, GL_SHININESS, 80);
 
-    glBindTexture(GL_TEXTURE_2D, systemDefinition.texture);
+    glBindTexture(GL_TEXTURE_2D, textureId);
     glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
     // FIXME: no estoy seguro del stride, yo diria que es 0, pero no me convence el sizeof(Vertex)
     glColorPointer(4, GL_FLOAT, 0, colors);
@@ -103,20 +104,5 @@ void ParticleSystem::renderObject() {
     glDisable(GL_TEXTURE_2D);
     glDisable(GL_COLOR_MATERIAL);
 
-    //        // rendering the mesh
-    //        glEnableClientState(GL_NORMAL_ARRAY);
-    //        glEnableClientState(GL_VERTEX_ARRAY);
-    //        if (mesh->hasTexture() && mesh->getTexCoordsArray() != NULL) {
-    //            glEnable(GL_TEXTURE_2D);
-    //            glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-    //            glBindTexture(GL_TEXTURE_2D, mesh->getTextureId());
-    //            glTexCoordPointer(2, GL_FLOAT, 0, mesh->getTexCoordsArray()); // Set the vertex pointer to our texCoord data
-    //        }
-    //        glVertexPointer(3, GL_FLOAT, sizeof (Vertex), mesh->getVertexArray()); // Set the vertex pointer to our vertex data
-    //        glNormalPointer(GL_FLOAT, sizeof (Normal), mesh->getNormalArray()); // Set the vertex pointer to our normal data
-    //        glDrawArrays(mesh->getPolygonType(), 0, mesh->getVertexCount()); // Draw All Of The Triangles At Once
-    //        glDisableClientState(GL_VERTEX_ARRAY);
-    //        glDisableClientState(GL_NORMAL_ARRAY);
-    //        glDisableClientState(GL_TEXTURE_COORD_ARRAY);
     glPopMatrix();
 }
