@@ -13,6 +13,12 @@ EventEngine::EventEngine() {
 }
 
 EventEngine::~EventEngine() {
+}
+
+void EventEngine::init() {
+}
+
+void EventEngine::finish() {
     //Delete each port
     for (PortMap::iterator portAddress = registrationMap.begin(); portAddress != registrationMap.end(); portAddress++) {
         //Delete each receiver

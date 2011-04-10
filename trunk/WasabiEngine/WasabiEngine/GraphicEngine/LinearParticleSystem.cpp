@@ -9,11 +9,11 @@
 
 using namespace WasabiEngine;
 
-LinearParticleSystem::LinearParticleSystem(const LinearParticleSystemDef& definition) : ParticleSystem(definition), systemDefinition(definition) {
+LinearParticleSystem::LinearParticleSystem(const LinearParticleSystemDef& definition) : ParticleSystem(&definition), systemDefinition(definition) {
     
 }
 
-LinearParticleSystem::LinearParticleSystem(const LinearParticleSystem& orig) : ParticleSystem(orig.systemDefinition) {
+LinearParticleSystem::LinearParticleSystem(const LinearParticleSystem& orig) : ParticleSystem(&orig.systemDefinition) {
     //Not allowed
 }
 

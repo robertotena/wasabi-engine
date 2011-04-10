@@ -21,10 +21,10 @@
 #ifndef LINEARPARTICLESYSTEM_H
 #define	LINEARPARTICLESYSTEM_H
 
-#include <WasabiEngine/GraphicEngine/ParticleSystem.h>
-#include <WasabiEngine/GraphicEngine/ParticleSystemDefinitions.h>
 #include <WasabiEngine/Utils/WasabiTime.h>
 #include <WasabiEngine/Utils/MathUtil.h>
+#include <WasabiEngine/GraphicEngine/ParticleSystem.h>
+#include <WasabiEngine/GraphicEngine/ParticleSystemDefinitions.h>
 
 namespace WasabiEngine {
 

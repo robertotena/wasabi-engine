@@ -22,8 +22,6 @@
 #include <WasabiEngine/GraphicEngine/ParticleSystem.h>
 #include <WasabiEngine/GraphicEngine/LinearParticleSystem.h>
 #include <WasabiEngine/GraphicEngine/RadialParticleSystem.h>
-#include <WasabiEngine/GraphicEngine/ParticleSystemDefinitions.h>
-
 
 namespace WasabiEngine {
 
@@ -58,7 +56,7 @@ namespace WasabiEngine {
         Entity* createEntity(const std::string& meshName);
         Entity* createEntity(PrefabType type);
         void destroyEntity(Entity* entity);
-        ParticleSystem* createParticleSystem(const ParticleSystemDef& def);
+        ParticleSystem* createParticleSystem(const ParticleSystemDef* def);
         void destroyParticleSystem(ParticleSystem* system);
         void setAmbientLight(const ColourValue& colour, const WasVec3d& position);
         void setFog(FogMode mode, const ColourValue& colour, float density, float linearStart, float linearEnd);

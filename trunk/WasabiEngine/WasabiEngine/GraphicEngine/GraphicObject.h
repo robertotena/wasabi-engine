@@ -51,7 +51,7 @@ namespace WasabiEngine {
         Entity* createEntity(const std::string& meshName);
         Entity* createEntity(PrefabType type);
         void destroyEntity(Entity* entity);
-        ParticleSystem* createParticleSystem(const ParticleSystemDef& def);
+        ParticleSystem* createParticleSystem(const ParticleSystemDef* def);
         void destroyParticleSystem(ParticleSystem* particleSystem);
         WasVec3d getPosition();
         void setPosition(const WasVec3d& positionRelativeToParent);

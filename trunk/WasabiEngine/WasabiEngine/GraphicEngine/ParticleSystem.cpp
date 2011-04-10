@@ -6,13 +6,14 @@
  */
 
 #include "ParticleSystem.h"
+#include <WasabiEngine/GraphicEngine/GraphicEngine.h>
 
 using namespace WasabiEngine;
 
-ParticleSystem::ParticleSystem(const ParticleSystemDef& def) {
+ParticleSystem::ParticleSystem(const ParticleSystemDef* def) {
     int i;
-    color = def.color;
-    nVertices = def.maxParticles * 4;
+    color = def->color;
+    nVertices = def->maxParticles * 4;
     vertices = new Vertex[nVertices]; // 4 vertex per particle
     for (int i = 0; i < nVertices; i++) {
         vertices[i].x = 0;
@@ -44,12 +45,12 @@ ParticleSystem::ParticleSystem(const ParticleSystemDef& def) {
                 break;
         }
     }
-    textureId = TextureLoader::load(def.texturePath);
-    deadParticles.resize(def.maxParticles);
-    for (i = 0; i < def.maxParticles; i++)
+    textureId = TextureLoader::load(def->texturePath);
+    deadParticles.resize(def->maxParticles);
+    for (i = 0; i < def->maxParticles; i++)
         deadParticles.push_back(i);
-    aliveParticles.resize(def.maxParticles);
-    particles.reserve(def.maxParticles);
+    aliveParticles.resize(def->maxParticles);
+    particles.reserve(def->maxParticles);
 }
 
 ParticleSystem::ParticleSystem(const ParticleSystem& orig) {

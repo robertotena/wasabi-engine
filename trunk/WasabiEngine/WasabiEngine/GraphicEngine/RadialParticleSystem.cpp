@@ -9,11 +9,11 @@
 
 using namespace WasabiEngine;
 
-RadialParticleSystem::RadialParticleSystem(const RadialParticleSystemDef& definition) : ParticleSystem(definition), systemDefinition(definition) {
+RadialParticleSystem::RadialParticleSystem(const RadialParticleSystemDef& definition) : ParticleSystem(&definition), systemDefinition(definition) {
 
 }
 
-RadialParticleSystem::RadialParticleSystem(const RadialParticleSystem& orig) : ParticleSystem(orig.systemDefinition) {
+RadialParticleSystem::RadialParticleSystem(const RadialParticleSystem& orig) : ParticleSystem(&orig.systemDefinition) {
     //Not allowed
 }
 

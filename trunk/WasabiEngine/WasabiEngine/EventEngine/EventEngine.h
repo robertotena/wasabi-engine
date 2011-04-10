@@ -26,6 +26,7 @@ namespace WasabiEngine {
     /**
      * Event engine for send and receive unicast and broadcast events along the game objects.
      */
+
     /* FIXME Si trabaja con SDL necesita que este cargado previamente el sistema grafico! */
     class EventEngine {
     private:
@@ -84,6 +85,15 @@ namespace WasabiEngine {
          */
         void updateUserEvents();
         static EventEngine* getInstance();
+
+        /**
+         * Initializes the engine
+         */
+        void init();
+        /**
+         * Clears the engine contents
+         */
+        void finish();
     };
 
     inline void EventEngine::updateSystemEvents() {
