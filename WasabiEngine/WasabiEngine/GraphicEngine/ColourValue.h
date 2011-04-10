@@ -38,6 +38,7 @@ namespace WasabiEngine {
         float getGreen() const;
         float getRed() const;
         float getAlpha() const;
+        float* ptr();
     };
 
     inline void ColourValue::setBlue(float blue) {
@@ -70,6 +71,10 @@ namespace WasabiEngine {
 
     inline float ColourValue::getAlpha() const {
         return alpha;
+    }
+
+    inline float* ColourValue::ptr(){
+        return &red;
     }
 }
 

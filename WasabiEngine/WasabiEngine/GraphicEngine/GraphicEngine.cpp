@@ -85,6 +85,11 @@ void GraphicEngine::destroyCamera(const std::string& name)
     sceneManager.destroyCamera(name);
 }
 
+Camera* GraphicEngine::getActiveCamera()
+{
+    return sceneManager.getActiveCamera();
+}
+
 void GraphicEngine::setActiveCamera(Camera* camera)
 {
     sceneManager.setActiveCamera(camera);

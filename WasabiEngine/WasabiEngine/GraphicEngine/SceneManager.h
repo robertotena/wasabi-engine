@@ -43,6 +43,7 @@ namespace WasabiEngine {
         Camera* createCamera(const std::string& name);
         void destroyCamera(Camera* camera);
         void destroyCamera(const std::string& name);
+        Camera* getActiveCamera();
         void setActiveCamera(Camera* camera);
         void setActiveCamera(const std::string& name);
         Camera* getCamera(const std::string& name);

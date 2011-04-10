@@ -11,8 +11,6 @@
 using namespace WasabiEngine;
 
 SceneManager::SceneManager() : cameraFactory(5) {
-    // FIXME clean
-//    renderSystem.setFog(FOG_NONE, ColourValue::WHITE, 0.35f, 1.0, 5.0);
     worldGeometry = NULL;
     activeCamera = NULL;
 }
@@ -47,6 +45,11 @@ void SceneManager::destroyCamera(const std::string& name) {
     cameras.remove(name);
     if(camera != NULL)
         cameraFactory.returnResource(*camera);
+}
+
+Camera* SceneManager::getActiveCamera()
+{
+    return activeCamera;
 }
 
 void SceneManager::setActiveCamera(Camera* camera)
@@ -108,8 +111,6 @@ void SceneManager::setWorldGeometry(const std::string& filePath){
     if(worldGeometry != NULL)
         rootNode.detachObject(worldGeometry);
     worldGeometry = createEntity(filePath);
-    //FIXME: Le pongo temporalmente un color para ver algo
-    worldGeometry->setColor(0.3,0.3,0.3);
     rootNode.attachObject(worldGeometry);
 }
 
