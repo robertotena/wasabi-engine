@@ -10,12 +10,36 @@
 using namespace WasabiEngine;
 
 ParticleSystem::ParticleSystem(const ParticleSystemDef& def){
-    int i;
+    int i, nVertices;
     systemDefinition = def;
-    vertices = new Vertex[def.maxParticles * 4]; // 4 vertex per particle
-    colors = new float[def.maxParticles * 4 * 4]; // r,g,b,a for each vertex, for each particle
+    nVertices = def.maxParticles * 4;
+    vertices = new Vertex[nVertices]; // 4 vertex per particle
+    texCoords = new TexCoord[nVertices]; // 4 texture coords per particle
+    colors = new float[nVertices * 4]; // r,g,b,a for each vertex, for each particle
     for(i = 0; i < def.maxParticles; i++)
         deadParticles.push_back(i);
+    for(i = 0; i < nVertices; i++)
+    {
+        switch (i%4)
+        {
+            case 0:
+                texCoords[i].u = 0.0;
+                texCoords[i].v = 0.0;
+                break;
+            case 1:
+                texCoords[i].u = 0.0;
+                texCoords[i].v = 1.0;
+                break;
+            case 2:
+                texCoords[i].u = 1.0;
+                texCoords[i].v = 1.0;
+                break;
+            case 3:
+                texCoords[i].u = 0.0;
+                texCoords[i].v = 1.0;
+                break;
+        }
+    }
     particles.reserve(def.maxParticles);
 }
 
@@ -51,6 +75,7 @@ void ParticleSystem::renderObject()
 
     glEnable(GL_TEXTURE_2D);
     glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
     glEnableClientState(GL_COLOR_ARRAY);
     glEnable(GL_COLOR_MATERIAL);
 
@@ -60,6 +85,7 @@ void ParticleSystem::renderObject()
     glMaterialf(GL_FRONT, GL_SHININESS, 80);
 
     glBindTexture(GL_TEXTURE_2D, systemDefinition.texture);
+    glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
     // FIXME: no estoy seguro del stride, yo diria que es 0, pero no me convence el sizeof(Vertex)
     glColorPointer(4, GL_FLOAT, 0, colors);
     glVertexPointer(3, GL_FLOAT, sizeof (Vertex), vertices);
@@ -67,6 +93,7 @@ void ParticleSystem::renderObject()
 
     // disabling states
     glDisableClientState(GL_VERTEX_ARRAY);
+    glDisableClientState(GL_TEXTURE_COORD_ARRAY);
     glDisableClientState(GL_COLOR_ARRAY);
     glDisable(GL_TEXTURE_2D);
     glDisable(GL_COLOR_MATERIAL);
