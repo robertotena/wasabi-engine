@@ -248,6 +248,7 @@
         <itemPath>WasabiEngine/GraphicEngine/ColourValue.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/Entity.cpp</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/Entity.h</itemPath>
+        <itemPath>WasabiEngine/GraphicEngine/GraphicDefinitions.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/GraphicEngine.cpp</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/GraphicEngine.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/GraphicEngineConf.h</itemPath>

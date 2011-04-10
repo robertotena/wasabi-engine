@@ -22,11 +22,11 @@
 #define	PARTICLESYSTEM_H
 
 #include <list>
+#include <vector>
 #include <WasabiEngine/GraphicEngine/ParticleSystemDefinitions.h>
-#include <WasabiEngine/GraphicEngine/GraphicEngine.h>
 #include <WasabiEngine/GraphicEngine/Particle.h>
 #include <WasabiEngine/GraphicEngine/MovableObject.h>
-#include <vector>
+#include <WasabiEngine/GraphicEngine/GraphicDefinitions.h>
 
 namespace WasabiEngine
 {
@@ -45,7 +45,7 @@ protected:
     std::vector<Particle> particles;
     ColourValue color;
 public:
-    ParticleSystem(const ParticleSystemDef& definition);
+    ParticleSystem(const ParticleSystemDef* definition);
     virtual ~ParticleSystem();
     virtual void updateParticles() = 0;
     void renderObject();

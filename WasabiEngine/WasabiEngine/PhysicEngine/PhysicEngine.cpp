@@ -52,6 +52,9 @@ void PhysicEngine::destroyObject(PhysicObject* object) {
     }
 }
 
+void PhysicEngine::init(){
+}
+
 void PhysicEngine::finish(){
     std::list<PhysicObject*> physicObjects = objects.getItems();
     std::list<PhysicObject*>::iterator it;

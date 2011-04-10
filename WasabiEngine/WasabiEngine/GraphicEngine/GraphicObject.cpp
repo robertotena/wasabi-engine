@@ -78,7 +78,7 @@ void GraphicObject::destroyEntity(Entity* entity) {
     }
 }
 
-ParticleSystem* GraphicObject::createParticleSystem(const ParticleSystemDef& def)
+ParticleSystem* GraphicObject::createParticleSystem(const ParticleSystemDef* def)
 {
     ParticleSystem* system = GraphicEngine::getInstance()->sceneManager.createParticleSystem(def);
     particleSystems.push_back(system);

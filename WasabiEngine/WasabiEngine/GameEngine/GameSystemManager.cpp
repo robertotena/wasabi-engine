@@ -16,11 +16,6 @@ GameSystemManager::GameSystemManager() {
         fprintf(stderr, "Unable to initialize SDL: %s\n", SDL_GetError());
         exit(1);
     }
-    //Starts GraphicEngine
-    //It should be started before EventEngine
-    GraphicEngine::getInstance();
-    //Starts EventEngine
-    EventEngine::getInstance();
     quitHandlerRegistration = NULL;
     gameLoop = NULL;
 }
@@ -49,11 +44,19 @@ void GameSystemManager::setGameLoop(GameLoop* gameLoop) {
 }
 
 bool GameSystemManager::initSystem() {
+    //Starts GraphicEngine
+    //It should be started before EventEngine
+    GraphicEngine::getInstance()->init();
+    //Starts EventEngine
+    EventEngine::getInstance()->init();
+    PhysicEngine::getInstance()->init();
     return true;
 }
 
 bool GameSystemManager::finishSystem() {
-    delete PhysicEngine::getInstance();
+    PhysicEngine::getInstance()->finish();
+    EventEngine::getInstance()->finish();
+    GraphicEngine::getInstance()->finish();
     SDL_Quit();
     return true;
 }
