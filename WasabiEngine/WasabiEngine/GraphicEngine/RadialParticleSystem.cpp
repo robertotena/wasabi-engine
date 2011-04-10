@@ -1,26 +1,26 @@
 /* 
- * File:   LinearParticleSystem.cpp
- * Author: Roberto
+ * File:   RadialParticleSystem.cpp
+ * Author: Fran_2
  * 
- * Created on 5 de abril de 2011, 13:31
+ * Created on 10 de abril de 2011, 18:53
  */
 
-#include "LinearParticleSystem.h"
+#include "RadialParticleSystem.h"
 
 using namespace WasabiEngine;
 
-LinearParticleSystem::LinearParticleSystem(const ParticleSystemDef& definition, const WasVec2d& emissionVelocity) : ParticleSystem(definition) {
+RadialParticleSystem::RadialParticleSystem(const ParticleSystemDef& definition, float emissionVelocity) : ParticleSystem(definition) {
     this->emissionVelocity = emissionVelocity;
 }
 
-LinearParticleSystem::LinearParticleSystem(const LinearParticleSystem& orig) : ParticleSystem(orig.systemDefinition) {
+RadialParticleSystem::RadialParticleSystem(const RadialParticleSystem& orig) : ParticleSystem(orig.systemDefinition) {
     //Not allowed
 }
 
-LinearParticleSystem::~LinearParticleSystem() {
+RadialParticleSystem::~RadialParticleSystem() {
 }
 
-void LinearParticleSystem::updateParticles() {
+void RadialParticleSystem::updateParticles() {
     int freeParticles = deadParticles.size();
 
     static unsigned int lastEmissionTimestamp = WasabiTime::getTicks(); //Could be 0, but in that case the first iteration will cause an "explosion"
@@ -37,7 +37,12 @@ void LinearParticleSystem::updateParticles() {
         Particle& particle = particles[particleIndex];
         particle.position = WasVec2d::ZERO;
         particle.energy = 1;
-        particle.velocity = emissionVelocity;
+        particle.velocity.x = rand() % (int) emissionVelocity; //FIXME: La inicializacion de la velocidad es lo unico que cambia. Despues vemos que se hace con esto.
+        particle.velocity.y = sqrt(emissionVelocity - particle.velocity.x * particle.velocity.x); //Pythagoras
+        if (rand() % 2 - 1 < 0)
+            particle.velocity.x = -particle.velocity.x;
+        if (rand() % 2 - 1 < 0)
+            particle.velocity.y = -particle.velocity.y;
         particle.velocityDelta.x = systemDefinition.chaos ? (rand() % systemDefinition.chaos) : 0.0;
         particle.velocityDelta.y = systemDefinition.chaos ? (rand() % systemDefinition.chaos) : 0.0;
         particle.size = systemDefinition.baseSize;
