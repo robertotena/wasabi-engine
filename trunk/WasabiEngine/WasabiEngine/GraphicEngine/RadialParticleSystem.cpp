@@ -9,8 +9,8 @@
 
 using namespace WasabiEngine;
 
-RadialParticleSystem::RadialParticleSystem(const ParticleSystemDef& definition, float emissionVelocity) : ParticleSystem(definition) {
-    this->emissionVelocity = emissionVelocity;
+RadialParticleSystem::RadialParticleSystem(const RadialParticleSystemDef& definition) : ParticleSystem(definition), systemDefinition(definition) {
+
 }
 
 RadialParticleSystem::RadialParticleSystem(const RadialParticleSystem& orig) : ParticleSystem(orig.systemDefinition) {
@@ -22,7 +22,7 @@ RadialParticleSystem::~RadialParticleSystem() {
 
 void RadialParticleSystem::updateParticles() {
     int freeParticles = deadParticles.size();
-
+    float emissionVelocity = systemDefinition.emissionVelocity;
     static unsigned int lastEmissionTimestamp = WasabiTime::getTicks(); //Could be 0, but in that case the first iteration will cause an "explosion"
     unsigned int now = WasabiTime::getTicks();
     int particlesToEmmit = (now - lastEmissionTimestamp) / systemDefinition.emissionRate;

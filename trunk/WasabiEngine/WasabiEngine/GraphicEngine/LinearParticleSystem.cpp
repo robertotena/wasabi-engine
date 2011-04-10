@@ -9,8 +9,8 @@
 
 using namespace WasabiEngine;
 
-LinearParticleSystem::LinearParticleSystem(const ParticleSystemDef& definition, const WasVec2d& emissionVelocity) : ParticleSystem(definition) {
-    this->emissionVelocity = emissionVelocity;
+LinearParticleSystem::LinearParticleSystem(const LinearParticleSystemDef& definition) : ParticleSystem(definition), systemDefinition(definition) {
+    
 }
 
 LinearParticleSystem::LinearParticleSystem(const LinearParticleSystem& orig) : ParticleSystem(orig.systemDefinition) {
@@ -37,7 +37,7 @@ void LinearParticleSystem::updateParticles() {
         Particle& particle = particles[particleIndex];
         particle.position = WasVec2d::ZERO;
         particle.energy = 1;
-        particle.velocity = emissionVelocity;
+        particle.velocity = systemDefinition.emissionVelocity;
         particle.velocityDelta.x = systemDefinition.chaos ? (rand() % systemDefinition.chaos) : 0.0;
         particle.velocityDelta.y = systemDefinition.chaos ? (rand() % systemDefinition.chaos) : 0.0;
         particle.size = systemDefinition.baseSize;

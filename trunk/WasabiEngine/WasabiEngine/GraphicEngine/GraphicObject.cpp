@@ -78,6 +78,24 @@ void GraphicObject::destroyEntity(Entity* entity) {
     }
 }
 
+ParticleSystem* GraphicObject::createParticleSystem(const ParticleSystemDef& def)
+{
+    ParticleSystem* system = GraphicEngine::getInstance()->sceneManager.createParticleSystem(def);
+    particleSystems.push_back(system);
+    sceneNode->attachObject(system);
+    return system;
+}
+
+void GraphicObject::destroyParticleSystem(ParticleSystem* system)
+{
+    std::list<Entity*>::iterator i = std::find(particleSystems.begin(), particleSystems.end(), system);
+    if (i != particleSystems.end()) {
+        particleSystems.erase(i);
+        sceneNode->detachObject(system);
+        GraphicEngine::getInstance()->sceneManager.destroyParticleSystem(system);
+    }
+}
+
 GraphicObject* GraphicObject::createChild(const WasVec3d& positionRelativeToParent) {
     GraphicObject* object = GraphicEngine::getInstance()->objectFactory.createResource();
     object->setId(id);

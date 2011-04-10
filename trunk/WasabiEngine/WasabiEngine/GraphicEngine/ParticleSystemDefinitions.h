@@ -8,9 +8,9 @@
 #ifndef PARTICLESYSTEMDEFINITIONS_H
 #define	PARTICLESYSTEMDEFINITIONS_H
 
+#include <string>
+#include <WasabiEngine/Utils/Vectors.h>
 #include <WasabiEngine/GraphicEngine/ColourValue.h>
-
-#include "ParticleSystem.h"
 
 namespace WasabiEngine
 {
@@ -66,6 +66,7 @@ public:
 
 class LinearParticleSystemDef : public ParticleSystemDef {
 public:
+    WasVec2d emissionVelocity;
     ParticleSystemType getType(){
         return PARTICLE_LINEAR;
     }

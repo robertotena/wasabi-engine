@@ -17,10 +17,10 @@ namespace WasabiEngine {
 
     class RadialParticleSystem : public ParticleSystem {
     private:
-        float emissionVelocity;
+        RadialParticleSystemDef systemDefinition;
         RadialParticleSystem(const RadialParticleSystem& orig);
     public:
-        RadialParticleSystem(const ParticleSystemDef& definition, float emissionVelocity);
+        RadialParticleSystem(const RadialParticleSystemDef& definition);
         virtual ~RadialParticleSystem();
         void updateParticles();
     };
