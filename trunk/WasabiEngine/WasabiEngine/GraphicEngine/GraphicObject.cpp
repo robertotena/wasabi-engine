@@ -88,7 +88,7 @@ ParticleSystem* GraphicObject::createParticleSystem(const ParticleSystemDef& def
 
 void GraphicObject::destroyParticleSystem(ParticleSystem* system)
 {
-    std::list<Entity*>::iterator i = std::find(particleSystems.begin(), particleSystems.end(), system);
+    std::list<ParticleSystem*>::iterator i = std::find(particleSystems.begin(), particleSystems.end(), system);
     if (i != particleSystems.end()) {
         particleSystems.erase(i);
         sceneNode->detachObject(system);
