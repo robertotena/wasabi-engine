@@ -153,6 +153,15 @@ void GraphicObject::clear() {
     }
     entities.clear();
 
+    std::list<ParticleSystem*>::iterator currentSystem = particleSystems.begin();
+    std::list<ParticleSystem*>::iterator nextSystem = currentSystem++;
+    for (unsigned int i = 0; i < entities.size(); i++) {
+        destroyParticleSystem(*currentSystem);
+        currentSystem = nextSystem;
+        nextSystem++;
+    }
+    particleSystems.clear();
+
     removeAllChildren();
     if (sceneNode) {
         sceneNode->getParentSceneNode()->removeChild(sceneNode);

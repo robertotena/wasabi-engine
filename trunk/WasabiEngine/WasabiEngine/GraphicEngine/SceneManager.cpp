@@ -6,8 +6,6 @@
  */
 
 #include "SceneManager.h"
-#include "MeshLoader.h"
-#include "LinearParticleSystem.h"
 
 using namespace WasabiEngine;
 

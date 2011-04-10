@@ -21,6 +21,7 @@ namespace WasabiEngine {
     class Camera;
     class Light;
     class Entity;
+    class ParticleSystem;
     
     /**
      * A graphic object is a renderable object that can contain more objects or
