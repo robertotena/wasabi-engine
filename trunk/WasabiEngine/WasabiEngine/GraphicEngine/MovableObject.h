@@ -11,13 +11,33 @@
 #include <string>
 #include <GL/gl.h>
 
+
 namespace WasabiEngine {
-    
+
+    class SceneNode;
+
     class MovableObject {
+    protected:
+        SceneNode* parentSceneNode;
     public:
-        virtual ~MovableObject() {}
+        MovableObject(){parentSceneNode = NULL;}
+        virtual ~MovableObject() {parentSceneNode = NULL;}
         virtual void renderObject() = 0;
+        SceneNode* getParentSceneNode();
+        bool isAttached();
+        
+        friend class SceneNode;
     };
+
+    inline SceneNode* MovableObject::getParentSceneNode()
+    {
+        return parentSceneNode;
+    }
+
+    inline bool MovableObject::isAttached()
+    {
+        return parentSceneNode != NULL;
+    }
 }
 #endif	/* MOVABLEOBJECT_H */
 

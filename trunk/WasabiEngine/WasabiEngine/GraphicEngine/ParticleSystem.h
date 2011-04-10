@@ -22,10 +22,10 @@
 #define	PARTICLESYSTEM_H
 
 #include <list>
+#include <WasabiEngine/GraphicEngine/GraphicEngine.h>
 #include <WasabiEngine/GraphicEngine/Particle.h>
 #include <WasabiEngine/GraphicEngine/MovableObject.h>
-
-#include "ColourValue.h"
+#include <vector>
 
 namespace WasabiEngine
 {
@@ -35,7 +35,7 @@ namespace WasabiEngine
          * The maximum particles amount the system can emmit.
          */
         int maxParticles;
-        int texture;
+        unsigned int texture;
         float systemLifeSpan;
         /**
          * The general life span of each particle (in ms).
@@ -80,7 +80,7 @@ protected:
     std::vector<Particle> particles;
     ParticleSystemDef systemDefinition;
 public:
-    ParticleSystem(const ParticleSystemDef& def);
+    ParticleSystem(const ParticleSystemDef& definition);
     virtual ~ParticleSystem();
     virtual void updateParticles(unsigned int timeElapsed) = 0;
     void renderObject();

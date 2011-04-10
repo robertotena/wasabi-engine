@@ -132,12 +132,14 @@ bool SceneNode::isVisible() const {
 
 void SceneNode::attachObject(MovableObject* object) {
     objects.push_back(object);
+    object->parentSceneNode = this;
 }
 
 void SceneNode::detachObject(MovableObject* object) {
     std::list<MovableObject*>::iterator i = std::find(objects.begin(), objects.end(), object);
     if (i != objects.end()) {
        objects.erase(i);
+       (*i)->parentSceneNode = NULL;
     }
 }
 

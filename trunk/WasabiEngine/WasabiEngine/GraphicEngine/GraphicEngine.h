@@ -64,6 +64,7 @@ namespace WasabiEngine {
         void setActiveCamera(Camera* camera);
         void setActiveCamera(const std::string& name);
         Camera* getCamera(const std::string& name);
+        Camera* getActiveCamera();
         void setWorldGeometry(const std::string& filePath);
         void setAmbientLight(const ColourValue& colour, const WasVec3d& position);
         void render();
