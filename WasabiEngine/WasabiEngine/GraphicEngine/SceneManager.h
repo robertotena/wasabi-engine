@@ -20,6 +20,8 @@
 #include <WasabiEngine/GraphicEngine/MeshLoader.h>
 #include <WasabiEngine/GraphicEngine/SceneNode.h>
 #include <WasabiEngine/GraphicEngine/ParticleSystem.h>
+#include <WasabiEngine/GraphicEngine/LinearParticleSystem.h>
+#include <WasabiEngine/GraphicEngine/RadialParticleSystem.h>
 #include <WasabiEngine/GraphicEngine/ParticleSystemDefinitions.h>
 
 
