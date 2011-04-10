@@ -22,6 +22,8 @@
 #define	LINEARPARTICLESYSTEM_H
 
 #include <WasabiEngine/GraphicEngine/ParticleSystem.h>
+#include <WasabiEngine/Utils/WasabiTime.h>
+#include <WasabiEngine/Utils/MathUtil.h>
 
 namespace WasabiEngine {
 

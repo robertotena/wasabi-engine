@@ -104,3 +104,42 @@ Camera* GraphicEngine::getCamera(const std::string& name)
 {
     return sceneManager.getCamera(name);
 }
+
+void GraphicEngine::init()
+{
+    /* Initialize SDL for video output. Watch out! It needs that SDL_Init() has been called first */
+    if (SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) {
+        fprintf(stderr, "Unable to initialize SDL: %s\n", SDL_GetError());
+        exit(1);
+    }
+
+    // Initialize SDL image formats to support
+    int flags = IMG_INIT_JPG | IMG_INIT_PNG;
+    int initted = IMG_Init(flags);
+    if((initted&flags) != flags)
+    {
+        fprintf(stderr, "IMG_Init: Failed to init required jpg and png support!\n");
+        fprintf(stderr, "IMG_Init: %s\n", IMG_GetError());
+    }
+
+    GraphicEngineConf defaultConf;
+    defaultConf.width = 800;
+    defaultConf.height = 600;
+    defaultConf.wmCaption = "WasabiEngine";
+    setVideoMode(defaultConf);
+}
+
+void GraphicEngine::finish()
+{
+    TextureLoader::unloadAll();
+    MeshMap::unloadAll();
+    destroyObjects();
+}
+
+void GraphicEngine::destroyObjects()
+{
+    std::list<GraphicObject*> graphicObjects = propertyMap.getItems();
+    std::list<GraphicObject*>::iterator it;
+    for(it = graphicObjects.begin(); it != graphicObjects.end(); it++)
+        destroyObject(*(it));
+}

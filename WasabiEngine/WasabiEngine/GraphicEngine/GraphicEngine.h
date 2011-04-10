@@ -32,6 +32,7 @@ namespace WasabiEngine {
         PropertyMap<GraphicObject*> propertyMap;
         GraphicEngine(const GraphicEngine& orig);
         SceneManager sceneManager;
+        void destroyObjects();
     public:
         GraphicEngine();
         void setVideoMode(const GraphicEngineConf& conf);
@@ -68,6 +69,14 @@ namespace WasabiEngine {
         void setWorldGeometry(const std::string& filePath);
         void setAmbientLight(const ColourValue& colour, const WasVec3d& position);
         void render();
+        /**
+         * Initializes the engine
+         */
+        void init();
+        /**
+         * Clears the engine contents
+         */
+        void finish();
         static GraphicEngine* getInstance();
 
         friend class GraphicObject;

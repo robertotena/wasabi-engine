@@ -49,7 +49,7 @@ namespace WasabiEngine
          * A randomness factor, which is used to initialize the particles's
          * lifeSpan, growRate and acceleration in a different way.
          */
-        float chaos;
+        int chaos;
         /**
          * The gravity which will vary the particles' movement.
          */

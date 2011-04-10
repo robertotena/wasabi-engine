@@ -6,16 +6,14 @@
  */
 
 #include "LinearParticleSystem.h"
-#include "WasabiEngine/Utils/WasabiTime.h"
-#include "WasabiEngine/Utils/MathUtil.h"
 
 using namespace WasabiEngine;
 
-LinearParticleSystem::LinearParticleSystem(const ParticleSystemDef& definition, const WasVec2d& emissionVelocity) {
+LinearParticleSystem::LinearParticleSystem(const ParticleSystemDef& definition, const WasVec2d& emissionVelocity) : ParticleSystem(definition) {
     this->emissionVelocity = emissionVelocity;
 }
 
-LinearParticleSystem::LinearParticleSystem(const LinearParticleSystem& orig) {
+LinearParticleSystem::LinearParticleSystem(const LinearParticleSystem& orig) : ParticleSystem(orig.systemDefinition){
     //Not allowed
 }
 
@@ -37,13 +35,13 @@ void LinearParticleSystem::updateParticles() {
 
         //Init particle
         Particle& particle = particles[particleIndex];
-        particle.position = WasVec2d.ZERO;
+        particle.position = WasVec2d::ZERO;
         particle.energy = 1;
         particle.velocity = emissionVelocity;
-        particle.velocityDelta.x = systemDefinition.chaos ? (rand() % systemDefinition.chaos) : 0;
-        particle.velocityDelta.y = systemDefinition.chaos ? (rand() % systemDefinition.chaos) : 0;
+        particle.velocityDelta.x = systemDefinition.chaos ? (rand() % systemDefinition.chaos) : 0.0;
+        particle.velocityDelta.y = systemDefinition.chaos ? (rand() % systemDefinition.chaos) : 0.0;
         particle.size = systemDefinition.baseSize;
-        particle.sizeDelta = systemDefinition.chaos ? (rand() % systemDefinition.chaos) : 0;
+        particle.sizeDelta = systemDefinition.chaos ? (rand() % systemDefinition.chaos) : 0.0;
     }
 
     std::list<int>::iterator currentParticle = aliveParticles.begin();
