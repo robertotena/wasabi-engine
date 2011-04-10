@@ -273,6 +273,7 @@
         <itemPath>WasabiEngine/GraphicEngine/Particle.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/ParticleSystem.cpp</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/ParticleSystem.h</itemPath>
+        <itemPath>WasabiEngine/GraphicEngine/ParticleSystemDefinitions.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/Quaternion.cpp</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/Quaternion.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/RadialParticleSystem.cpp</itemPath>
