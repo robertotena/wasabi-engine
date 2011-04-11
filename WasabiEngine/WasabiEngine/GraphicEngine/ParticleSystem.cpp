@@ -22,7 +22,20 @@ ParticleSystem::ParticleSystem(const ParticleSystemDef* def) {
     }
     colors = new float[nVertices * 4]; // r,g,b,a for each vertex, for each particle
     for (int i = 0; i < nVertices * 4; i++) {
-        colors[i] = 0;
+        switch (i % 4) {
+            case 0:
+                colors[i] = color.getRed();
+                break;
+            case 1:
+                colors[i] = color.getGreen();
+                break;
+            case 2:
+                colors[i] = color.getBlue();
+                break;
+            case 3:
+                colors[i] = color.getAlpha();
+                break;
+        }
     }
     texCoords = new TexCoord[nVertices]; // 4 texture coords per particle
     for (i = 0; i < nVertices; i++) {
