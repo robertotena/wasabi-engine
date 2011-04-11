@@ -30,6 +30,9 @@ SimpleActor::SimpleActor() : controlHandler(this) {
     PhysicBodyDef physicDefinition;
     physicDefinition.bodyType = PHYSIC_DYNAMIC_BODY;
     physicDefinition.awake = true;
+    physicDefinition.shapeType = PHYSIC_BOX_SHAPE;
+    physicDefinition.box.height = 1;
+    physicDefinition.box.width = 1;
     physicObject->createBody("MainBody",physicDefinition);
 
     /* Register a handler */
