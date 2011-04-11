@@ -36,7 +36,6 @@ namespace WasabiEngine {
         void setGameLoop(GameLoop* gameLoop);
         void initSystem();
         void setVideoMode(const GraphicEngineConf& conf);
-        void setGameWorld(GameWorld* gameWorld);
         GameWorld3D* getGameWorld();
         void run();
     };
