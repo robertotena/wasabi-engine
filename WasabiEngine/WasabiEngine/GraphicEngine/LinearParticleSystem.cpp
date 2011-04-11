@@ -77,6 +77,10 @@ void LinearParticleSystem::updateParticles() {
         vertices[*currentParticle * 4 + 3].y = particle.position.y + particle.size;
         colors[*currentParticle * 4 + 3] = particle.energy;
 
+        
+        colors[*currentParticle * 4 + 3] = particle.energy;
+//        colors[*currentParticle * 4 + 3] = 1;
+
         currentParticle = nextParticle;
         nextParticle++;
     }

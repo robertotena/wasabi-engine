@@ -56,8 +56,8 @@ ParticleSystem::ParticleSystem(const ParticleSystemDef* def) {
                 texCoords[i].v = 1.0;
                 break;
             case 3:
-                texCoords[i].u = 1.0;
-                texCoords[i].v = 0.0;
+                texCoords[i].u = 0.0;
+                texCoords[i].v = 1.0;
                 break;
         }
     }
