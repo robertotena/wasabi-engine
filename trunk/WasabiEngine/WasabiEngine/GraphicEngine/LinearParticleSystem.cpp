@@ -60,24 +60,31 @@ void LinearParticleSystem::updateParticles() {
 
         float tInterval = (now - lastEmissionTimestamp) / 1000;
         // Particle acceleration
-        particle.velocity.x = particle.velocity.x * tInterval + 0.5 * systemDefinition.acceleration * tInterval * tInterval; // v = v * (t1 - t0) + 1/2 * a * (t1 - t0) ^ 2
-        particle.velocity.y = particle.velocity.y * tInterval + 0.5 * systemDefinition.acceleration * tInterval * tInterval; // v = v * (t1 - t0) + 1/2 * a * (t1 - t0) ^ 2
-        // Gravity
-        particle.velocity.y = particle.velocity.y * tInterval + 0.5 * systemDefinition.gravity * tInterval * tInterval; // v = v * (t1 - t0) + 1/2 * a * (t1 - t0) ^ 2
-        // Chaos
-        particle.velocity += particle.velocityDelta * tInterval;
-        // Final position
-        particle.position += particle.velocity * tInterval;
-        // Size
-        particle.size += particle.sizeDelta * tInterval;
-        // Energy (alpha)
-        particle.energy = WasabiMath::max(0, particle.energy - tInterval / systemDefinition.particleLifeSpan);
-        // Quad update
+//        particle.velocity.x = particle.velocity.x * tInterval + 0.5 * systemDefinition.acceleration * tInterval * tInterval; // v = v * (t1 - t0) + 1/2 * a * (t1 - t0) ^ 2
+//        particle.velocity.y = particle.velocity.y * tInterval + 0.5 * systemDefinition.acceleration * tInterval * tInterval; // v = v * (t1 - t0) + 1/2 * a * (t1 - t0) ^ 2
+//        // Gravity
+//        particle.velocity.y = particle.velocity.y * tInterval + 0.5 * systemDefinition.gravity * tInterval * tInterval; // v = v * (t1 - t0) + 1/2 * a * (t1 - t0) ^ 2
+//        // Chaos
+//        particle.velocity += particle.velocityDelta * tInterval;
+//        // Final position
+//        particle.position += particle.velocity * tInterval;
+//        // Size
+//        particle.size += particle.sizeDelta * tInterval;
+//        // Energy (alpha)
+//        particle.energy = WasabiMath::max(0, particle.energy - tInterval / systemDefinition.particleLifeSpan);
+//        // Quad update
         vertices[*currentParticle * 4].x = particle.position.x;
-        vertices[*currentParticle * 4 + 1].x = particle.position.x * particle.size;
-        vertices[*currentParticle * 4 + 2].y = particle.position.y;
-        vertices[*currentParticle * 4 + 3].y = particle.position.y * particle.size;
-        colors[*currentParticle * 4 + 3] = particle.energy;
+        vertices[*currentParticle * 4].y = particle.position.y;
+        vertices[*currentParticle * 4 + 1].x = particle.position.x + particle.size;
+        vertices[*currentParticle * 4 + 1].y = particle.position.y;
+        vertices[*currentParticle * 4 + 2].x = particle.position.x + particle.size;
+        vertices[*currentParticle * 4 + 2].y = particle.position.y + particle.size;
+        vertices[*currentParticle * 4 + 3].x = particle.position.x;
+        vertices[*currentParticle * 4 + 3].y = particle.position.y + particle.size;
+
+        
+//        colors[*currentParticle * 4 + 3] = particle.energy;
+        colors[*currentParticle * 4 + 3] = 1;
 
         currentParticle = nextParticle;
         nextParticle++;
