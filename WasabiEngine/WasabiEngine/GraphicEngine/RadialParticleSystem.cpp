@@ -48,7 +48,9 @@ void RadialParticleSystem::updateParticles() {
         particle.size = systemDefinition.baseSize;
         particle.sizeDelta = systemDefinition.chaos ? ((rand() % systemDefinition.chaos) * systemDefinition.growRate) : systemDefinition.growRate;
     }
-
+    if(particlesToEmmit > 0)
+            lastEmissionTimestamp = now;
+    
     std::list<int>::iterator currentParticle = aliveParticles.begin();
     std::list<int>::iterator nextParticle = aliveParticles.begin();
     nextParticle++;
@@ -67,8 +69,8 @@ void RadialParticleSystem::updateParticles() {
 
         float tInterval = (now - particle.timestamp) / 1000.0;
         // Position
-        particle.position.x = particle.velocity.x * tInterval + 0.5 * systemDefinition.acceleration * tInterval * tInterval; // v = v * (t1 - t0) + 1/2 * a * (t1 - t0) ^ 2
-        particle.position.y = particle.velocity.y * tInterval + 0.5 * (systemDefinition.acceleration - systemDefinition.gravity) * tInterval * tInterval; // v = v * (t1 - t0) + 1/2 * a * (t1 - t0) ^ 2        // Chaos
+        particle.position.x = particle.velocity.x * tInterval + 0.5 * systemDefinition.acceleration * tInterval * tInterval; // x = vx * (t1 - t0) + 1/2 * a * (t1 - t0) ^ 2
+        particle.position.y = particle.velocity.y * tInterval + 0.5 * (systemDefinition.acceleration - systemDefinition.gravity) * tInterval * tInterval; // y = vy * (t1 - t0) + 1/2 * a * (t1 - t0) ^ 2
         // Size
         particle.size += particle.sizeDelta * tInterval;
         // Energy (alpha)
@@ -82,11 +84,13 @@ void RadialParticleSystem::updateParticles() {
         vertices[*currentParticle * 4 + 2].y = particle.position.y + particle.size;
         vertices[*currentParticle * 4 + 3].x = particle.position.x;
         vertices[*currentParticle * 4 + 3].y = particle.position.y + particle.size;
-        colors[*currentParticle * 4 + 3] = particle.energy;
+        //Alpha channel update
+        colors[*currentParticle * 16 + 3] = particle.energy;
+        colors[*currentParticle * 16 + 7] = particle.energy;
+        colors[*currentParticle * 16 + 11] = particle.energy;
+        colors[*currentParticle * 16 + 15] = particle.energy;
 
         currentParticle = nextParticle;
         nextParticle++;
     }
-
-    lastEmissionTimestamp = now;
 }

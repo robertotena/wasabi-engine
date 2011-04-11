@@ -110,10 +110,9 @@ void ParticleSystem::renderObject() {
 
     glBindTexture(GL_TEXTURE_2D, textureId);
     glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
-    // FIXME: no estoy seguro del stride, yo diria que es 0, pero no me convence el sizeof(Vertex)
     glColorPointer(4, GL_FLOAT, 0, colors);
     glVertexPointer(3, GL_FLOAT, sizeof (Vertex), vertices);
-    glDrawArrays(4, 0, nVertices);
+    glDrawArrays(WASABI_QUADS, 0, nVertices);
 
     // disabling states
     glDisableClientState(GL_VERTEX_ARRAY);
