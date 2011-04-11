@@ -36,17 +36,17 @@ void RadialParticleSystem::updateParticles() {
         //Init particle
         Particle& particle = particles[particleIndex];
         particle.position = WasVec2d::ZERO;
+        particle.timestamp = now;
         particle.energy = 1;
+        //FIXME falta chaos para la velocidad
         particle.velocity.x = rand() % (int) emissionVelocity; //FIXME: La inicializacion de la velocidad es lo unico que cambia. Despues vemos que se hace con esto.
         particle.velocity.y = sqrt(emissionVelocity - particle.velocity.x * particle.velocity.x); //Pythagoras
         if (rand() % 2 - 1 < 0)
             particle.velocity.x = -particle.velocity.x;
         if (rand() % 2 - 1 < 0)
             particle.velocity.y = -particle.velocity.y;
-        particle.velocityDelta.x = systemDefinition.chaos ? (rand() % systemDefinition.chaos) : 0.0;
-        particle.velocityDelta.y = systemDefinition.chaos ? (rand() % systemDefinition.chaos) : 0.0;
         particle.size = systemDefinition.baseSize;
-        particle.sizeDelta = systemDefinition.chaos ? (rand() % systemDefinition.chaos) : 0.0;
+        particle.sizeDelta = systemDefinition.chaos ? ((rand() % systemDefinition.chaos) * systemDefinition.growRate) : systemDefinition.growRate;
     }
 
     std::list<int>::iterator currentParticle = aliveParticles.begin();
@@ -65,25 +65,23 @@ void RadialParticleSystem::updateParticles() {
         currentParticle = nextParticle;
         nextParticle++;
 
-        float tInterval = (now - lastEmissionTimestamp) / 1000;
-        // Particle acceleration
-        particle.velocity.x = particle.velocity.x * tInterval + 0.5 * systemDefinition.acceleration * tInterval * tInterval; // v = v * (t1 - t0) + 1/2 * a * (t1 - t0) ^ 2
-        particle.velocity.y = particle.velocity.y * tInterval + 0.5 * systemDefinition.acceleration * tInterval * tInterval; // v = v * (t1 - t0) + 1/2 * a * (t1 - t0) ^ 2
-        // Gravity
-        particle.velocity.y = particle.velocity.y * tInterval + 0.5 * systemDefinition.gravity * tInterval * tInterval; // v = v * (t1 - t0) + 1/2 * a * (t1 - t0) ^ 2
-        // Chaos
-        particle.velocity += particle.velocityDelta * tInterval;
-        // Final position
-        particle.position += particle.velocity * tInterval;
+        float tInterval = (now - particle.timestamp) / 1000.0;
+        // Position
+        particle.position.x = particle.velocity.x * tInterval + 0.5 * systemDefinition.acceleration * tInterval * tInterval; // v = v * (t1 - t0) + 1/2 * a * (t1 - t0) ^ 2
+        particle.position.y = particle.velocity.y * tInterval + 0.5 * (systemDefinition.acceleration - systemDefinition.gravity) * tInterval * tInterval; // v = v * (t1 - t0) + 1/2 * a * (t1 - t0) ^ 2        // Chaos
         // Size
         particle.size += particle.sizeDelta * tInterval;
         // Energy (alpha)
         particle.energy = WasabiMath::max(0, particle.energy - tInterval / systemDefinition.particleLifeSpan);
         // Quad update
         vertices[*currentParticle * 4].x = particle.position.x;
-        vertices[*currentParticle * 4 + 1].x = particle.position.x * particle.size;
-        vertices[*currentParticle * 4 + 2].y = particle.position.y;
-        vertices[*currentParticle * 4 + 3].y = particle.position.y * particle.size;
+        vertices[*currentParticle * 4].y = particle.position.y;
+        vertices[*currentParticle * 4 + 1].x = particle.position.x + particle.size;
+        vertices[*currentParticle * 4 + 1].y = particle.position.y;
+        vertices[*currentParticle * 4 + 2].x = particle.position.x + particle.size;
+        vertices[*currentParticle * 4 + 2].y = particle.position.y + particle.size;
+        vertices[*currentParticle * 4 + 3].x = particle.position.x;
+        vertices[*currentParticle * 4 + 3].y = particle.position.y + particle.size;
         colors[*currentParticle * 4 + 3] = particle.energy;
 
         currentParticle = nextParticle;
