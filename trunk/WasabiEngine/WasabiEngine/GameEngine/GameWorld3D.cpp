@@ -13,9 +13,8 @@ using namespace WasabiEngine;
 GameWorld3D::GameWorld3D(GameSystemManager* systemManager) {
     this->systemManager = systemManager;
     frictionCoefficient = 0.9;
-    length = 0;
-    width = 0;
     ground = NULL;
+    setWorldSize(100,100);
 }
 
 GameWorld3D::GameWorld3D(const GameWorld3D& orig) {
@@ -134,13 +133,16 @@ void GameWorld3D::update() {
 }
 
 void GameWorld3D::setWorldSize(float width, float length) {
+    this->width = width;
+    this->length = length;
+    
     //Make world ground and walls
     PhysicBodyDef bodyDef;
     bodyDef.bodyType = PHYSIC_STATIC_BODY;
     bodyDef.shapeType = PHYSIC_EDGE_SHAPE;
     bodyDef.friction = 0.2f;
 
-    if (ground == NULL)
+    if (ground != NULL)
         PhysicEngine::getInstance()->destroyObject(ground);
     ground = PhysicEngine::getInstance()->createObject(id);
 
