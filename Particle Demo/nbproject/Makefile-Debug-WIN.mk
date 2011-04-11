@@ -33,12 +33,11 @@ OBJECTDIR=build/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/Demo/DemoSystemManager.o \
+	${OBJECTDIR}/Demo/Demo.o \
 	${OBJECTDIR}/Demo/ActorControlHandler.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/Demo/SimpleCameraControlHandler.o \
 	${OBJECTDIR}/Demo/SimpleActor.o \
-	${OBJECTDIR}/Demo/GraphicDemo.o \
 	${OBJECTDIR}/Demo/SimpleCamera.o
 
 
@@ -68,10 +67,10 @@ dist/Debug-WIN/MinGW-Windows/particle_demo.exe: ${OBJECTFILES}
 	${MKDIR} -p dist/Debug-WIN/MinGW-Windows
 	${LINK.cc} -static -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/particle_demo ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/Demo/DemoSystemManager.o: Demo/DemoSystemManager.cpp 
+${OBJECTDIR}/Demo/Demo.o: Demo/Demo.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Demo
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I../WasabiEngine -MMD -MP -MF $@.d -o ${OBJECTDIR}/Demo/DemoSystemManager.o Demo/DemoSystemManager.cpp
+	$(COMPILE.cc) -g -I. -I../WasabiEngine -MMD -MP -MF $@.d -o ${OBJECTDIR}/Demo/Demo.o Demo/Demo.cpp
 
 ${OBJECTDIR}/Demo/ActorControlHandler.o: Demo/ActorControlHandler.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Demo
@@ -92,11 +91,6 @@ ${OBJECTDIR}/Demo/SimpleActor.o: Demo/SimpleActor.cpp
 	${MKDIR} -p ${OBJECTDIR}/Demo
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -I../WasabiEngine -MMD -MP -MF $@.d -o ${OBJECTDIR}/Demo/SimpleActor.o Demo/SimpleActor.cpp
-
-${OBJECTDIR}/Demo/GraphicDemo.o: Demo/GraphicDemo.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Demo
-	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I../WasabiEngine -MMD -MP -MF $@.d -o ${OBJECTDIR}/Demo/GraphicDemo.o Demo/GraphicDemo.cpp
 
 ${OBJECTDIR}/Demo/SimpleCamera.o: Demo/SimpleCamera.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Demo

@@ -4,10 +4,8 @@
     <logicalFolder name="Demo" displayName="Demo" projectFiles="true">
       <itemPath>Demo/ActorControlHandler.cpp</itemPath>
       <itemPath>Demo/ActorControlHandler.h</itemPath>
-      <itemPath>Demo/DemoSystemManager.cpp</itemPath>
-      <itemPath>Demo/DemoSystemManager.h</itemPath>
-      <itemPath>Demo/GraphicDemo.cpp</itemPath>
-      <itemPath>Demo/GraphicDemo.h</itemPath>
+      <itemPath>Demo/Demo.cpp</itemPath>
+      <itemPath>Demo/Demo.h</itemPath>
       <itemPath>Demo/SimpleActor.cpp</itemPath>
       <itemPath>Demo/SimpleActor.h</itemPath>
       <itemPath>Demo/SimpleCamera.cpp</itemPath>
