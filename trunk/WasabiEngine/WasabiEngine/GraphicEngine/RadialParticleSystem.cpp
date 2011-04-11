@@ -26,7 +26,7 @@ void RadialParticleSystem::updateParticles() {
     static unsigned int lastEmissionTimestamp = WasabiTime::getTicks(); //Could be 0, but in that case the first iteration will cause an "explosion"
     unsigned int now = WasabiTime::getTicks();
     int particlesToEmmit = (now - lastEmissionTimestamp) / systemDefinition.emissionRate;
-    particlesToEmmit = WasabiMath::max(particlesToEmmit, freeParticles);
+    particlesToEmmit = WasabiMath::min(particlesToEmmit, freeParticles);
 
     for (int i = 0; i < particlesToEmmit; i++) {
         int particleIndex = deadParticles.back();
