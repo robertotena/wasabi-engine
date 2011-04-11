@@ -49,6 +49,7 @@ public:
     virtual ~ParticleSystem();
     virtual void updateParticles() = 0;
     void renderObject();
+    void print();
 };
 
 }
