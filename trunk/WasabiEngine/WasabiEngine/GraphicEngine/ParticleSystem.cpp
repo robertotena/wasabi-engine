@@ -15,13 +15,13 @@ ParticleSystem::ParticleSystem(const ParticleSystemDef* def) {
     color = def->color;
     nVertices = def->maxParticles * 4;
     vertices = new Vertex[nVertices]; // 4 vertex per particle
-    for (int i = 0; i < nVertices; i++) {
+    for (i = 0; i < nVertices; i++) {
         vertices[i].x = 0;
         vertices[i].y = 0;
         vertices[i].z = 0;
     }
     colors = new float[nVertices * 4]; // r,g,b,a for each vertex, for each particle
-    for (int i = 0; i < nVertices * 4; i++) {
+    for (i = 0; i < nVertices * 4; i++) {
         switch (i % 4) {
             case 0:
                 colors[i] = color.getRed();
