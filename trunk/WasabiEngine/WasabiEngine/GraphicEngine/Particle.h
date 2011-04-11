@@ -35,6 +35,10 @@ namespace WasabiEngine {
          */
         WasVec2d position;
         /**
+         * Creation timestamp
+         */
+        unsigned int timestamp;
+        /**
          * Remaining particle energy (life)
          */
         float energy;
@@ -42,10 +46,6 @@ namespace WasabiEngine {
          * Current velocity vector
          */
         WasVec2d velocity;
-        /**
-         * Current velocity variation
-         */
-        WasVec2d velocityDelta;
         /**
          * Size of the particle
          */

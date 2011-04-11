@@ -25,7 +25,7 @@
 #include <WasabiEngine/Utils/MathUtil.h>
 #include <WasabiEngine/GraphicEngine/ParticleSystem.h>
 #include <WasabiEngine/GraphicEngine/ParticleSystemDefinitions.h>
-
+#include <iostream>
 namespace WasabiEngine {
 
     class LinearParticleSystem : public ParticleSystem {

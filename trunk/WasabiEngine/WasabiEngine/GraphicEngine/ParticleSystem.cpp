@@ -45,8 +45,8 @@ ParticleSystem::ParticleSystem(const ParticleSystemDef* def) {
                 texCoords[i].v = 0.0;
                 break;
             case 1:
-                texCoords[i].u = 0.0;
-                texCoords[i].v = 1.0;
+                texCoords[i].u = 1.0;
+                texCoords[i].v = 0.0;
                 break;
             case 2:
                 texCoords[i].u = 1.0;
@@ -74,6 +74,11 @@ ParticleSystem::~ParticleSystem() {
 
 void ParticleSystem::renderObject() {
     updateParticles();
+
+    for (int i = 0; i < nVertices; i++) {
+        std::cout<<vertices[i].x<<" "<<vertices[i].y<<" "<<vertices[i].z<<" || ";
+    }
+    std::cout<<std::endl;
     
     glPushMatrix();
 
