@@ -10,7 +10,7 @@
 using namespace WasabiEngine;
 
 LinearParticleSystem::LinearParticleSystem(const LinearParticleSystemDef& definition) : ParticleSystem(&definition), systemDefinition(definition) {
-    
+
 }
 
 LinearParticleSystem::LinearParticleSystem(const LinearParticleSystem& orig) : ParticleSystem(&orig.systemDefinition) {
@@ -25,7 +25,7 @@ void LinearParticleSystem::updateParticles() {
 
     static unsigned int lastEmissionTimestamp = WasabiTime::getTicks(); //Could be 0, but in that case the first iteration will cause an "explosion"
     unsigned int now = WasabiTime::getTicks();
-    int particlesToEmmit = (now - lastEmissionTimestamp) / systemDefinition.emissionRate;
+    int particlesToEmmit = (now - lastEmissionTimestamp) * systemDefinition.emissionRate / 1000;
     particlesToEmmit = WasabiMath::min(particlesToEmmit, freeParticles);
 
     for (int i = 0; i < particlesToEmmit; i++) {
@@ -47,7 +47,7 @@ void LinearParticleSystem::updateParticles() {
     std::list<int>::iterator currentParticle = aliveParticles.begin();
     std::list<int>::iterator nextParticle = aliveParticles.begin();
     nextParticle++;
-    for (unsigned int i = 0; i < aliveParticles.size(); i++) {
+    while (currentParticle != aliveParticles.end()) {
         Particle& particle = particles[*currentParticle];
         //Remove dead particles
         if (particle.energy == 0) {
@@ -57,10 +57,8 @@ void LinearParticleSystem::updateParticles() {
             nextParticle++;
             continue;
         }
-        currentParticle = nextParticle;
-        nextParticle++;
 
-        float tInterval = (now - lastEmissionTimestamp) * 1000;
+        float tInterval = (now - lastEmissionTimestamp) / 1000;
         // Particle acceleration
         particle.velocity.x = particle.velocity.x * tInterval + 0.5 * systemDefinition.acceleration * tInterval * tInterval; // v = v * (t1 - t0) + 1/2 * a * (t1 - t0) ^ 2
         particle.velocity.y = particle.velocity.y * tInterval + 0.5 * systemDefinition.acceleration * tInterval * tInterval; // v = v * (t1 - t0) + 1/2 * a * (t1 - t0) ^ 2
@@ -75,11 +73,14 @@ void LinearParticleSystem::updateParticles() {
         // Energy (alpha)
         particle.energy = WasabiMath::max(0, particle.energy - tInterval / systemDefinition.particleLifeSpan);
         // Quad update
-        vertices[i * 4].x = particle.position.x;
-        vertices[i * 4 + 1].x = particle.position.x * particle.size;
-        vertices[i * 4 + 2].y = particle.position.y;
-        vertices[i * 4 + 3].y = particle.position.y * particle.size;
-        colors[i * 4 + 3] = particle.energy;
+        vertices[*currentParticle * 4].x = particle.position.x;
+        vertices[*currentParticle * 4 + 1].x = particle.position.x * particle.size;
+        vertices[*currentParticle * 4 + 2].y = particle.position.y;
+        vertices[*currentParticle * 4 + 3].y = particle.position.y * particle.size;
+        colors[*currentParticle * 4 + 3] = particle.energy;
+
+        currentParticle = nextParticle;
+        nextParticle++;
     }
 
     lastEmissionTimestamp = now;

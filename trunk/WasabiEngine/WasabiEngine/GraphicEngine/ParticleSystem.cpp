@@ -46,10 +46,8 @@ ParticleSystem::ParticleSystem(const ParticleSystemDef* def) {
         }
     }
     textureId = TextureLoader::load(def->texturePath);
-    deadParticles.resize(def->maxParticles);
     for (i = 0; i < def->maxParticles; i++)
         deadParticles.push_back(i);
-    aliveParticles.resize(def->maxParticles);
     particles.reserve(def->maxParticles);
 }
 
