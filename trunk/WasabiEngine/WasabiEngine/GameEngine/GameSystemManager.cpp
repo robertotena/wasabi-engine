@@ -10,17 +10,18 @@
 
 using namespace WasabiEngine;
 
-GameSystemManager::GameSystemManager() {
+GameSystemManager::GameSystemManager() : gameWorld(this) {
     //Starts SDL
     if (SDL_Init(0) < 0) {
         fprintf(stderr, "Unable to initialize SDL: %s\n", SDL_GetError());
         exit(1);
     }
+    initSystem();
     quitHandlerRegistration = NULL;
     gameLoop = NULL;
 }
 
-GameSystemManager::GameSystemManager(const GameSystemManager& orig) {
+GameSystemManager::GameSystemManager(const GameSystemManager& orig) : gameWorld(NULL) {
     //FIXME: Deberia ser singleton
 }
 
@@ -43,14 +44,13 @@ void GameSystemManager::setGameLoop(GameLoop* gameLoop) {
     gameLoop->gameSystemManager = this;
 }
 
-bool GameSystemManager::initSystem() {
+void GameSystemManager::initSystem() {
     //Starts GraphicEngine
     //It should be started before EventEngine
     GraphicEngine::getInstance()->init();
     //Starts EventEngine
     EventEngine::getInstance()->init();
     PhysicEngine::getInstance()->init();
-    return true;
 }
 
 bool GameSystemManager::finishSystem() {
