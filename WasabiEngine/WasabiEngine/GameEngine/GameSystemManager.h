@@ -12,6 +12,7 @@
 #include <WasabiEngine/GameEngine/QuitHandler.h>
 #include <WasabiEngine/EventEngine/EventFactory.h>
 #include <WasabiEngine/GraphicEngine/GraphicEngine.h>
+#include <WasabiEngine/GameEngine/GameWorld3D.h>
 
 namespace WasabiEngine {
 
@@ -23,7 +24,7 @@ namespace WasabiEngine {
      */
     class GameSystemManager {
     protected:
-        GameWorld* gameWorld;
+        GameWorld3D gameWorld;
         GameLoop* gameLoop;
         QuitHandler* quitHandler;
         HandlerRegistration* quitHandlerRegistration;
@@ -33,19 +34,15 @@ namespace WasabiEngine {
         GameSystemManager(const GameSystemManager& orig);
         virtual ~GameSystemManager();
         void setGameLoop(GameLoop* gameLoop);
-        virtual bool initSystem() = 0;
+        void initSystem();
         void setVideoMode(const GraphicEngineConf& conf);
         void setGameWorld(GameWorld* gameWorld);
-        GameWorld* getGameWorld();
+        GameWorld3D* getGameWorld();
         void run();
     };
 
-    inline void GameSystemManager::setGameWorld(GameWorld* gameWorld){
-        this->gameWorld = gameWorld;
-    }
-
-    inline GameWorld* GameSystemManager::getGameWorld(){
-        return gameWorld;
+    inline GameWorld3D* GameSystemManager::getGameWorld(){
+        return &gameWorld;
     }
 }
 

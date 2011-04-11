@@ -6,44 +6,16 @@
  */
 
 #include "GameWorld3D.h"
-#include "WasabiEngine/PhysicEngine/PhysicObject.h"
+#include <WasabiEngine/GameEngine/GameSystemManager.h>
 
 using namespace WasabiEngine;
 
-GameWorld3D::GameWorld3D(const GameWorld3DDef& definition, GameSystemManager* systemManager) {
+GameWorld3D::GameWorld3D(GameSystemManager* systemManager) {
     this->systemManager = systemManager;
-    this->definition = definition;
-
-    //Make world ground and walls
-    PhysicBodyDef bodyDef;
-    bodyDef.bodyType = PHYSIC_STATIC_BODY;
-    bodyDef.shapeType = PHYSIC_EDGE_SHAPE;
-    bodyDef.friction = 0.2f;
-
-    ground = PhysicEngine::getInstance()->createObject(id);
-
-    /* FIXME: Esto es un "parche" para que un cuerpo tenga mas de un fixture. Puede
-     * que debamos incluirlo en el motor de fisica */
-
-    // Wall 1
-    bodyDef.edge.v1 = WasVec2d(-definition.width / 2, definition.length / 2);
-    bodyDef.edge.v2 = WasVec2d(definition.width / 2, definition.length / 2);
-    ground->createBody("Walls", bodyDef);
-
-    // Wall 2
-    b2PolygonShape shape;
-    b2FixtureDef fixDef;
-    fixDef.shape = &shape;
-    shape.SetAsEdge(WasVec2d(-definition.width / 2, -definition.length / 2), WasVec2d(definition.width / 2, -definition.length / 2));
-    ground->getMainBody()->CreateFixture(&fixDef);
-
-    // Wall 3
-    shape.SetAsEdge(WasVec2d(-definition.width / 2, definition.length / 2), WasVec2d(-definition.width / 2, -definition.length / 2));
-    ground->getMainBody()->CreateFixture(&fixDef);
-
-    // Wall 4
-    shape.SetAsEdge(WasVec2d(definition.width / 2, definition.length / 2), WasVec2d(definition.width / 2, -definition.length / 2));
-    ground->getMainBody()->CreateFixture(&fixDef);
+    frictionCoefficient = 0.9;
+    length = 0;
+    width = 0;
+    ground = NULL;
 }
 
 GameWorld3D::GameWorld3D(const GameWorld3D& orig) {
@@ -65,7 +37,7 @@ void GameWorld3D::attachWorld(GameObject* gameObject) {
         jointDef.body2 = object->getMainBody();
 
         float normalForce = jointDef.body2->GetMass() * 9.8f; // mass * gravity
-        float frictionForce = definition.frictionCoefficient * normalForce;
+        float frictionForce = frictionCoefficient * normalForce;
         jointDef.frictionInfo.maxForce = frictionForce;
 
         // For a circle: I = 0.5 * m * r * r ==> r = sqrt(2 * I / m)
@@ -125,7 +97,7 @@ void GameWorld3D::update() {
     std::set<Actor*>::iterator nextActor = actors.begin();
     nextActor++;
 
-    for(unsigned int i = 0; i < actors.size(); i++){
+    for (unsigned int i = 0; i < actors.size(); i++) {
         //Update graphic info
         objectID = (*currentActor)->getId();
         physicObj = PhysicEngine::getInstance()->getItem(objectID);
@@ -159,4 +131,43 @@ void GameWorld3D::update() {
             graphicObj->setOrientation(Quaternion(physicObj->getRotation().valueRadians(), WasVec3d::Y_UNIT));
         }
     }
+}
+
+void GameWorld3D::setWorldSize(float width, float length) {
+    //Make world ground and walls
+    PhysicBodyDef bodyDef;
+    bodyDef.bodyType = PHYSIC_STATIC_BODY;
+    bodyDef.shapeType = PHYSIC_EDGE_SHAPE;
+    bodyDef.friction = 0.2f;
+
+    if (ground == NULL)
+        PhysicEngine::getInstance()->destroyObject(ground);
+    ground = PhysicEngine::getInstance()->createObject(id);
+
+    /* FIXME: Esto es un "parche" para que un cuerpo tenga mas de un fixture. Puede
+     * que debamos incluirlo en el motor de fisica */
+
+    // Wall 1
+    bodyDef.edge.v1 = WasVec2d(-width / 2, length / 2);
+    bodyDef.edge.v2 = WasVec2d(width / 2, length / 2);
+    ground->createBody("Walls", bodyDef);
+
+    // Wall 2
+    b2PolygonShape shape;
+    b2FixtureDef fixDef;
+    fixDef.shape = &shape;
+    shape.SetAsEdge(WasVec2d(-width / 2, -length / 2), WasVec2d(width / 2, -length / 2));
+    ground->getMainBody()->CreateFixture(&fixDef);
+
+    // Wall 3
+    shape.SetAsEdge(WasVec2d(-width / 2, length / 2), WasVec2d(-width / 2, -length / 2));
+    ground->getMainBody()->CreateFixture(&fixDef);
+
+    // Wall 4
+    shape.SetAsEdge(WasVec2d(width / 2, length / 2), WasVec2d(width / 2, -length / 2));
+    ground->getMainBody()->CreateFixture(&fixDef);
+}
+
+void GameWorld3D::setFrictionCoefficient(float frictionCoefficient) {
+    //FIXME: Update world joints!!
 }

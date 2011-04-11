@@ -13,27 +13,25 @@
 #include <WasabiEngine/GameEngine/Scenery.h>
 #include <WasabiEngine/Utils/PropertyMap.h>
 #include <WasabiEngine/PhysicEngine/PhysicEngine.h>
-#include <WasabiEngine/GameEngine/GameSystemManager.h>
+#include <WasabiEngine/GameEngine/GameWorld.h>
 
 namespace WasabiEngine {
-
-    typedef struct {
-        float width;
-        float length;
-        float frictionCoefficient;
-    } GameWorld3DDef;
-
     /* FIXME: En un futuro molaria que periodicamente haga comprobaciones para meter y sacar
      * objetos los objetos que se tienen que actualizar, haciendo consultas a box2d para determinar los objetos cercanos.
      */
 
+
+    class GameSystemManager;
+    
     /**
      * GameWorld3D is reponsible for update the logic of the GameObjects and synchronize the positions between his
      * physics and the graphics objects (If any). 
      */
     class GameWorld3D : public GameWorld {
     private:
-        GameWorld3DDef definition;
+        float width;
+        float length;
+        float frictionCoefficient;
         GameSystemManager* systemManager;
         std::set<Actor*> actors;
         std::set<Scenery*> scenery;
@@ -43,7 +41,7 @@ namespace WasabiEngine {
         void attachWorld(GameObject* gameObject);
         void detachWorld(GameObject* gameObject);
     public:
-        GameWorld3D(const GameWorld3DDef& definition, GameSystemManager* systemManager);
+        GameWorld3D(GameSystemManager* systemManager);
         ~GameWorld3D();
         //De momento, solo es necesario añadir los objetos que necesiten rozamiento con el suelo
         void attach(Actor* actor);
@@ -54,6 +52,8 @@ namespace WasabiEngine {
         void update();
         std::set<Actor*>& getActors();
         std::set<Scenery*>& getScenery();
+        void setWorldSize(float width, float length);
+        void setFrictionCoefficient(float frictionCoefficient);
     };
 }
 
