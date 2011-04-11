@@ -97,6 +97,7 @@ void ParticleSystem::renderObject() {
         glRotatef(radRotation.valueDegrees(), axis.x, axis.y, axis.z);
     }
 
+    // enabling states
     glEnable(GL_TEXTURE_2D);
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -108,6 +109,7 @@ void ParticleSystem::renderObject() {
     glMaterialfv(GL_FRONT, GL_SPECULAR, color.ptr());
     glMaterialf(GL_FRONT, GL_SHININESS, 80);
 
+    // binding and drawing content
     glBindTexture(GL_TEXTURE_2D, textureId);
     glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
     glColorPointer(4, GL_FLOAT, 0, colors);
