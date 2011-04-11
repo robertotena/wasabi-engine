@@ -7,19 +7,21 @@
 
 #include "ParticleSystem.h"
 #include <WasabiEngine/GraphicEngine/GraphicEngine.h>
-
+#include <iostream>
 using namespace WasabiEngine;
 
 ParticleSystem::ParticleSystem(const ParticleSystemDef* def) {
     int i;
     color = def->color;
     nVertices = def->maxParticles * 4;
+    // vertex array
     vertices = new Vertex[nVertices]; // 4 vertex per particle
     for (i = 0; i < nVertices; i++) {
         vertices[i].x = 0;
         vertices[i].y = 0;
         vertices[i].z = 0;
     }
+    // the color array
     colors = new float[nVertices * 4]; // r,g,b,a for each vertex, for each particle
     for (i = 0; i < nVertices * 4; i++) {
         switch (i % 4) {
@@ -37,6 +39,7 @@ ParticleSystem::ParticleSystem(const ParticleSystemDef* def) {
                 break;
         }
     }
+    // the texture coord array
     texCoords = new TexCoord[nVertices]; // 4 texture coords per particle
     for (i = 0; i < nVertices; i++) {
         switch (i % 4) {
@@ -53,14 +56,15 @@ ParticleSystem::ParticleSystem(const ParticleSystemDef* def) {
                 texCoords[i].v = 1.0;
                 break;
             case 3:
-                texCoords[i].u = 0.0;
-                texCoords[i].v = 1.0;
+                texCoords[i].u = 1.0;
+                texCoords[i].v = 0.0;
                 break;
         }
     }
     textureId = TextureLoader::load(def->texturePath);
     for (i = 0; i < def->maxParticles; i++)
         deadParticles.push_back(i);
+    // creating particles
     particles.reserve(def->maxParticles);
 }
 
@@ -74,12 +78,7 @@ ParticleSystem::~ParticleSystem() {
 
 void ParticleSystem::renderObject() {
     updateParticles();
-
-    for (int i = 0; i < nVertices; i++) {
-        std::cout<<vertices[i].x<<" "<<vertices[i].y<<" "<<vertices[i].z<<" || ";
-    }
-    std::cout<<std::endl;
-    
+    print();
     glPushMatrix();
 
     SceneNode* parent = getParentSceneNode();
@@ -124,4 +123,19 @@ void ParticleSystem::renderObject() {
     glDisable(GL_COLOR_MATERIAL);
 
     glPopMatrix();
+}
+
+void ParticleSystem::print()
+{
+    std::cout << "==============SISTEMA==============" << std::endl;
+    std::cout << "===================================" << std::endl;
+    for(int i = 0; i < nVertices; i=i+4)
+    {
+        if(colors[i*4 + 3] > 0.2)
+        {
+            std::cout << "====PARTICULA====" << std::endl;
+            std::cout << "vertices:" << "(" << vertices[i].x <<"," << vertices[i].y <<"," << vertices[i].z << "), (" << vertices[i+1].x << "," << vertices[i+1].y <<"," <<vertices[i+1].z << "), (" << vertices[i+2].x <<"," << vertices[i+2].y << "," << vertices[i+2].z << "), (" << vertices[i+3].z << "," << vertices[i+3].y <<"," << vertices[i+3].z <<")" << std::endl;
+            std::cout << "colors:" << colors[i] <<"," << colors[i+1] << "," << colors[i+2] << "," << colors[i+3] << std::endl;
+        }
+    }
 }
