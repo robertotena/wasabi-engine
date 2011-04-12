@@ -78,9 +78,11 @@ ParticleSystem::~ParticleSystem() {
 
 void ParticleSystem::renderObject() {
     updateParticles();
-    print();
+//    print();
     glPushMatrix();
-
+//    glBlendFunc(GL_DST_COLOR,GL_ONE);
+//glBlendFunc(GL_SRC_ALPHA,GL_ONE);
+//    glBlendFunc(GL_ONE,GL_ONE);
     SceneNode* parent = getParentSceneNode();
     Camera* activeCamera = GraphicEngine::getInstance()->getActiveCamera();
     Radian radRotation;
