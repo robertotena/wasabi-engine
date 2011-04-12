@@ -73,16 +73,16 @@ ParticleSystem::ParticleSystem(const ParticleSystem& orig) {
 }
 
 ParticleSystem::~ParticleSystem() {
-    // FIXME: destroy particles?
+    delete vertices;
+    delete texCoords;
+    delete colors;
 }
 
 void ParticleSystem::renderObject() {
     updateParticles();
 //    print();
     glPushMatrix();
-//    glBlendFunc(GL_DST_COLOR,GL_ONE);
-//glBlendFunc(GL_SRC_ALPHA,GL_ONE);
-//    glBlendFunc(GL_ONE,GL_ONE);
+
     SceneNode* parent = getParentSceneNode();
     Camera* activeCamera = GraphicEngine::getInstance()->getActiveCamera();
     Radian radRotation;
