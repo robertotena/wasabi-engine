@@ -40,7 +40,7 @@ void RadialParticleSystem::updateParticles() {
         particle.energy = 1;
         //FIXME falta chaos para la velocidad
         particle.velocity.x = rand() % (int) emissionVelocity; //FIXME: La inicializacion de la velocidad es lo unico que cambia. Despues vemos que se hace con esto.
-        particle.velocity.y = sqrt(emissionVelocity - particle.velocity.x * particle.velocity.x); //Pythagoras
+        particle.velocity.y = sqrt(emissionVelocity * emissionVelocity - particle.velocity.x * particle.velocity.x); //Pythagoras
         if (rand() % 2 - 1 < 0)
             particle.velocity.x = -particle.velocity.x;
         if (rand() % 2 - 1 < 0)
@@ -49,7 +49,7 @@ void RadialParticleSystem::updateParticles() {
         particle.sizeDelta = systemDefinition.chaos ? abs((rand() % systemDefinition.chaos - systemDefinition.chaos / 2) / 10 + systemDefinition.growRate) : systemDefinition.growRate;
     }
     if(particlesToEmmit > 0)
-            lastEmissionTimestamp = now;
+        lastEmissionTimestamp = now;
     
     std::list<int>::iterator currentParticle = aliveParticles.begin();
     std::list<int>::iterator nextParticle = aliveParticles.begin();
@@ -64,8 +64,6 @@ void RadialParticleSystem::updateParticles() {
             nextParticle++;
             continue;
         }
-        currentParticle = nextParticle;
-        nextParticle++;
 
         float tInterval = (now - particle.timestamp) / 1000.0;
         // Position
@@ -94,4 +92,5 @@ void RadialParticleSystem::updateParticles() {
         currentParticle = nextParticle;
         nextParticle++;
     }
+    std::cout << std::endl;
 }
