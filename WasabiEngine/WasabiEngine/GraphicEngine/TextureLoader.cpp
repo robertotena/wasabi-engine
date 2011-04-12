@@ -21,7 +21,7 @@ unsigned int TextureLoader::load(const std::string& file) {
     SDL_RWops* rwop;
     GLint format;
     rwop = SDL_RWFromFile(file.data(), "rb");
-    image = IMG_LoadJPG_RW(rwop);
+    image = IMG_Load_RW(rwop, 1);
     if (image == NULL) {
         std::cerr << "Can not load the texture file " << file << std::endl;
         return GL_INVALID_VALUE;
