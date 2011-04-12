@@ -78,11 +78,10 @@ namespace WasabiEngine {
     ResourceFactory<Resource>::~ResourceFactory() {
         typename std::set<Resource*>::iterator currentResource = usedResources.begin();
         typename std::set<Resource*>::iterator nextResource = usedResources.begin();
-        nextResource++;
-        for (unsigned int i = 0; i < usedResources.size(); i++) {
+        while(currentResource != usedResources.end()) {
+            nextResource++;
             returnResource(*currentResource);
             currentResource = nextResource;
-            nextResource++;
         }
         MemoryChunk* currentChunk = pool;
         MemoryChunk* nextChunk = NULL;

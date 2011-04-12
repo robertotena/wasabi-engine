@@ -128,37 +128,37 @@ void GraphicObject::prepare() {
 void GraphicObject::clear() {
     std::list<Camera*>::iterator currentCamera = cameras.begin();
     std::list<Camera*>::iterator nextCamera = currentCamera++;
-    for (unsigned int i = 0; i < cameras.size(); i++) {
+    while(currentCamera != cameras.end()){
+        nextCamera++;
         destroyCamera(*currentCamera);
         currentCamera = nextCamera;
-        nextCamera++;
     }
     cameras.clear();
 
     std::list<Light*>::iterator currentLight = lights.begin();
     std::list<Light*>::iterator nextLight = currentLight++;
-    for (unsigned int i = 0; i < lights.size(); i++) {
+    while(currentLight != lights.end()){
+        nextLight++;
         destroyLight(*currentLight);
         currentLight = nextLight;
-        nextLight++;
     }
     lights.clear();
 
     std::list<Entity*>::iterator currentEntity = entities.begin();
     std::list<Entity*>::iterator nextEntity = currentEntity++;
-    for (unsigned int i = 0; i < entities.size(); i++) {
+    while(currentEntity != entities.end()){
+        nextEntity++;
         destroyEntity(*currentEntity);
         currentEntity = nextEntity;
-        nextEntity++;
     }
     entities.clear();
 
     std::list<ParticleSystem*>::iterator currentSystem = particleSystems.begin();
     std::list<ParticleSystem*>::iterator nextSystem = currentSystem++;
-    for (unsigned int i = 0; i < entities.size(); i++) {
+    while(currentSystem != particleSystems.end()){
+        nextSystem++;
         destroyParticleSystem(*currentSystem);
         currentSystem = nextSystem;
-        nextSystem++;
     }
     particleSystems.clear();
 

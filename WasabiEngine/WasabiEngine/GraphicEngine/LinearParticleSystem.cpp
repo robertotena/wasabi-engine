@@ -48,15 +48,14 @@ void LinearParticleSystem::updateParticles() {
 
     std::list<int>::iterator currentParticle = aliveParticles.begin();
     std::list<int>::iterator nextParticle = aliveParticles.begin();
-    nextParticle++;
     while (currentParticle != aliveParticles.end()) {
+        nextParticle++;
         Particle& particle = particles[*currentParticle];
         //Remove dead particles
         if (particle.energy == 0 || particle.size == 0) {
             deadParticles.push_back(*currentParticle);
             aliveParticles.erase(currentParticle);
             currentParticle = nextParticle;
-            nextParticle++;
             continue;
         }
 
@@ -85,6 +84,5 @@ void LinearParticleSystem::updateParticles() {
         colors[*currentParticle * 16 + 15] = particle.energy;
 
         currentParticle = nextParticle;
-        nextParticle++;
     }
 }

@@ -96,7 +96,8 @@ void GameWorld3D::update() {
     std::set<Actor*>::iterator nextActor = actors.begin();
     nextActor++;
 
-    for (unsigned int i = 0; i < actors.size(); i++) {
+    while(currentActor != actors.end()){
+        nextActor++;
         //Update graphic info
         objectID = (*currentActor)->getId();
         physicObj = PhysicEngine::getInstance()->getItem(objectID);
@@ -113,7 +114,6 @@ void GameWorld3D::update() {
 
         //The current actor can be deleted during the update
         currentActor = nextActor;
-        nextActor++;
     }
 
     std::set<Scenery*>::iterator sceneryIt;

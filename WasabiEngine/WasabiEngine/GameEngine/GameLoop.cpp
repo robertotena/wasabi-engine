@@ -65,6 +65,6 @@ void GameLoop::run() {
         //FPS
         loopTime = WasabiTime::getTicks() - loopTime;
         if(loopTime != 0)
-            ;//cout << "FPS: "<< (1000 / loopTime )<<std::endl;
+            ;//std::cout << "FPS: "<< (1000 / loopTime )<<std::endl;
     }
 }
