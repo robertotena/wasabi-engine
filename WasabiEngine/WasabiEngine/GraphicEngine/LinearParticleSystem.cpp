@@ -38,10 +38,10 @@ void LinearParticleSystem::updateParticles() {
         particle.position = WasVec2d::ZERO;
         particle.timestamp = now;
         particle.energy = 1;
-        particle.velocity.x = systemDefinition.chaos ? ((rand() % (systemDefinition.chaos)) - systemDefinition.chaos / 2 + systemDefinition.emissionVelocity.x) : systemDefinition.emissionVelocity.x;
-        particle.velocity.y = systemDefinition.chaos ? ((rand() % (systemDefinition.chaos)) - systemDefinition.chaos / 2 + systemDefinition.emissionVelocity.y) : systemDefinition.emissionVelocity.y;
+        particle.velocity.x = systemDefinition.chaos ? (rand() % systemDefinition.chaos - systemDefinition.chaos / 2 + systemDefinition.emissionVelocity.x) : systemDefinition.emissionVelocity.x;
+        particle.velocity.y = systemDefinition.chaos ? (rand() % systemDefinition.chaos - systemDefinition.chaos / 2 + systemDefinition.emissionVelocity.y) : systemDefinition.emissionVelocity.y;
         particle.size = systemDefinition.baseSize;
-        particle.sizeDelta = systemDefinition.chaos ? (((rand() % (systemDefinition.chaos)) - systemDefinition.chaos / 2) / 10 + systemDefinition.growRate) : systemDefinition.growRate;
+        particle.sizeDelta = systemDefinition.chaos ? abs((rand() % systemDefinition.chaos - systemDefinition.chaos / 2) / 10 + systemDefinition.growRate) : systemDefinition.growRate;
     }
     if (particlesToEmmit > 0)
         lastEmissionTimestamp = now;
@@ -52,7 +52,7 @@ void LinearParticleSystem::updateParticles() {
     while (currentParticle != aliveParticles.end()) {
         Particle& particle = particles[*currentParticle];
         //Remove dead particles
-        if (particle.energy == 0) {
+        if (particle.energy == 0 || particle.size == 0) {
             deadParticles.push_back(*currentParticle);
             aliveParticles.erase(currentParticle);
             currentParticle = nextParticle;
@@ -66,6 +66,7 @@ void LinearParticleSystem::updateParticles() {
         particle.position.y = particle.velocity.y * tInterval + 0.5 * (systemDefinition.acceleration - systemDefinition.gravity) * tInterval * tInterval; // y = vy * (t1 - t0) + 1/2 * a * (t1 - t0) ^ 2
         // Size
         particle.size = systemDefinition.baseSize + systemDefinition.baseSize * (particle.sizeDelta - 1) * tInterval;
+        particle.size = WasabiMath::max(0, particle.size);
         // Energy (alpha)
         particle.energy = WasabiMath::max(0, 1 - tInterval / systemDefinition.particleLifeSpan);
         // Quad update
