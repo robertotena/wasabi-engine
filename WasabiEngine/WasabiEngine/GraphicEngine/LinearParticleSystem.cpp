@@ -41,10 +41,10 @@ void LinearParticleSystem::updateParticles() {
         particle.velocity.x = systemDefinition.chaos ? ((rand() % (systemDefinition.chaos)) - systemDefinition.chaos / 2 + systemDefinition.emissionVelocity.x) : systemDefinition.emissionVelocity.x;
         particle.velocity.y = systemDefinition.chaos ? ((rand() % (systemDefinition.chaos)) - systemDefinition.chaos / 2 + systemDefinition.emissionVelocity.y) : systemDefinition.emissionVelocity.y;
         particle.size = systemDefinition.baseSize;
-        particle.sizeDelta = systemDefinition.chaos ? ((rand() % systemDefinition.chaos) * systemDefinition.growRate) : systemDefinition.growRate;
+        particle.sizeDelta = systemDefinition.chaos ? (((rand() % (systemDefinition.chaos)) - systemDefinition.chaos / 2) / 10 + systemDefinition.growRate) : systemDefinition.growRate;
     }
-    if(particlesToEmmit > 0)
-            lastEmissionTimestamp = now;
+    if (particlesToEmmit > 0)
+        lastEmissionTimestamp = now;
 
     std::list<int>::iterator currentParticle = aliveParticles.begin();
     std::list<int>::iterator nextParticle = aliveParticles.begin();
@@ -65,18 +65,18 @@ void LinearParticleSystem::updateParticles() {
         particle.position.x = particle.velocity.x * tInterval + 0.5 * systemDefinition.acceleration * tInterval * tInterval; // x = vx * (t1 - t0) + 1/2 * a * (t1 - t0) ^ 2
         particle.position.y = particle.velocity.y * tInterval + 0.5 * (systemDefinition.acceleration - systemDefinition.gravity) * tInterval * tInterval; // y = vy * (t1 - t0) + 1/2 * a * (t1 - t0) ^ 2
         // Size
-        particle.size += particle.sizeDelta * tInterval;
+        particle.size = systemDefinition.baseSize + systemDefinition.baseSize * (particle.sizeDelta - 1) * tInterval;
         // Energy (alpha)
         particle.energy = WasabiMath::max(0, particle.energy - tInterval / systemDefinition.particleLifeSpan);
         // Quad update
-        vertices[*currentParticle * 4].x = particle.position.x;
-        vertices[*currentParticle * 4].y = particle.position.y;
-        vertices[*currentParticle * 4 + 1].x = particle.position.x + particle.size;
-        vertices[*currentParticle * 4 + 1].y = particle.position.y;
-        vertices[*currentParticle * 4 + 2].x = particle.position.x + particle.size;
-        vertices[*currentParticle * 4 + 2].y = particle.position.y + particle.size;
-        vertices[*currentParticle * 4 + 3].x = particle.position.x;
-        vertices[*currentParticle * 4 + 3].y = particle.position.y + particle.size;
+        vertices[*currentParticle * 4].x = particle.position.x - particle.size / 2;
+        vertices[*currentParticle * 4].y = particle.position.y - particle.size / 2;
+        vertices[*currentParticle * 4 + 1].x = particle.position.x + particle.size / 2;
+        vertices[*currentParticle * 4 + 1].y = particle.position.y - particle.size / 2;
+        vertices[*currentParticle * 4 + 2].x = particle.position.x + particle.size / 2;
+        vertices[*currentParticle * 4 + 2].y = particle.position.y + particle.size / 2;
+        vertices[*currentParticle * 4 + 3].x = particle.position.x - particle.size / 2;
+        vertices[*currentParticle * 4 + 3].y = particle.position.y + particle.size / 2;
         //Alpha channel update
         colors[*currentParticle * 16 + 3] = particle.energy;
         colors[*currentParticle * 16 + 7] = particle.energy;
