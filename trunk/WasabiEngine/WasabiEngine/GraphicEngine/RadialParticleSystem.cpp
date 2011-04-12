@@ -74,7 +74,7 @@ void RadialParticleSystem::updateParticles() {
         // Size
         particle.size = systemDefinition.baseSize + systemDefinition.baseSize * (particle.sizeDelta - 1 ) * tInterval;
         // Energy (alpha)
-        particle.energy = WasabiMath::max(0, particle.energy - tInterval / systemDefinition.particleLifeSpan);
+        particle.energy = WasabiMath::max(0, 1 - tInterval / systemDefinition.particleLifeSpan);
         // Quad update
         vertices[*currentParticle * 4].x = particle.position.x - particle.size / 2;
         vertices[*currentParticle * 4].y = particle.position.y - particle.size / 2;
