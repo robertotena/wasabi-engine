@@ -9,21 +9,41 @@
 
 SimpleActor::SimpleActor() : controlHandler(this) {
     /* Create a Graphic Object and attach it a particle system */
-    graphicObject = GraphicEngine::getInstance()->createObject(getId());
-    LinearParticleSystemDef particlesDef;
-    particlesDef.acceleration = 0;
-    particlesDef.baseSize = 1;
-    particlesDef.chaos = 10;
-    particlesDef.color = ColourValue::WHITE;
-    particlesDef.emissionRate = 100;
-    particlesDef.emissionVelocity = WasVec2d(0, 10);
-    particlesDef.gravity = 9.8;
-    particlesDef.growRate = 1.5;
-    particlesDef.maxParticles = 500;
-    particlesDef.particleLifeSpan = 3;
-    particlesDef.systemLifeSpan = -1;
-    particlesDef.texturePath = "./Resources/Textures/crate.jpg";
-    graphicObject->createParticleSystem(&particlesDef);
+    rootGraphicObject = GraphicEngine::getInstance()->createObject(getId());
+    GraphicObject* smokeNode = rootGraphicObject->createChild();
+
+
+    LinearParticleSystemDef smokeDef;
+    smokeDef.acceleration = 0;
+    smokeDef.baseSize = 1;
+    smokeDef.chaos = 2;
+    smokeDef.color = ColourValue::GREY;
+    smokeDef.emissionRate = 10;
+    smokeDef.emissionVelocity = WasVec2d(0, 5);
+    smokeDef.gravity = -1;
+    smokeDef.growRate = 3;
+    smokeDef.maxParticles = 50;
+    smokeDef.particleLifeSpan = 3;
+    smokeDef.systemLifeSpan = -1;
+    smokeDef.texturePath = "./Resources/Textures/particle10.png";
+    smokeNode->createParticleSystem(&smokeDef);
+
+    LinearParticleSystemDef sparkDef;
+    sparkDef.acceleration = 0;
+    sparkDef.baseSize = 0.2;
+    sparkDef.chaos = 5;
+    sparkDef.color = ColourValue::RED;
+    sparkDef.emissionRate = 30;
+    sparkDef.emissionVelocity = WasVec2d(0,2);
+    sparkDef.gravity = 9.8;
+    sparkDef.growRate = 0.1;
+    sparkDef.maxParticles = 50;
+    sparkDef.particleLifeSpan = 1;
+    sparkDef.systemLifeSpan = -1;
+    sparkDef.texturePath = "./Resources/Textures/particle10.png";
+    smokeNode->createParticleSystem(&sparkDef);
+    sparkDef.color = ColourValue(0.8,0.3,0);
+    smokeNode->createParticleSystem(&sparkDef);
 
     /* Create a physic for the object */
     physicObject = PhysicEngine::getInstance()->createObject(getId());
@@ -43,10 +63,10 @@ SimpleActor::~SimpleActor() {
     controlHR->removeHandler();
 
     /* Destroy the graphics and the physics */
-    GraphicEngine::getInstance()->destroyObject(graphicObject);
+    GraphicEngine::getInstance()->destroyObject(rootGraphicObject);
     PhysicEngine::getInstance()->destroyObject(physicObject);
 
-    graphicObject = NULL;
+    rootGraphicObject = NULL;
     physicObject = NULL;
 }
 

@@ -16,7 +16,7 @@ using namespace WasabiEngine;
 class SimpleActor : public Actor {
 private:
     PhysicObject* physicObject;
-    GraphicObject* graphicObject;
+    GraphicObject* rootGraphicObject;
     ActorControlHandler controlHandler;
     HandlerRegistration* controlHR;
 public:

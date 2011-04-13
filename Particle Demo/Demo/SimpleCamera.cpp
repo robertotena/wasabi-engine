@@ -12,6 +12,7 @@ SimpleCamera::SimpleCamera() : controlHandler(this) {
     camera = GraphicEngine::getInstance()->createCamera("SimpleCamera");
     controlHR = EventEngine::getInstance()->addHandler(&controlHandler, false);
     mode = CAMERA_FRONT;
+    update();
 }
 
 SimpleCamera::SimpleCamera(const SimpleCamera& orig) : controlHandler(this) {

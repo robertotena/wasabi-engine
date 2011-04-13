@@ -14,7 +14,7 @@
                 <make-dep-project>/home/fran/NetBeansProjects/WasabiEngine</make-dep-project>
             </make-dep-projects>
             <sourceRootList>
-                <sourceRootElem>.</sourceRootElem>
+                <sourceRootElem>/home/fran/NetBeansProjects/Particle Demo</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>Debug-WIN</confElem>
