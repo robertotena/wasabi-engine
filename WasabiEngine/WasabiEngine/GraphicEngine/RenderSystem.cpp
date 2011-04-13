@@ -7,6 +7,7 @@
 
 #include "RenderSystem.h"
 #include "Camera.h"
+#include <iostream>
 
 using namespace WasabiEngine;
 
@@ -40,7 +41,6 @@ void RenderSystem::setVideoMode(const GraphicEngineConf& conf) {
     glViewport(0, 0, conf.width, conf.height);
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // This Will Clear The Background Color To Black
     glClearDepth(1.0); // Enables Clearing Of The Depth Buffer
-    glClearDepth(1.0f); // Depth Buffer Setup
     glEnable(GL_DEPTH_TEST); // Enables Depth Testing
     glDepthFunc(GL_LEQUAL); // The Type Of Depth Testing To Do
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST); // Really Nice Perspective Calculations
@@ -75,6 +75,41 @@ void RenderSystem::render(SceneNode* rootNode, Camera* camera) {
 
     // render scene
     camera->renderObject();
+
+    // draw axis
+    glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+    glBegin(GL_LINES);
+    // Eje Y
+    glColor4f(0.2, 0.8, 0.0, 0.8);
+
+    glVertex3f(0.00, 0.0, 0.0);
+    glVertex3f(0.00, 3.0, 0.0);
+    glVertex3f(0.00, 3.0, 0.0);
+    glVertex3f(0.05, 2.7, 0.0);
+    glVertex3f(0.00, 3.0, 0.0);
+    glVertex3f(-0.05, 2.7, 0.0);
+
+    // Eje X
+    glColor4f(0.2, 0.0, 0.8, 0.8);
+
+    glVertex3f(0.0, 0.01, 0.0);
+    glVertex3f(3.0, 0.01, 0.0);
+    glVertex3f(3.0, 0.01, 0.0);
+    glVertex3f(2.7, 0.06, 0.0);
+    glVertex3f(3.0, 0.01, 0.0);
+    glVertex3f(2.7, -0.06, 0.0);
+
+    // Eje Z
+    glColor4f(0.8, 0.2, 0.0, 0.8);
+
+    glVertex3f(0.0, 0.01, 0.0);
+    glVertex3f(0.0, 0.01, 3.0);
+    glVertex3f(0.0, 0.01, 3.0);
+    glVertex3f(0.0, 0.06, 2.7);
+    glVertex3f(0.0, 0.01, 3.0);
+    glVertex3f(0.0, -0.06, 2.7);
+    glEnd();
+
     node = rootNode;
     while (node != NULL) {
         glPushMatrix();
@@ -103,6 +138,9 @@ void RenderSystem::render(SceneNode* rootNode, Camera* camera) {
 
     // swap buffers to display, since we're double buffered.
     SDL_GL_SwapBuffers();
+    int glError = glGetError();
+    if (glError != GL_NO_ERROR)
+        std::cerr << "Rendered frame state: " << gluErrorString(glError) << std::endl;
 }
 
 void RenderSystem::setAmbientLight(const ColourValue& colour, const WasVec3d& position) {

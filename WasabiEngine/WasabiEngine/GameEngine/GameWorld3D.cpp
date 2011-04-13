@@ -94,7 +94,6 @@ void GameWorld3D::update() {
     unsigned int objectID;
     std::set<Actor*>::iterator currentActor = actors.begin();
     std::set<Actor*>::iterator nextActor = actors.begin();
-    nextActor++;
 
     while(currentActor != actors.end()){
         nextActor++;
