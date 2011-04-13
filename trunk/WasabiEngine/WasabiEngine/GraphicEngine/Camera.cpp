@@ -58,6 +58,8 @@ void Camera::renderObject()
     else if(polygonMode == PM_POINTS)
         glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
 
+    glLoadIdentity(); // Reset The View
+
     // update parameters if it's tracking
     if(autoTrackingEnabled && trackingTarget != NULL)
     {
@@ -71,42 +73,6 @@ void Camera::renderObject()
     rotation.inverse().toAngleAxis(radRotation, axis);
     glRotatef(radRotation.valueDegrees(), axis.x, axis.y, axis.z);
     glTranslatef(-translation[0], -translation[1], -translation[2]);
-
-
-    glBegin(GL_LINES);
-        // Eje Y
-        glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
-        glColor4f(0.2, 0.8, 0.0, 0.8);
-
-        glVertex3f( 0.00, 0.0, 0.0);
-        glVertex3f( 0.00, 3.0, 0.0);
-        glVertex3f( 0.00, 3.0, 0.0);
-        glVertex3f( 0.05, 2.7, 0.0);
-        glVertex3f( 0.00, 3.0, 0.0);
-        glVertex3f(-0.05, 2.7, 0.0);
-
-        // Eje X
-        glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
-        glColor4f(0.2, 0.0, 0.8, 0.8);
-
-        glVertex3f(0.0,  0.01, 0.0);
-        glVertex3f(3.0,  0.01, 0.0);
-        glVertex3f(3.0,  0.01, 0.0);
-        glVertex3f(2.7,  0.06, 0.0);
-        glVertex3f(3.0,  0.01, 0.0);
-        glVertex3f(2.7, -0.06, 0.0);
-
-        // Eje Z
-        glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
-        glColor4f(0.8, 0.2, 0.0, 0.8);
-
-        glVertex3f(0.0,  0.01, 0.0);
-        glVertex3f(0.0,  0.01, 3.0);
-        glVertex3f(0.0,  0.01, 3.0);
-        glVertex3f(0.0,  0.06, 2.7);
-        glVertex3f(0.0,  0.01, 3.0);
-        glVertex3f(0.0, -0.06, 2.7);
-    glEnd();
 }
 
 void Camera::setPolygonMode(const PolygonMode& mode)
