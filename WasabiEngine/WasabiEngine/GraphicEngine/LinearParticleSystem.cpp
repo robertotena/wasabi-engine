@@ -10,7 +10,6 @@
 using namespace WasabiEngine;
 
 LinearParticleSystem::LinearParticleSystem(const LinearParticleSystemDef& definition) : ParticleSystem(&definition), systemDefinition(definition) {
-
 }
 
 LinearParticleSystem::LinearParticleSystem(const LinearParticleSystem& orig) : ParticleSystem(&orig.systemDefinition) {
@@ -22,8 +21,6 @@ LinearParticleSystem::~LinearParticleSystem() {
 
 void LinearParticleSystem::updateParticles() {
     int freeParticles = deadParticles.size();
-
-    static unsigned int lastEmissionTimestamp = WasabiTime::getTicks(); //Could be 0, but in that case the first iteration will cause an "explosion"
     unsigned int now = WasabiTime::getTicks();
     int particlesToEmmit = (now - lastEmissionTimestamp) * systemDefinition.emissionRate / 1000;
     particlesToEmmit = WasabiMath::min(particlesToEmmit, freeParticles);
