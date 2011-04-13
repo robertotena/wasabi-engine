@@ -62,6 +62,7 @@ ParticleSystem::ParticleSystem(const ParticleSystemDef* def) {
         }
     }
     textureId = TextureLoader::load(def->texturePath);
+    lastEmissionTimestamp = WasabiTime::getTicks(); //Could be 0, but in that case the first iteration will cause an "explosion"
     for (i = 0; i < def->maxParticles; i++)
         deadParticles.push_back(i);
     // creating particles
@@ -80,7 +81,6 @@ ParticleSystem::~ParticleSystem() {
 
 void ParticleSystem::renderObject() {
     updateParticles();
-//    print();
     glPushMatrix();
 
     SceneNode* parent = getParentSceneNode();
@@ -126,19 +126,4 @@ void ParticleSystem::renderObject() {
     glDisable(GL_COLOR_MATERIAL);
 
     glPopMatrix();
-}
-
-void ParticleSystem::print()
-{
-    std::cout << "==============SISTEMA==============" << std::endl;
-    std::cout << "===================================" << std::endl;
-    for(int i = 0; i < nVertices; i=i+4)
-    {
-        if(colors[i*4 + 3] > 0.2)
-        {
-            std::cout << "====PARTICULA====" << std::endl;
-            std::cout << "vertices:" << "(" << vertices[i].x <<"," << vertices[i].y <<"," << vertices[i].z << "), (" << vertices[i+1].x << "," << vertices[i+1].y <<"," <<vertices[i+1].z << "), (" << vertices[i+2].x <<"," << vertices[i+2].y << "," << vertices[i+2].z << "), (" << vertices[i+3].z << "," << vertices[i+3].y <<"," << vertices[i+3].z <<")" << std::endl;
-            std::cout << "colors:" << colors[i] <<"," << colors[i+1] << "," << colors[i+2] << "," << colors[i+3] << std::endl;
-        }
-    }
 }

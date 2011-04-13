@@ -40,6 +40,7 @@ protected:
     TexCoord* texCoords;
     float* colors;
     unsigned int textureId;
+    unsigned int lastEmissionTimestamp;
     std::list<int> aliveParticles;
     std::list<int> deadParticles;
     std::vector<Particle> particles;
