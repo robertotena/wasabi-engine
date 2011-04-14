@@ -30,7 +30,7 @@ void SimpleCamera::update() {
         camera->setPosition(WasVec3d(10, 2, 10));
         camera->setOrientation(Quaternion(Radian(Degree(45)), WasVec3d::Y_UNIT));
     } else if (mode == CAMERA_FRONT) {
-        camera->setPosition(WasVec3d(0, 0, 10));
+        camera->setPosition(WasVec3d(0, 1, 10));
         camera->setOrientation(Quaternion(Radian(Degree(0)), WasVec3d::Y_UNIT));
     } else if (mode == CAMERA_TOP) {
         camera->setPosition(WasVec3d(0, 10, 0));
