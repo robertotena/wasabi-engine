@@ -7,6 +7,7 @@
 
 #include "RenderSystem.h"
 #include "Camera.h"
+#include "WasabiEngine/Utils/WasabiTime.h"
 #include <iostream>
 
 using namespace WasabiEngine;
@@ -135,6 +136,13 @@ void RenderSystem::render(SceneNode* rootNode, Camera* camera) {
             sceneStack.pop();
         }
     }
+
+    // render the GUI
+    static float lastTimePulse = 0.001 * WasabiTime::getTicks();
+    float now = 0.001 * WasabiTime::getTicks();
+    CEGUI::System::getSingleton().injectTimePulse(now - lastTimePulse); //CEGUI needs the time in seconds
+    CEGUI::System::getSingleton().renderGUI();
+    lastTimePulse = now;
 
     // swap buffers to display, since we're double buffered.
     SDL_GL_SwapBuffers();

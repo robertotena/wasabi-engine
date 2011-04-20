@@ -16,6 +16,7 @@ EventEngine::~EventEngine() {
 }
 
 void EventEngine::init() {
+    SDL_EnableUNICODE(1);
 }
 
 void EventEngine::finish() {
