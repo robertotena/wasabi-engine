@@ -242,6 +242,7 @@
                      displayName="GraphicEngine"
                      projectFiles="true"
                      kind="SOURCE_LOGICAL_FOLDER">
+        <itemPath>WasabiEngine/GraphicEngine/CEGUIKeyboardInjectorHandler.cpp</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/Camera.cpp</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/Camera.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/ColourValue.cpp</itemPath>

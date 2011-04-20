@@ -13,12 +13,17 @@
 #include <algorithm>
 #include <SDL/SDL.h>
 #include <SDL/SDL_opengl.h>
+#include <cegui/CEGUI.h>
+#include <cegui/CEGUISchemeManager.h>
+#include <cegui/RendererModules/OpenGL/CEGUIOpenGLRenderer.h>
 #include <WasabiEngine/Utils/MathUtil.h>
 #include <WasabiEngine/Utils/ResourceFactory.h>
 #include <WasabiEngine/Utils/PropertyMap.h>
 #include <WasabiEngine/GraphicEngine/GraphicObject.h>
 #include <WasabiEngine/GraphicEngine/SceneManager.h>
 #include <WasabiEngine/GraphicEngine/GraphicEngineConf.h>
+
+#include "CEGUIKeyboardInjectorHandler.h"
 
 namespace WasabiEngine {
 
@@ -32,6 +37,8 @@ namespace WasabiEngine {
         PropertyMap<GraphicObject*> propertyMap;
         GraphicEngine(const GraphicEngine& orig);
         SceneManager sceneManager;
+        CEGUIKeyboardInjectorHandler keyboardInjector;
+        
         void destroyObjects();
     public:
         GraphicEngine();
@@ -68,6 +75,19 @@ namespace WasabiEngine {
         Camera* getActiveCamera();
         void setWorldGeometry(const std::string& filePath);
         void setAmbientLight(const ColourValue& colour, const WasVec3d& position);
+        /**
+         * Loads and sets a CEGUI window scheme.
+         * @param schemePath Path to the scheme
+         */
+        void setWindowScheme(const std::string schemePath);
+        /**
+         * Loads and sets a CEGUI window layout.
+         * @param layoutPath Path to the layout
+         */
+        void setWindowLayout(const std::string layoutPath);
+        /**
+         * Render a frame
+         */
         void render();
         /**
          * Initializes the engine

@@ -118,6 +118,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/MeshPrototype.o \
 	${OBJECTDIR}/WasabiEngine/PhysicEngine/Box2dWorld.o \
 	${OBJECTDIR}/WasabiEngine/PhysicEngine/PhysicObject.o \
+	${OBJECTDIR}/WasabiEngine/GraphicEngine/CEGUIKeyboardInjectorHandler.o \
 	${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FzAnd.o \
 	${OBJECTDIR}/Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/RadialParticleSystem.o \
@@ -594,6 +595,11 @@ ${OBJECTDIR}/WasabiEngine/PhysicEngine/PhysicObject.o: WasabiEngine/PhysicEngine
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/PhysicEngine
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/PhysicEngine/PhysicObject.o WasabiEngine/PhysicEngine/PhysicObject.cpp
+
+${OBJECTDIR}/WasabiEngine/GraphicEngine/CEGUIKeyboardInjectorHandler.o: WasabiEngine/GraphicEngine/CEGUIKeyboardInjectorHandler.cpp 
+	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/CEGUIKeyboardInjectorHandler.o WasabiEngine/GraphicEngine/CEGUIKeyboardInjectorHandler.cpp
 
 ${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FzAnd.o: WasabiEngine/AIEngine/FuzzyModule/FzAnd.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule

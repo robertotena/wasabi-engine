@@ -8,6 +8,7 @@
 #include <list>
 
 #include "GraphicEngine.h"
+#include "WasabiEngine/EventEngine/EventEngine.h"
 
 using namespace WasabiEngine;
 
@@ -78,6 +79,15 @@ Camera* GraphicEngine::getCamera(const std::string& name) {
     return sceneManager.getCamera(name);
 }
 
+void GraphicEngine::setWindowScheme(const std::string schemePath) {
+    CEGUI::SchemeManager::getSingleton().create(schemePath);
+}
+
+void GraphicEngine::setWindowLayout(const std::string layoutPath) {
+    CEGUI::Window* myRoot = CEGUI::WindowManager::getSingleton().loadWindowLayout(layoutPath);
+    CEGUI::System::getSingleton().setGUISheet(myRoot);
+}
+
 void GraphicEngine::init() {
     /* Initialize SDL for video output. Watch out! It needs that SDL_Init() has been called first */
     if (SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) {
@@ -98,6 +108,10 @@ void GraphicEngine::init() {
     defaultConf.height = 600;
     defaultConf.wmCaption = "WasabiEngine";
     setVideoMode(defaultConf);
+
+    /* Initialize CEGUI */
+    CEGUI::OpenGLRenderer::bootstrapSystem();
+    EventEngine::getInstance()->addHandler(&keyboardInjector);
 }
 
 void GraphicEngine::finish() {

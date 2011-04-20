@@ -8,9 +8,10 @@
 #ifndef RENDERSYSTEM_H
 #define	RENDERSYSTEM_H
 
+#include <stack>
+#include <CEGUI.h>
 #include <SDL/SDL.h>
 #include <SDL/SDL_opengl.h>
-#include <stack>
 #include <WasabiEngine/GraphicEngine/ColourValue.h>
 #include <WasabiEngine/GraphicEngine/SceneNode.h>
 #include <WasabiEngine/GraphicEngine/GraphicEngineConf.h>
