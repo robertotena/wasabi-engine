@@ -10,8 +10,8 @@
 using namespace WasabiEngine;
 
 void CEGUIKeyboardInjectorHandler::handle(const Event* event) {
-    CEGUI::System::getSingleton().injectKeyDown(e.key.keysym.scancode);
-    if ((e.key.keysym.unicode & 0xFF80) == 0) {
-        CEGUI::System::getSingleton().injectChar(e.key.keysym.unicode & 0x7F);
+    CEGUI::System::getSingleton().injectKeyDown(event->getIntegerProperty("scancode"));
+    if (event->hasProperty("char")) {
+        CEGUI::System::getSingleton().injectChar((char)event->getIntegerProperty("char"));
     }
 }

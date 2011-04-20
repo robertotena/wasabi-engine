@@ -22,6 +22,9 @@ void KeyboardEventHandler::peep() {
         Event* event = EventFactory::getInstance()->create(EventName);
         event->addProperty("key", sdlEvents[i].key.keysym.sym);
         event->addProperty("state", sdlEvents[i].key.type);
+        event->addProperty("scancode", sdlEvents[i].key.keysym.scancode);
+        if((sdlEvents[i].key.keysym.unicode & 0xFF80) == 0)
+            event->addProperty("char", sdlEvents[i].key.keysym.unicode & 0x7F);
         EventEngine::getInstance()->broadcastEvent(event);
     }
 }
