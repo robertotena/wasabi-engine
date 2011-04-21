@@ -79,8 +79,8 @@ Mesh* MeshMap::set(const std::string meshName, const MeshPrototype& meshPrototyp
 
 void MeshMap::unloadAll(){
     std::list<Mesh*> meshes = meshMap.getItems();
-    for(std::list<Mesh*>::iterator i = 0; i != meshes.end(); i++ ){
-        *i->clear();
+    for(std::list<Mesh*>::iterator i = meshes.begin(); i != meshes.end(); i++ ){
+        (*i)->clear();
     }
     meshMap.clear();
 }
