@@ -35,7 +35,6 @@ namespace WasabiEngine {
         } MemoryChunk;
 
         int chunkSize;
-        int creationCount;
         MemoryChunk* pool;
         std::set<Resource*> usedResources;
         std::set<Resource*> freeResources;
@@ -50,13 +49,11 @@ namespace WasabiEngine {
         Resource* createResource();
         bool returnResource(Resource* resource);
         std::set<Resource*>& getResources();
-        int getCreationCount(); //FIXME: Podria ser util reconvertirlo a un contador de instancias activas
     };
 
     template <class Resource>
     ResourceFactory<Resource>::ResourceFactory() {
         pool = NULL;
-        creationCount = 0;
         chunkSize = ResourceFactory::DEFAULT_CHUNK_SIZE;
         addMemoryChunk();
     }
@@ -64,7 +61,6 @@ namespace WasabiEngine {
     template <class Resource>
     ResourceFactory<Resource>::ResourceFactory(const int& poolSize) {
         pool = NULL;
-        creationCount = 0;
         chunkSize = poolSize;
         addMemoryChunk();
     }
@@ -117,7 +113,6 @@ namespace WasabiEngine {
         resource = (*freeResources.begin());
         freeResources.erase(resource);
         usedResources.insert(resource);
-        creationCount++;
 
         return resource;
     }
@@ -133,11 +128,6 @@ namespace WasabiEngine {
     template <class Resource>
     std::set<Resource*>& ResourceFactory<Resource>::getResources() {
         return usedResources;
-    }
-
-    template <class Resource>
-    int ResourceFactory<Resource>::getCreationCount() {
-        return creationCount;
     }
 }
 

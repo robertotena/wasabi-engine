@@ -46,7 +46,6 @@ Scenery* SceneryFactory::create(const SceneryDefinition& definition) {
 
     if (definition.meshFile.length() > 0) {
         graphicObj = GraphicEngine::getInstance()->createObject(scenery->getId());
-        graphicObj->createEntity(definition.meshFile)->setColor(0.5f, 0.3f, 0.05f); //FIXME: De momento le dejo color fijo hasta que tengamos materiales
     }
     
     return scenery;

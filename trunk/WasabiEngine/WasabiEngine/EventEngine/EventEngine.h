@@ -27,7 +27,7 @@ namespace WasabiEngine {
      * Event engine for send and receive unicast and broadcast events along the game objects.
      */
 
-    /* FIXME Si trabaja con SDL necesita que este cargado previamente el sistema grafico! */
+    /* Watch out! The SDL event system requieres that the video has been initialized first */
     class EventEngine {
     private:
         typedef std::priority_queue<Event*, std::vector<Event*>, EventDispatchComparator> EventQueue;
