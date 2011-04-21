@@ -10,36 +10,23 @@
                        displayName="Shapes"
                        projectFiles="true"
                        kind="SOURCE_LOGICAL_FOLDER">
-          <itemPath>Box2D/Collision/Shapes/b2CircleShape.cpp</itemPath>
           <itemPath>Box2D/Collision/Shapes/b2CircleShape.h</itemPath>
-          <itemPath>Box2D/Collision/Shapes/b2PolygonShape.cpp</itemPath>
           <itemPath>Box2D/Collision/Shapes/b2PolygonShape.h</itemPath>
           <itemPath>Box2D/Collision/Shapes/b2Shape.h</itemPath>
         </logicalFolder>
-        <itemPath>Box2D/Collision/b2BroadPhase.cpp</itemPath>
         <itemPath>Box2D/Collision/b2BroadPhase.h</itemPath>
-        <itemPath>Box2D/Collision/b2CollideCircle.cpp</itemPath>
-        <itemPath>Box2D/Collision/b2CollidePolygon.cpp</itemPath>
-        <itemPath>Box2D/Collision/b2Collision.cpp</itemPath>
         <itemPath>Box2D/Collision/b2Collision.h</itemPath>
-        <itemPath>Box2D/Collision/b2Distance.cpp</itemPath>
         <itemPath>Box2D/Collision/b2Distance.h</itemPath>
-        <itemPath>Box2D/Collision/b2DynamicTree.cpp</itemPath>
         <itemPath>Box2D/Collision/b2DynamicTree.h</itemPath>
-        <itemPath>Box2D/Collision/b2TimeOfImpact.cpp</itemPath>
         <itemPath>Box2D/Collision/b2TimeOfImpact.h</itemPath>
       </logicalFolder>
       <logicalFolder name="Common"
                      displayName="Common"
                      projectFiles="true"
                      kind="SOURCE_LOGICAL_FOLDER">
-        <itemPath>Box2D/Common/b2BlockAllocator.cpp</itemPath>
         <itemPath>Box2D/Common/b2BlockAllocator.h</itemPath>
-        <itemPath>Box2D/Common/b2Math.cpp</itemPath>
         <itemPath>Box2D/Common/b2Math.h</itemPath>
-        <itemPath>Box2D/Common/b2Settings.cpp</itemPath>
         <itemPath>Box2D/Common/b2Settings.h</itemPath>
-        <itemPath>Box2D/Common/b2StackAllocator.cpp</itemPath>
         <itemPath>Box2D/Common/b2StackAllocator.h</itemPath>
       </logicalFolder>
       <logicalFolder name="Dynamics"
@@ -50,56 +37,34 @@
                        displayName="Contacts"
                        projectFiles="true"
                        kind="SOURCE_LOGICAL_FOLDER">
-          <itemPath>Box2D/Dynamics/Contacts/b2CircleContact.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Contacts/b2CircleContact.h</itemPath>
-          <itemPath>Box2D/Dynamics/Contacts/b2Contact.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Contacts/b2Contact.h</itemPath>
-          <itemPath>Box2D/Dynamics/Contacts/b2ContactSolver.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Contacts/b2ContactSolver.h</itemPath>
-          <itemPath>Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.h</itemPath>
-          <itemPath>Box2D/Dynamics/Contacts/b2PolygonContact.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Contacts/b2PolygonContact.h</itemPath>
-          <itemPath>Box2D/Dynamics/Contacts/b2TOISolver.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Contacts/b2TOISolver.h</itemPath>
         </logicalFolder>
         <logicalFolder name="Joints"
                        displayName="Joints"
                        projectFiles="true"
                        kind="SOURCE_LOGICAL_FOLDER">
-          <itemPath>Box2D/Dynamics/Joints/b2DistanceJoint.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Joints/b2DistanceJoint.h</itemPath>
-          <itemPath>Box2D/Dynamics/Joints/b2FrictionJoint.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Joints/b2FrictionJoint.h</itemPath>
-          <itemPath>Box2D/Dynamics/Joints/b2GearJoint.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Joints/b2GearJoint.h</itemPath>
-          <itemPath>Box2D/Dynamics/Joints/b2Joint.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Joints/b2Joint.h</itemPath>
-          <itemPath>Box2D/Dynamics/Joints/b2LineJoint.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Joints/b2LineJoint.h</itemPath>
-          <itemPath>Box2D/Dynamics/Joints/b2MouseJoint.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Joints/b2MouseJoint.h</itemPath>
-          <itemPath>Box2D/Dynamics/Joints/b2PrismaticJoint.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Joints/b2PrismaticJoint.h</itemPath>
-          <itemPath>Box2D/Dynamics/Joints/b2PulleyJoint.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Joints/b2PulleyJoint.h</itemPath>
-          <itemPath>Box2D/Dynamics/Joints/b2RevoluteJoint.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Joints/b2RevoluteJoint.h</itemPath>
-          <itemPath>Box2D/Dynamics/Joints/b2WeldJoint.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Joints/b2WeldJoint.h</itemPath>
         </logicalFolder>
-        <itemPath>Box2D/Dynamics/b2Body.cpp</itemPath>
         <itemPath>Box2D/Dynamics/b2Body.h</itemPath>
-        <itemPath>Box2D/Dynamics/b2ContactManager.cpp</itemPath>
         <itemPath>Box2D/Dynamics/b2ContactManager.h</itemPath>
-        <itemPath>Box2D/Dynamics/b2Fixture.cpp</itemPath>
         <itemPath>Box2D/Dynamics/b2Fixture.h</itemPath>
-        <itemPath>Box2D/Dynamics/b2Island.cpp</itemPath>
         <itemPath>Box2D/Dynamics/b2Island.h</itemPath>
         <itemPath>Box2D/Dynamics/b2TimeStep.h</itemPath>
-        <itemPath>Box2D/Dynamics/b2World.cpp</itemPath>
         <itemPath>Box2D/Dynamics/b2World.h</itemPath>
-        <itemPath>Box2D/Dynamics/b2WorldCallbacks.cpp</itemPath>
         <itemPath>Box2D/Dynamics/b2WorldCallbacks.h</itemPath>
       </logicalFolder>
       <itemPath>Box2D/Box2D.h</itemPath>

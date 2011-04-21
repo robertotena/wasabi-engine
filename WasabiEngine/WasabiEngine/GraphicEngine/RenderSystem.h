@@ -9,7 +9,7 @@
 #define	RENDERSYSTEM_H
 
 #include <stack>
-#include <CEGUI.h>
+#include <CEGUI/CEGUI.h>
 #include <SDL/SDL.h>
 #include <SDL/SDL_opengl.h>
 #include <WasabiEngine/GraphicEngine/ColourValue.h>
