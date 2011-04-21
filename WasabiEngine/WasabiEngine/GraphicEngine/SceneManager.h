@@ -38,8 +38,7 @@ namespace WasabiEngine {
         RenderSystem renderSystem;
         ResourceFactory<Entity> entityFactory;
         ResourceFactory<Camera> cameraFactory;
-        // FIXME: apaño hasta tener factorias
-        std::list<ParticleSystem*> particleSystems;
+        std::list<ParticleSystem*> particleSystems; //Particle systems have no factories due the amount of memory requiered
         SceneManager(const SceneManager& orig);
     public:
         SceneManager();

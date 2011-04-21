@@ -16,11 +16,7 @@
 #include <WasabiEngine/GameEngine/GameWorld.h>
 
 namespace WasabiEngine {
-    /* FIXME: En un futuro molaria que periodicamente haga comprobaciones para meter y sacar
-     * objetos los objetos que se tienen que actualizar, haciendo consultas a box2d para determinar los objetos cercanos.
-     */
-
-
+    /* FIXME: Add some LOD techniques */
     class GameSystemManager;
     
     /**

@@ -29,9 +29,9 @@ namespace WasabiEngine {
         QuitHandler* quitHandler;
         HandlerRegistration* quitHandlerRegistration;
         bool finishSystem();
+        GameSystemManager(const GameSystemManager& orig);
     public:
         GameSystemManager();
-        GameSystemManager(const GameSystemManager& orig);
         virtual ~GameSystemManager();
         void setGameLoop(GameLoop* gameLoop);
         void initSystem();

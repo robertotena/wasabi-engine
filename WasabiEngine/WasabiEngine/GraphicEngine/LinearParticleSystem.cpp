@@ -65,20 +65,6 @@ void LinearParticleSystem::updateParticles() {
         particle.size = WasabiMath::max(0, particle.size);
         // Energy (alpha)
         particle.energy = WasabiMath::max(0, 1 - tInterval / systemDefinition.particleLifeSpan);
-        // Quad update
-        vertices[*currentParticle * 4].x = particle.position.x - particle.size / 2;
-        vertices[*currentParticle * 4].y = particle.position.y - particle.size / 2;
-        vertices[*currentParticle * 4 + 1].x = particle.position.x + particle.size / 2;
-        vertices[*currentParticle * 4 + 1].y = particle.position.y - particle.size / 2;
-        vertices[*currentParticle * 4 + 2].x = particle.position.x + particle.size / 2;
-        vertices[*currentParticle * 4 + 2].y = particle.position.y + particle.size / 2;
-        vertices[*currentParticle * 4 + 3].x = particle.position.x - particle.size / 2;
-        vertices[*currentParticle * 4 + 3].y = particle.position.y + particle.size / 2;
-        //Alpha channel update
-        colors[*currentParticle * 16 + 3] = particle.energy;
-        colors[*currentParticle * 16 + 7] = particle.energy;
-        colors[*currentParticle * 16 + 11] = particle.energy;
-        colors[*currentParticle * 16 + 15] = particle.energy;
 
         currentParticle = nextParticle;
     }

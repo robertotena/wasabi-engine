@@ -56,13 +56,7 @@ void Mesh::applyPrototype(const MeshPrototype& prototype) {
             delete [] texCoords;
         texCoords = new TexCoord[texCoordsCount];
         for (int i = 0; i < texCoordsCount; i++) {
-            /* FIXME: No he tenido mas remedio que invertir la coordenada v de la
-             * textura. El parser carga los valores bien, y los datos que llegan hasta
-             * este punto son correctos. Sin embargo durante el renderizado las
-             * texturas estan invertidas verticalmente por algun motivo que desconozco.
-             * De momento este parche funciona, pero solamente esta enmascarando un
-             * error que hay en otro sitio, y me molesta.
-             */
+            //OpenGL uses a different coordinate system than regular images like JPG, so we need invert the V coordinate.
             texCoords[i].u = prototype.texCoords[i].u;
             texCoords[i].v = 1 - prototype.texCoords[i].v;
         }

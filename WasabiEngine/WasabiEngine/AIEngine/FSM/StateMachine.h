@@ -30,9 +30,10 @@ namespace WasabiEngine {
         State<Type>* previousState;
         State<Type>* currentState;
         State<Type>* globalState;
+
+        StateMachine(const StateMachine& orig);
     public:
         StateMachine(Type* entity);
-        StateMachine(const StateMachine& orig);
         virtual ~StateMachine();
         void setEntity(Type* entity);
         void update();
@@ -59,7 +60,7 @@ namespace WasabiEngine {
 
     template <class Type>
     StateMachine<Type>::StateMachine(const StateMachine& orig) {
-        //FIXME
+        //Not allowed
     }
 
     template <class Type>

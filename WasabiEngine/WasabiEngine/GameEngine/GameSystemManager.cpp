@@ -22,7 +22,7 @@ GameSystemManager::GameSystemManager() : gameWorld(this) {
 }
 
 GameSystemManager::GameSystemManager(const GameSystemManager& orig) : gameWorld(NULL) {
-    //FIXME: Deberia ser singleton
+    //Not allowed
 }
 
 GameSystemManager::~GameSystemManager() {

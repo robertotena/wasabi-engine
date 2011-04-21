@@ -28,8 +28,8 @@ namespace WasabiEngine {
         std::string name;
         std::string typeName;
     public:
-        static const unsigned int INVALID_ID = 0; //FIXME: Poner al valor que devuelva el hash con la cadena vacia
-        static const unsigned int UNDEFINED_TYPE_CODE = 0; //FIXME: Poner al valor que devuelva el hash con la cadena vacia
+        static const unsigned int INVALID_ID = 0; //0 is the hash value for an empty string
+        static const unsigned int UNDEFINED_TYPE_CODE = 0; //0 is the hash value for an empty string
 
         GameObject();
         virtual ~GameObject() = 0;
