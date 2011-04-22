@@ -108,7 +108,6 @@ GraphicObject* GraphicObject::createChild(const WasVec3d& positionRelativeToPare
 void GraphicObject::removeChild(GraphicObject* child) {
     std::list<GraphicObject*>::iterator i = std::find(children.begin(), children.end(), child);
     if (i != children.end()) {
-        sceneNode->removeChild(child->sceneNode);
         GraphicEngine::getInstance()->objectFactory.returnResource(child);
         children.erase(i);
     }
@@ -116,8 +115,9 @@ void GraphicObject::removeChild(GraphicObject* child) {
 
 void GraphicObject::removeAllChildren() {
     for (std::list<GraphicObject*>::iterator i = children.begin(); i != children.end(); i++) {
-        removeChild(*i);
+        GraphicEngine::getInstance()->objectFactory.returnResource(*i);
     }
+    children.clear();
 }
 
 void GraphicObject::prepare() {

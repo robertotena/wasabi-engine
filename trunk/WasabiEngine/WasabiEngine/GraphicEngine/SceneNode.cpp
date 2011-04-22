@@ -98,12 +98,10 @@ SceneNode* SceneNode::createChild(const WasVec3d& translation) {
 }
 
 void SceneNode::removeChild(SceneNode* node) {
-    std::list<SceneNode*>::iterator it;
-    for (it = children.begin(); it != children.end(); it++) {
-        if ((*it) == node) {
-            children.erase(it);
-            break;
-        }
+    std::list<SceneNode*>::iterator i = std::find(children.begin(), children.end(), node);
+    if (i != children.end()) {
+        delete *i;
+        children.erase(i);
     }
 }
 
