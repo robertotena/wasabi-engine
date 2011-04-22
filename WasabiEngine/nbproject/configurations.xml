@@ -326,6 +326,7 @@
     <Elem>/home/fran/NetBeansProjects/WasabiEngine/Box2D</Elem>
     <Elem>/home/fran/NetBeansProjects/WasabiEngine/WasabiEngine</Elem>
     <Elem>/home/fran/NetBeansProjects/WasabiEngine/TinyXML</Elem>
+    <Elem>lib</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

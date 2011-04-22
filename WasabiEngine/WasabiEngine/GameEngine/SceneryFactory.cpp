@@ -46,6 +46,7 @@ Scenery* SceneryFactory::create(const SceneryDefinition& definition) {
 
     if (definition.meshFile.length() > 0) {
         graphicObj = GraphicEngine::getInstance()->createObject(scenery->getId());
+        graphicObj->createEntity(definition.meshFile);
     }
     
     return scenery;
