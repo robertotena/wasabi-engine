@@ -8,6 +8,8 @@
 #include "RenderSystem.h"
 #include "Camera.h"
 #include "WasabiEngine/Utils/WasabiTime.h"
+#include "WasabiEngine/EventEngine/EventEngine.h"
+#include "WasabiEngine/EventEngine/VideoResizeEventHandler.h"
 #include <iostream>
 
 using namespace WasabiEngine;
@@ -35,6 +37,13 @@ void RenderSystem::setVideoMode(const GraphicEngineConf& conf) {
         exit(2);
     }
 
+    /* Throw a resize event */
+    Event* event = EventFactory::getInstance()->create(VideoResizeEventHandler::EventName);
+    event->addProperty("width",conf.width);
+    event->addProperty("height",conf.height);
+    event->setSystemEvent(true);
+    EventEngine::getInstance()->broadcastEvent(event);
+
     /* Set the title bar in environments that support it */
     SDL_WM_SetCaption(conf.wmCaption.c_str(), NULL);
 
@@ -46,7 +55,6 @@ void RenderSystem::setVideoMode(const GraphicEngineConf& conf) {
     glDepthFunc(GL_LEQUAL); // The Type Of Depth Testing To Do
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST); // Really Nice Perspective Calculations
     glShadeModel(GL_SMOOTH); // Enables Smooth Color Shading
-    glEnable(GL_LIGHTING);
     glEnable(GL_CULL_FACE); //Enables Culling
 
     glEnable(GL_BLEND);
@@ -65,7 +73,8 @@ void RenderSystem::render(SceneNode* rootNode, Camera* camera) {
     SceneNode* node;
     std::stack<unsigned int> childrenCounterStack;
 
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear The Screen And The Depth Buffer 
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear The Screen And The Depth Buffer
+    glEnable(GL_LIGHTING);
     glLoadIdentity(); // Reset The View
 
     //applying lights
@@ -141,6 +150,7 @@ void RenderSystem::render(SceneNode* rootNode, Camera* camera) {
     static float lastTimePulse = 0.001 * WasabiTime::getTicks();
     float now = 0.001 * WasabiTime::getTicks();
     CEGUI::System::getSingleton().injectTimePulse(now - lastTimePulse); //CEGUI needs the time in seconds
+    glDisable(GL_LIGHTING);
     CEGUI::System::getSingleton().renderGUI();
     lastTimePulse = now;
 
