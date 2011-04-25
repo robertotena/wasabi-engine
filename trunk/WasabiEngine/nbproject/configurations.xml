@@ -166,12 +166,20 @@
         <itemPath>WasabiEngine/EventEngine/KeyType.h</itemPath>
         <itemPath>WasabiEngine/EventEngine/KeyboardEventHandler.cpp</itemPath>
         <itemPath>WasabiEngine/EventEngine/KeyboardEventHandler.h</itemPath>
+        <itemPath>WasabiEngine/EventEngine/MouseButtonEventHandler.cpp</itemPath>
+        <itemPath>WasabiEngine/EventEngine/MouseButtonEventHandler.h</itemPath>
+        <itemPath>WasabiEngine/EventEngine/MouseButtonState.h</itemPath>
+        <itemPath>WasabiEngine/EventEngine/MouseButtonType.h</itemPath>
+        <itemPath>WasabiEngine/EventEngine/MouseMotionEventHandler.cpp</itemPath>
+        <itemPath>WasabiEngine/EventEngine/MouseMotionEventHandler.h</itemPath>
         <itemPath>WasabiEngine/EventEngine/QuitEventHandler.cpp</itemPath>
         <itemPath>WasabiEngine/EventEngine/QuitEventHandler.h</itemPath>
         <itemPath>WasabiEngine/EventEngine/SDL_PumpEventsWrapper.cpp</itemPath>
         <itemPath>WasabiEngine/EventEngine/SDL_PumpEventsWrapper.h</itemPath>
         <itemPath>WasabiEngine/EventEngine/SensorEventHandler.cpp</itemPath>
         <itemPath>WasabiEngine/EventEngine/SensorEventHandler.h</itemPath>
+        <itemPath>WasabiEngine/EventEngine/VideoResizeEventHandler.cpp</itemPath>
+        <itemPath>WasabiEngine/EventEngine/VideoResizeEventHandler.h</itemPath>
       </logicalFolder>
       <logicalFolder name="GameEngine"
                      displayName="GameEngine"
@@ -208,6 +216,12 @@
                      projectFiles="true"
                      kind="SOURCE_LOGICAL_FOLDER">
         <itemPath>WasabiEngine/GraphicEngine/CEGUIKeyboardInjectorHandler.cpp</itemPath>
+        <itemPath>WasabiEngine/GraphicEngine/CEGUIKeyboardInjectorHandler.h</itemPath>
+        <itemPath>WasabiEngine/GraphicEngine/CEGUIMouseButtonInjectorHandler.cpp</itemPath>
+        <itemPath>WasabiEngine/GraphicEngine/CEGUIMouseMotionInjectorHandler.cpp</itemPath>
+        <itemPath>WasabiEngine/GraphicEngine/CEGUIMouseMotionInjectorHandler.h</itemPath>
+        <itemPath>WasabiEngine/GraphicEngine/CEGUIResizeInjectorHandler.cpp</itemPath>
+        <itemPath>WasabiEngine/GraphicEngine/CEGUIResizeInjectorHandler.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/Camera.cpp</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/Camera.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/ColourValue.cpp</itemPath>

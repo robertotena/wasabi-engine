@@ -10,6 +10,8 @@
 
 using namespace WasabiEngine;
 
+bool GameSystemManager::systemInitialized = false;
+
 GameSystemManager::GameSystemManager() : gameWorld(this) {
     //Starts SDL
     if (SDL_Init(0) < 0) {
@@ -51,14 +53,18 @@ void GameSystemManager::initSystem() {
     //Starts EventEngine
     EventEngine::getInstance()->init();
     PhysicEngine::getInstance()->init();
+    systemInitialized = true;
+    atexit(GameSystemManager::finishSystem);
 }
 
-bool GameSystemManager::finishSystem() {
-    PhysicEngine::getInstance()->finish();
-    EventEngine::getInstance()->finish();
-    GraphicEngine::getInstance()->finish();
-    SDL_Quit();
-    return true;
+void GameSystemManager::finishSystem() {
+    if (systemInitialized) {
+        PhysicEngine::getInstance()->finish();
+        EventEngine::getInstance()->finish();
+        GraphicEngine::getInstance()->finish();
+        SDL_Quit();
+        systemInitialized = false;
+    }
 }
 
 void GameSystemManager::setVideoMode(const GraphicEngineConf& conf) {

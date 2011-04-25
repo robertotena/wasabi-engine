@@ -132,7 +132,7 @@ void PhysicObject::clear() {
     bodies.clear();
 
     mainBody = NULL;
-//    generateContactEvents(false);
+    generateContactEvents(false);
 }
 
 void PhysicObject::generateContactEvents(bool value) {

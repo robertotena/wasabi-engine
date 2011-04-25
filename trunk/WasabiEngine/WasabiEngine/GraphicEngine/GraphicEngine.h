@@ -22,8 +22,10 @@
 #include <WasabiEngine/GraphicEngine/GraphicObject.h>
 #include <WasabiEngine/GraphicEngine/SceneManager.h>
 #include <WasabiEngine/GraphicEngine/GraphicEngineConf.h>
-
-#include "CEGUIKeyboardInjectorHandler.h"
+#include <WasabiEngine/GraphicEngine/CEGUIKeyboardInjectorHandler.h>
+#include <WasabiEngine/GraphicEngine/CEGUIResizeInjectorHandler.h>
+#include <WasabiEngine/GraphicEngine/CEGUIMouseMotionInjectorHandler.h>
+#include <WasabiEngine/GraphicEngine/CEGUIMouseButtonInjectorHandler.h>
 
 namespace WasabiEngine {
 
@@ -38,6 +40,9 @@ namespace WasabiEngine {
         GraphicEngine(const GraphicEngine& orig);
         SceneManager sceneManager;
         CEGUIKeyboardInjectorHandler keyboardInjector;
+        CEGUIResizeInjectorHandler resizeInjector;
+        CEGUIMouseMotionInjectorHandler mouseMotionInjector;
+        CEGUIMouseButtonInjectorHandler mouseButtonInjector;
         
         void destroyObjects();
     public:
@@ -84,7 +89,21 @@ namespace WasabiEngine {
          * Loads and sets a CEGUI window layout.
          * @param layoutPath Path to the layout
          */
-        void setWindowLayout(const std::string layoutPath);
+        CEGUI::Window* setWindowLayout(const std::string layoutPath);
+        /**
+         * Destroys a CEGGUI Window
+         * @param window the window to destroy
+         */
+        void destroyWindow(CEGUI::Window* window);
+        /**
+         * Destroys all CEGUI windows.
+         */
+        void destroyAllWindows();
+        /**
+         * Loads a mouse cursor
+         * @param mouseScheme Name of the CEGUI imageSet
+         */
+        void setMouseCursor(const std::string mouseScheme);
         /**
          * Render a frame
          */

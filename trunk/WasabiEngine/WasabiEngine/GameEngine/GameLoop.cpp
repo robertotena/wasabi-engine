@@ -19,6 +19,7 @@ GameLoop::GameLoop() {
 
     maxLoops = 60;
     gameDone = false;
+    pause = false;
     networkGame = false;
 }
 
@@ -40,16 +41,18 @@ void GameLoop::run() {
         time1 = WasabiTime::getTicks();
         frameTime = 0;
         numLoops = 0;
-        while ((time1 - time0) > tickTime && numLoops < maxLoops) {
-            //cout << "User events" << endl;
-            updateUserEvents();
-            //cout << "User ticks" << endl;
-            gameTick();
-            //cout << "Physics" << endl;
-            PhysicEngine::getInstance()->step();
-            time0 += tickTime;
-            frameTime += tickTime;
-            numLoops++;
+        if (!pause) {
+            while ((time1 - time0) > tickTime && numLoops < maxLoops) {
+                //cout << "User events" << endl;
+                updateUserEvents();
+                //cout << "User ticks" << endl;
+                gameTick();
+                //cout << "Physics" << endl;
+                PhysicEngine::getInstance()->step();
+                time0 += tickTime;
+                frameTime += tickTime;
+                numLoops++;
+            }
         }
         //cout << "System events" << endl;
         independentTick(frameTime);
@@ -64,7 +67,15 @@ void GameLoop::run() {
         //cout << "Loop end" << endl;
         //FPS
         loopTime = WasabiTime::getTicks() - loopTime;
-        if(loopTime != 0)
-            ;//std::cout << "FPS: "<< (1000 / loopTime )<<std::endl;
+        if (loopTime != 0)
+            ; //std::cout << "FPS: "<< (1000 / loopTime )<<std::endl;
     }
+}
+
+bool GameLoop::isPaused() const{
+    return pause;
+}
+
+void GameLoop::setPause(bool pause){
+    this->pause = pause;
 }

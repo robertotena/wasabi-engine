@@ -8,6 +8,7 @@
 #ifndef GAMESYSTEMMANAGER_H
 #define	GAMESYSTEMMANAGER_H
 
+#include <stdlib.h>
 #include <WasabiEngine/GameEngine/GameWorld.h>
 #include <WasabiEngine/GameEngine/QuitHandler.h>
 #include <WasabiEngine/EventEngine/EventFactory.h>
@@ -28,13 +29,14 @@ namespace WasabiEngine {
         GameLoop* gameLoop;
         QuitHandler* quitHandler;
         HandlerRegistration* quitHandlerRegistration;
-        bool finishSystem();
+        static bool systemInitialized;
+        static void initSystem();
+        static void finishSystem();
         GameSystemManager(const GameSystemManager& orig);
     public:
         GameSystemManager();
         virtual ~GameSystemManager();
         void setGameLoop(GameLoop* gameLoop);
-        void initSystem();
         void setVideoMode(const GraphicEngineConf& conf);
         GameWorld3D* getGameWorld();
         void run();

@@ -33,6 +33,8 @@ namespace WasabiEngine {
     public:
         KeyboardEventHandler();
         virtual void handle(const Event* event) = 0;
+        KeyType getKeyType(const Event* event) const;
+        KeyState getKeyState(const Event* event) const;
         virtual EventPeeper getEventPeeper() const;
     };
 

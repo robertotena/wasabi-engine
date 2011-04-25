@@ -20,6 +20,7 @@ void QuitEventHandler::peep() {
     int elements = SDL_PeepEvents(&sdlEvent, 1, SDL_GETEVENT, SDL_QUITMASK);
     if (elements) {
         Event* event = EventFactory::getInstance()->create(EventName);
+        event->setSystemEvent(true);
         EventEngine::getInstance()->broadcastEvent(event);
     }
 }

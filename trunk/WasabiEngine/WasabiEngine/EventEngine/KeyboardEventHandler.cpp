@@ -11,7 +11,15 @@ using namespace WasabiEngine;
 
 const char KeyboardEventHandler::EventName[] = "KeyboardEvent";
 
-KeyboardEventHandler::KeyboardEventHandler() : EventHandler(GameObject::INVALID_ID,EventName) {
+KeyboardEventHandler::KeyboardEventHandler() : EventHandler(GameObject::INVALID_ID, EventName) {
+}
+
+KeyType KeyboardEventHandler::getKeyType(const Event* event) const {
+    return (KeyType) event->getIntegerProperty("key");
+}
+
+KeyState KeyboardEventHandler::getKeyState(const Event* event) const {
+    return (KeyState) event->getIntegerProperty("state");
 }
 
 void KeyboardEventHandler::peep() {
@@ -23,8 +31,9 @@ void KeyboardEventHandler::peep() {
         event->addProperty("key", sdlEvents[i].key.keysym.sym);
         event->addProperty("state", sdlEvents[i].key.type);
         event->addProperty("scancode", sdlEvents[i].key.keysym.scancode);
-        if((sdlEvents[i].key.keysym.unicode & 0xFF80) == 0)
+        if ((sdlEvents[i].key.keysym.unicode & 0xFF80) == 0)
             event->addProperty("char", sdlEvents[i].key.keysym.unicode & 0x7F);
+        event->setSystemEvent(true);
         EventEngine::getInstance()->broadcastEvent(event);
     }
 }

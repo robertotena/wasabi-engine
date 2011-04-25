@@ -86,7 +86,7 @@ namespace WasabiEngine {
     public:
 
         bool operator()(const Event* a, const Event* b) const {
-            return a->getFireTime() < b->getFireTime();
+            return a->getFireTime() > b->getFireTime();
         }
     };
 

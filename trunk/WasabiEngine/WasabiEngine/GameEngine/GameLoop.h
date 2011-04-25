@@ -27,12 +27,15 @@ namespace WasabiEngine {
         int maxLoops;
         bool networkGame;
         bool gameDone;
+        bool pause;
     public:
         GameLoop();
         ~GameLoop();
 
         bool isGameDone() const;
         void setGameDone(const bool &isGameDone);
+        bool isPaused() const;
+        void setPause(bool pause);
         bool isNetworkGame() const;
         void setNetworkGame(const bool &isNetworkGame);
         int getTickTime();
