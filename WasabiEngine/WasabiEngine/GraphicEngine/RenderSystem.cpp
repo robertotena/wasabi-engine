@@ -6,10 +6,6 @@
  */
 
 #include "RenderSystem.h"
-#include "Camera.h"
-#include "WasabiEngine/Utils/WasabiTime.h"
-#include "WasabiEngine/EventEngine/EventEngine.h"
-#include "WasabiEngine/EventEngine/VideoResizeEventHandler.h"
 #include <iostream>
 
 using namespace WasabiEngine;
@@ -147,12 +143,7 @@ void RenderSystem::render(SceneNode* rootNode, Camera* camera) {
     }
 
     // render the GUI
-    static float lastTimePulse = 0.001 * WasabiTime::getTicks();
-    float now = 0.001 * WasabiTime::getTicks();
-    CEGUI::System::getSingleton().injectTimePulse(now - lastTimePulse); //CEGUI needs the time in seconds
-    glDisable(GL_LIGHTING);
-    CEGUI::System::getSingleton().renderGUI();
-    lastTimePulse = now;
+    CEGUISystem::getInstance()->render();
 
     // swap buffers to display, since we're double buffered.
     SDL_GL_SwapBuffers();
@@ -197,11 +188,10 @@ void RenderSystem::applyLighting() {
 void RenderSystem::applyFog() {
     // FIXME: trastear con el fog_hint y el clearColor
     if (fogConf.mode != FOG_NONE) {
-        float color[4] = {fogConf.colour.getRed(), fogConf.colour.getGreen(), fogConf.colour.getBlue(), fogConf.colour.getAlpha()};
         //glClearColor(0.5f, 0.5f, 0.5f, 1.0f); // We'll Clear To The Color Of The Fog ( Modified )
 
         glFogi(GL_FOG_MODE, fogMode[fogConf.mode]); // Fog Mode
-        glFogfv(GL_FOG_COLOR, color); // Set Fog Color
+        glFogfv(GL_FOG_COLOR, fogConf.colour.ptr()); // Set Fog Color
         glFogf(GL_FOG_DENSITY, fogConf.density); // How Dense Will The Fog Be
         glHint(GL_FOG_HINT, GL_DONT_CARE); // Fog Hint Value
         // depth only work when is linear

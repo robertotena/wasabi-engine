@@ -5,10 +5,8 @@
  * Created on 21 de noviembre de 2010, 17:10
  */
 
-#include <list>
 
 #include "GraphicEngine.h"
-#include "WasabiEngine/EventEngine/EventEngine.h"
 
 using namespace WasabiEngine;
 
@@ -79,31 +77,6 @@ Camera* GraphicEngine::getCamera(const std::string& name) {
     return sceneManager.getCamera(name);
 }
 
-void GraphicEngine::setWindowScheme(const std::string schemePath) {
-    CEGUI::SchemeManager::getSingleton().create(schemePath);
-    CEGUI::System::getSingleton().setDefaultMouseCursor("Vanilla-Images", "MouseArrow");
-}
-
-CEGUI::Window* GraphicEngine::setWindowLayout(const std::string layoutPath) {
-    CEGUI::WindowManager::getSingleton().destroyAllWindows();
-    CEGUI::Window* myRoot = CEGUI::WindowManager::getSingleton().loadWindowLayout(layoutPath);
-    CEGUI::System::getSingleton().setGUISheet(myRoot);
-    return myRoot;
-}
-
-void GraphicEngine::destroyWindow(CEGUI::Window* window) {
-    CEGUI::WindowManager::getSingleton().destroyWindow(window);
-}
-
-void GraphicEngine::destroyAllWindows() {
-    CEGUI::WindowManager::getSingleton().destroyAllWindows();
-}
-
-void GraphicEngine::setMouseCursor(const std::string mouseScheme) {
-    CEGUI::System::getSingleton().setDefaultMouseCursor(mouseScheme, "MouseArrow");
-    SDL_ShowCursor(SDL_DISABLE);
-}
-
 void GraphicEngine::init() {
     /* Initialize SDL for video output. Watch out! It needs that SDL_Init() has been called first */
     if (SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) {
@@ -126,31 +99,14 @@ void GraphicEngine::init() {
     setVideoMode(defaultConf);
 
     /* Initialize CEGUI */
-    CEGUI::OpenGLRenderer::bootstrapSystem();
-    CEGUI::DefaultResourceProvider* rp = static_cast<CEGUI::DefaultResourceProvider*> (CEGUI::System::getSingleton().getResourceProvider());
-    rp->setResourceGroupDirectory("global", "Resources/GUI/");
-    rp->setDefaultResourceGroup("global");
-    //    if(! CEGUI::FontManager::getSingleton().isDefined( "DejaVuSans-10" ) )
-    //         CEGUI::FontManager::getSingleton().createFreeTypeFont( "DejaVuSans-10", 1, true, "DejaVuSans.ttf", "Fonts" );
-    //    if(! CEGUI::FontManager::getSingleton().isDefined( "SoulMission-m" ) )
-    //         CEGUI::FontManager::getSingleton().createFreeTypeFont( "SoulMission-m", 1, true, "SoulMission.ttf", "Fonts" );
-    //    if(! CEGUI::FontManager::getSingleton().isDefined( "SoulMission-l" ) )
-    //         CEGUI::FontManager::getSingleton().createFreeTypeFont( "SoulMission-l", 1, true, "SoulMission.ttf", "Fonts" );
-    CEGUI::FontManager::getSingleton().create("DejaVuSans-10.font");
-    CEGUI::FontManager::getSingleton().create("SoulMission-m.font");
-    CEGUI::System::getSingleton().setDefaultFont("SoulMission-m");
-    EventEngine::getInstance()->addHandler(&keyboardInjector);
-    EventEngine::getInstance()->addHandler(&resizeInjector);
-    EventEngine::getInstance()->addHandler(&mouseMotionInjector);
-    EventEngine::getInstance()->addHandler(&mouseButtonInjector);
+    CEGUISystem::getInstance()->init();
 }
 
 void GraphicEngine::finish() {
     TextureLoader::unloadAll();
     MeshMap::unloadAll();
     destroyObjects();
-    CEGUI::WindowManager::getSingleton().destroyAllWindows();
-    CEGUI::OpenGLRenderer::destroySystem();
+    CEGUISystem::getInstance()->finish();
     SDL_QuitSubSystem(SDL_INIT_VIDEO);
 }
 

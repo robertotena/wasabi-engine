@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/WasabiEngine/GameEngine/QuitHandler.o \
 	${OBJECTDIR}/WasabiEngine/EventEngine/Event.o \
 	${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FuzzySet.o \
+	${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIKeyboardInjectorHandler.o \
 	${OBJECTDIR}/WasabiEngine/EventEngine/ContactEventHandler.o \
 	${OBJECTDIR}/WasabiEngine/Utils/Vectors.o \
 	${OBJECTDIR}/WasabiEngine/OptimizationEngine/LPSolver.o \
@@ -47,6 +48,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/MeshMap.o \
 	${OBJECTDIR}/WasabiEngine/EventEngine/SensorEventHandler.o \
 	${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FuzzyRule.o \
+	${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIMouseMotionInjectorHandler.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/Material.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/GraphicObject.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/ColourValue.o \
@@ -63,6 +65,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/WasabiEngine/OptimizationEngine/LPSolution.o \
 	${OBJECTDIR}/WasabiEngine/EventEngine/EventFactory.o \
 	${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FuzzyVariable.o \
+	${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIMouseButtonInjectorHandler.o \
 	${OBJECTDIR}/WasabiEngine/Utils/ConfigurationFileParser.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/Light.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/ParticleSystem.o \
@@ -80,7 +83,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/WasabiEngine/AIEngine/Routing/RoutePlanner.o \
 	${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FSTriangle.o \
 	${OBJECTDIR}/WasabiEngine/EventEngine/SDL_PumpEventsWrapper.o \
+	${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIResizeInjectorHandler.o \
 	${OBJECTDIR}/WasabiEngine/OptimizationEngine/LPProblem.o \
+	${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUISystem.o \
 	${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FuzzyParser.o \
 	${OBJECTDIR}/WasabiEngine/OptimizationEngine/LPPenalties.o \
 	${OBJECTDIR}/WasabiEngine/GameEngine/SceneryFactory.o \
@@ -88,17 +93,13 @@ OBJECTFILES= \
 	${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FSSingleton.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/SceneNode.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/SceneManager.o \
-	${OBJECTDIR}/WasabiEngine/GraphicEngine/CEGUIMouseMotionInjectorHandler.o \
 	${OBJECTDIR}/WasabiEngine/EventEngine/VideoResizeEventHandler.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/MeshPrototype.o \
 	${OBJECTDIR}/WasabiEngine/PhysicEngine/Box2dWorld.o \
 	${OBJECTDIR}/WasabiEngine/PhysicEngine/PhysicObject.o \
-	${OBJECTDIR}/WasabiEngine/GraphicEngine/CEGUIMouseButtonInjectorHandler.o \
-	${OBJECTDIR}/WasabiEngine/GraphicEngine/CEGUIKeyboardInjectorHandler.o \
 	${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FzAnd.o \
-	${OBJECTDIR}/WasabiEngine/EventEngine/MouseMotionEventHandler.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/RadialParticleSystem.o \
-	${OBJECTDIR}/WasabiEngine/GraphicEngine/CEGUIResizeInjectorHandler.o \
+	${OBJECTDIR}/WasabiEngine/EventEngine/MouseMotionEventHandler.o \
 	${OBJECTDIR}/WasabiEngine/GameEngine/GameWorld3D.o \
 	${OBJECTDIR}/TinyXML/tinystr.o \
 	${OBJECTDIR}/WasabiEngine/GameEngine/GameObjectManager.o \
@@ -177,6 +178,11 @@ ${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FuzzySet.o: WasabiEngine/AIEngine
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FuzzySet.o WasabiEngine/AIEngine/FuzzyModule/FuzzySet.cpp
 
+${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIKeyboardInjectorHandler.o: WasabiEngine/GraphicEngine/GUI/CEGUIKeyboardInjectorHandler.cpp 
+	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIKeyboardInjectorHandler.o WasabiEngine/GraphicEngine/GUI/CEGUIKeyboardInjectorHandler.cpp
+
 ${OBJECTDIR}/WasabiEngine/EventEngine/ContactEventHandler.o: WasabiEngine/EventEngine/ContactEventHandler.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/EventEngine
 	${RM} $@.d
@@ -211,6 +217,11 @@ ${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FuzzyRule.o: WasabiEngine/AIEngin
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FuzzyRule.o WasabiEngine/AIEngine/FuzzyModule/FuzzyRule.cpp
+
+${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIMouseMotionInjectorHandler.o: WasabiEngine/GraphicEngine/GUI/CEGUIMouseMotionInjectorHandler.cpp 
+	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIMouseMotionInjectorHandler.o WasabiEngine/GraphicEngine/GUI/CEGUIMouseMotionInjectorHandler.cpp
 
 ${OBJECTDIR}/WasabiEngine/GraphicEngine/Material.o: WasabiEngine/GraphicEngine/Material.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
@@ -291,6 +302,11 @@ ${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FuzzyVariable.o: WasabiEngine/AIE
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FuzzyVariable.o WasabiEngine/AIEngine/FuzzyModule/FuzzyVariable.cpp
+
+${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIMouseButtonInjectorHandler.o: WasabiEngine/GraphicEngine/GUI/CEGUIMouseButtonInjectorHandler.cpp 
+	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIMouseButtonInjectorHandler.o WasabiEngine/GraphicEngine/GUI/CEGUIMouseButtonInjectorHandler.cpp
 
 ${OBJECTDIR}/WasabiEngine/Utils/ConfigurationFileParser.o: WasabiEngine/Utils/ConfigurationFileParser.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/Utils
@@ -377,10 +393,20 @@ ${OBJECTDIR}/WasabiEngine/EventEngine/SDL_PumpEventsWrapper.o: WasabiEngine/Even
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/EventEngine/SDL_PumpEventsWrapper.o WasabiEngine/EventEngine/SDL_PumpEventsWrapper.cpp
 
+${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIResizeInjectorHandler.o: WasabiEngine/GraphicEngine/GUI/CEGUIResizeInjectorHandler.cpp 
+	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIResizeInjectorHandler.o WasabiEngine/GraphicEngine/GUI/CEGUIResizeInjectorHandler.cpp
+
 ${OBJECTDIR}/WasabiEngine/OptimizationEngine/LPProblem.o: WasabiEngine/OptimizationEngine/LPProblem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/OptimizationEngine
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/OptimizationEngine/LPProblem.o WasabiEngine/OptimizationEngine/LPProblem.cpp
+
+${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUISystem.o: WasabiEngine/GraphicEngine/GUI/CEGUISystem.cpp 
+	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUISystem.o WasabiEngine/GraphicEngine/GUI/CEGUISystem.cpp
 
 ${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FuzzyParser.o: WasabiEngine/AIEngine/FuzzyModule/FuzzyParser.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule
@@ -417,11 +443,6 @@ ${OBJECTDIR}/WasabiEngine/GraphicEngine/SceneManager.o: WasabiEngine/GraphicEngi
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/SceneManager.o WasabiEngine/GraphicEngine/SceneManager.cpp
 
-${OBJECTDIR}/WasabiEngine/GraphicEngine/CEGUIMouseMotionInjectorHandler.o: WasabiEngine/GraphicEngine/CEGUIMouseMotionInjectorHandler.cpp 
-	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/CEGUIMouseMotionInjectorHandler.o WasabiEngine/GraphicEngine/CEGUIMouseMotionInjectorHandler.cpp
-
 ${OBJECTDIR}/WasabiEngine/EventEngine/VideoResizeEventHandler.o: WasabiEngine/EventEngine/VideoResizeEventHandler.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/EventEngine
 	${RM} $@.d
@@ -442,35 +463,20 @@ ${OBJECTDIR}/WasabiEngine/PhysicEngine/PhysicObject.o: WasabiEngine/PhysicEngine
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/PhysicEngine/PhysicObject.o WasabiEngine/PhysicEngine/PhysicObject.cpp
 
-${OBJECTDIR}/WasabiEngine/GraphicEngine/CEGUIMouseButtonInjectorHandler.o: WasabiEngine/GraphicEngine/CEGUIMouseButtonInjectorHandler.cpp 
-	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/CEGUIMouseButtonInjectorHandler.o WasabiEngine/GraphicEngine/CEGUIMouseButtonInjectorHandler.cpp
-
-${OBJECTDIR}/WasabiEngine/GraphicEngine/CEGUIKeyboardInjectorHandler.o: WasabiEngine/GraphicEngine/CEGUIKeyboardInjectorHandler.cpp 
-	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/CEGUIKeyboardInjectorHandler.o WasabiEngine/GraphicEngine/CEGUIKeyboardInjectorHandler.cpp
-
 ${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FzAnd.o: WasabiEngine/AIEngine/FuzzyModule/FzAnd.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FzAnd.o WasabiEngine/AIEngine/FuzzyModule/FzAnd.cpp
-
-${OBJECTDIR}/WasabiEngine/EventEngine/MouseMotionEventHandler.o: WasabiEngine/EventEngine/MouseMotionEventHandler.cpp 
-	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/EventEngine
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/EventEngine/MouseMotionEventHandler.o WasabiEngine/EventEngine/MouseMotionEventHandler.cpp
 
 ${OBJECTDIR}/WasabiEngine/GraphicEngine/RadialParticleSystem.o: WasabiEngine/GraphicEngine/RadialParticleSystem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/RadialParticleSystem.o WasabiEngine/GraphicEngine/RadialParticleSystem.cpp
 
-${OBJECTDIR}/WasabiEngine/GraphicEngine/CEGUIResizeInjectorHandler.o: WasabiEngine/GraphicEngine/CEGUIResizeInjectorHandler.cpp 
-	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
+${OBJECTDIR}/WasabiEngine/EventEngine/MouseMotionEventHandler.o: WasabiEngine/EventEngine/MouseMotionEventHandler.cpp 
+	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/EventEngine
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/CEGUIResizeInjectorHandler.o WasabiEngine/GraphicEngine/CEGUIResizeInjectorHandler.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/EventEngine/MouseMotionEventHandler.o WasabiEngine/EventEngine/MouseMotionEventHandler.cpp
 
 ${OBJECTDIR}/WasabiEngine/GameEngine/GameWorld3D.o: WasabiEngine/GameEngine/GameWorld3D.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GameEngine
