@@ -9,13 +9,15 @@
 #define	RENDERSYSTEM_H
 
 #include <stack>
-#include <CEGUI/CEGUI.h>
 #include <SDL/SDL.h>
 #include <SDL/SDL_opengl.h>
 #include <WasabiEngine/GraphicEngine/ColourValue.h>
 #include <WasabiEngine/GraphicEngine/SceneNode.h>
 #include <WasabiEngine/GraphicEngine/GraphicEngineConf.h>
 #include <WasabiEngine/GraphicEngine/Camera.h>
+#include <WasabiEngine/GraphicEngine/GUI/CEGUISystem.h>
+#include <WasabiEngine/EventEngine/EventEngine.h>
+#include <WasabiEngine/EventEngine/VideoResizeEventHandler.h>
 
 namespace WasabiEngine {
     

@@ -16,6 +16,7 @@
                 <sourceRootElem>/home/fran/NetBeansProjects/WasabiEngine/WasabiEngine</sourceRootElem>
                 <sourceRootElem>/home/fran/NetBeansProjects/WasabiEngine/TinyXML</sourceRootElem>
                 <sourceRootElem>lib</sourceRootElem>
+                <sourceRootElem>WasabiEngine/GraphicEngine/GUI</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>Debug-WIN</confElem>

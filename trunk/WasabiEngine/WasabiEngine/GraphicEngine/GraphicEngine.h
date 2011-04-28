@@ -8,24 +8,20 @@
 #ifndef GRAPHICENGINE_H
 #define	GRAPHICENGINE_H
 
+#include <list>
 #include <string>
 #include <vector>
 #include <algorithm>
 #include <SDL/SDL.h>
 #include <SDL/SDL_opengl.h>
-#include <cegui/CEGUI.h>
-#include <cegui/CEGUISchemeManager.h>
-#include <cegui/RendererModules/OpenGL/CEGUIOpenGLRenderer.h>
 #include <WasabiEngine/Utils/MathUtil.h>
 #include <WasabiEngine/Utils/ResourceFactory.h>
 #include <WasabiEngine/Utils/PropertyMap.h>
 #include <WasabiEngine/GraphicEngine/GraphicObject.h>
 #include <WasabiEngine/GraphicEngine/SceneManager.h>
 #include <WasabiEngine/GraphicEngine/GraphicEngineConf.h>
-#include <WasabiEngine/GraphicEngine/CEGUIKeyboardInjectorHandler.h>
-#include <WasabiEngine/GraphicEngine/CEGUIResizeInjectorHandler.h>
-#include <WasabiEngine/GraphicEngine/CEGUIMouseMotionInjectorHandler.h>
-#include <WasabiEngine/GraphicEngine/CEGUIMouseButtonInjectorHandler.h>
+#include <WasabiEngine/GraphicEngine/GUI/CEGUISystem.h>
+#include <WasabiEngine/EventEngine/EventEngine.h>
 
 namespace WasabiEngine {
 
@@ -39,10 +35,6 @@ namespace WasabiEngine {
         PropertyMap<GraphicObject*> propertyMap;
         GraphicEngine(const GraphicEngine& orig);
         SceneManager sceneManager;
-        CEGUIKeyboardInjectorHandler keyboardInjector;
-        CEGUIResizeInjectorHandler resizeInjector;
-        CEGUIMouseMotionInjectorHandler mouseMotionInjector;
-        CEGUIMouseButtonInjectorHandler mouseButtonInjector;
         
         void destroyObjects();
     public:
@@ -80,30 +72,6 @@ namespace WasabiEngine {
         Camera* getActiveCamera();
         void setWorldGeometry(const std::string& filePath);
         void setAmbientLight(const ColourValue& colour, const WasVec3d& position);
-        /**
-         * Loads and sets a CEGUI window scheme.
-         * @param schemePath Path to the scheme
-         */
-        void setWindowScheme(const std::string schemePath);
-        /**
-         * Loads and sets a CEGUI window layout.
-         * @param layoutPath Path to the layout
-         */
-        CEGUI::Window* setWindowLayout(const std::string layoutPath);
-        /**
-         * Destroys a CEGGUI Window
-         * @param window the window to destroy
-         */
-        void destroyWindow(CEGUI::Window* window);
-        /**
-         * Destroys all CEGUI windows.
-         */
-        void destroyAllWindows();
-        /**
-         * Loads a mouse cursor
-         * @param mouseScheme Name of the CEGUI imageSet
-         */
-        void setMouseCursor(const std::string mouseScheme);
         /**
          * Render a frame
          */

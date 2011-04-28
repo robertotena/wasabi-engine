@@ -41,6 +41,7 @@
 
 /* Graphic Engine */
 #include <WasabiEngine/GraphicEngine/GraphicEngine.h>
+#include <WasabiEngine/GraphicEngine/GUI/CEGUISystem.h>
 #include <WasabiEngine/GraphicEngine/Mesh.h>
 #include <WasabiEngine/GraphicEngine/GraphicObject.h>
 
