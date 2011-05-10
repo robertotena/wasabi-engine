@@ -10,6 +10,8 @@
 using namespace WasabiEngine;
 
 Sensor::Sensor() : contactListener(this) {
+    eventHandler = NULL;
+    handlerRegistration = NULL;
 }
 
 Sensor::Sensor(const Sensor& sensor) : contactListener(this){
@@ -37,7 +39,11 @@ void Sensor::prepare(const WasVec2d& position, const float& radius) {
 }
 
 void Sensor::clear() {
-    PhysicEngine::getInstance()->destroyObject(PhysicEngine::getInstance()->getItem(id));
+    PhysicObject* object = PhysicEngine::getInstance()->getItem(id);
+    if(object != NULL){
+        object->setContactListener(NULL); //FIXME: This patch is a fucking shit. We should merge SensorContactLister with ObjectContactListener
+        PhysicEngine::getInstance()->destroyObject(object);
+    }
     if(eventHandler)
         delete eventHandler;
     eventHandler = NULL;

@@ -8,7 +8,7 @@
 #ifndef CEGUIRESIZEINJECTORHANDLER_H
 #define	CEGUIRESIZEINJECTORHANDLER_H
 
-#include <cegui/CEGUI.h>
+#include <CEGUI/CEGUI.h>
 #include <WasabiEngine/EventEngine/VideoResizeEventHandler.h>
 
 namespace WasabiEngine {

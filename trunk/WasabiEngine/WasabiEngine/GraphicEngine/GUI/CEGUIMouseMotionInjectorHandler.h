@@ -8,7 +8,7 @@
 #ifndef CEGUIMOUSEMOTIONINJECTORHANDLER_H
 #define	CEGUIMOUSEMOTIONINJECTORHANDLER_H
 
-#include <cegui/CEGUI.h>
+#include <CEGUI/CEGUI.h>
 #include <WasabiEngine/EventEngine/MouseMotionEventHandler.h>
 
 namespace WasabiEngine {
