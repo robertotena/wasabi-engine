@@ -9,9 +9,9 @@
 #define	CEGUISYSTEM_H
 
 #include <SDL/SDL_opengl.h>
-#include <cegui/CEGUI.h>
-#include <cegui/CEGUISchemeManager.h>
-#include <cegui/RendererModules/OpenGL/CEGUIOpenGLRenderer.h>
+#include <CEGUI/CEGUI.h>
+#include <CEGUI/CEGUISchemeManager.h>
+#include <CEGUI/RendererModules/OpenGL/CEGUIOpenGLRenderer.h>
 #include <WasabiEngine/GraphicEngine/GUI/CEGUIKeyboardInjectorHandler.h>
 #include <WasabiEngine/GraphicEngine/GUI/CEGUIResizeInjectorHandler.h>
 #include <WasabiEngine/GraphicEngine/GUI/CEGUIMouseMotionInjectorHandler.h>

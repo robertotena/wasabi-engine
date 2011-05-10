@@ -8,7 +8,7 @@
 #ifndef CEGUIMOUSEBUTTONINJECTORHANDLER_H
 #define	CEGUIMOUSEBUTTONINJECTORHANDLER_H
 
-#include <cegui/CEGUI.h>
+#include <CEGUI/CEGUI.h>
 #include <WasabiEngine/EventEngine/MouseButtonEventHandler.h>
 
 namespace WasabiEngine {

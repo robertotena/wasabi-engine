@@ -8,7 +8,7 @@
 #ifndef CEGUIKEYBOARDINJECTORHANDLER_H
 #define	CEGUIKEYBOARDINJECTORHANDLER_H
 
-#include <cegui/CEGUI.h>
+#include <CEGUI/CEGUI.h>
 #include <WasabiEngine/EventEngine/KeyboardEventHandler.h>
 
 namespace WasabiEngine {
