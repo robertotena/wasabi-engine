@@ -101,6 +101,8 @@ void ParticleSystem::renderObject() {
         colors[*currentParticle * 16 + 7] = particle.energy;
         colors[*currentParticle * 16 + 11] = particle.energy;
         colors[*currentParticle * 16 + 15] = particle.energy;
+        
+        currentParticle++;
     }
 
     glPushMatrix();

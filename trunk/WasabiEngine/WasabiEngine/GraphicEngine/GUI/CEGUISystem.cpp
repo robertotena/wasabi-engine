@@ -22,7 +22,7 @@ CEGUISystem::~CEGUISystem() {
 void CEGUISystem::init()
 {
     /* Initialize CEGUI */
-    CEGUI::OpenGLRenderer::bootstrapSystem();
+    CEGUI::OpenGLRenderer::bootstrapSystem(CEGUI::OpenGLRenderer::TTT_NONE); //I don't know why, but NONE gives us the best frame rate in our PCs.
     CEGUI::DefaultResourceProvider* rp = static_cast<CEGUI::DefaultResourceProvider*> (CEGUI::System::getSingleton().getResourceProvider());
     rp->setResourceGroupDirectory("global", "Resources/GUI/");
     rp->setDefaultResourceGroup("global");
