@@ -59,7 +59,7 @@ namespace WasabiEngine {
          */
         float baseSize;
         /**
-         * The speed the baseSize will be changed at.
+         * The speed the baseSize will be changed at. Value between 0 and positive infinity. With 1 the size remains constant. Less than 1 the particle shrinks.
          */
         float growRate;
         /**
