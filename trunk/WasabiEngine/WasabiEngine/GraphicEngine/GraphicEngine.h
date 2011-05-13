@@ -17,11 +17,12 @@
 #include <WasabiEngine/Utils/MathUtil.h>
 #include <WasabiEngine/Utils/ResourceFactory.h>
 #include <WasabiEngine/Utils/PropertyMap.h>
+#include <WasabiEngine/EventEngine/EventEngine.h>
+#include <WasabiEngine/GraphicEngine/LightPoint.h>
 #include <WasabiEngine/GraphicEngine/GraphicObject.h>
 #include <WasabiEngine/GraphicEngine/SceneManager.h>
 #include <WasabiEngine/GraphicEngine/GraphicEngineConf.h>
 #include <WasabiEngine/GraphicEngine/GUI/CEGUISystem.h>
-#include <WasabiEngine/EventEngine/EventEngine.h>
 
 namespace WasabiEngine {
 
@@ -72,6 +73,9 @@ namespace WasabiEngine {
         Camera* getActiveCamera();
         void setWorldGeometry(const std::string& filePath);
         void setAmbientLight(const ColourValue& colour, const WasVec3d& position);
+        LightPoint* createLightPoint();
+        void destroyLight(Light* light);
+        
         /**
          * Render a frame
          */

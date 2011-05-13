@@ -38,11 +38,11 @@ void GraphicObject::destroyCamera(Camera* camera) {
         GraphicEngine::getInstance()->sceneManager.destroyCamera(camera);
     }
 }
-
-Light* GraphicObject::createLight() {
-    Light* light = GraphicEngine::getInstance()->sceneManager.createLight();
-    lights.push_back(light);
-    sceneNode->attachObject(light);
+/*
+LightPoint* GraphicObject::createLightPoint() {
+    Light* light = GraphicEngine::getInstance()->sceneManager.createLightPoint();
+    if(light)
+        lights.push_back(light);
     return light;
 }
 
@@ -50,11 +50,10 @@ void GraphicObject::destroyLight(Light* light) {
     std::list<Light*>::iterator i = std::find(lights.begin(), lights.end(), light);
     if (i != lights.end()) {
         lights.erase(i);
-        sceneNode->detachObject(light);
         GraphicEngine::getInstance()->sceneManager.destroyLight(light);
     }
 }
-
+*/
 Entity* GraphicObject::createEntity(const std::string& meshName) {
     Entity* entity = GraphicEngine::getInstance()->sceneManager.createEntity(meshName);
     entities.push_back(entity);
@@ -134,7 +133,7 @@ void GraphicObject::clear() {
         currentCamera = nextCamera;
     }
     cameras.clear();
-
+/*
     std::list<Light*>::iterator currentLight = lights.begin();
     std::list<Light*>::iterator nextLight = currentLight++;
     while(currentLight != lights.end()){
@@ -142,7 +141,7 @@ void GraphicObject::clear() {
         destroyLight(*currentLight);
         currentLight = nextLight;
     }
-    lights.clear();
+    lights.clear();*/
 
     std::list<Entity*>::iterator currentEntity = entities.begin();
     std::list<Entity*>::iterator nextEntity = currentEntity++;

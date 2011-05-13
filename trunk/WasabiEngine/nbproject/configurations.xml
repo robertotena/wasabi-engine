@@ -1,83 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="69">
-  <logicalFolder name="root" displayName="root" projectFiles="true">
+<configurationDescriptor version="79">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="Box2D" displayName="Box2D" projectFiles="true">
-      <logicalFolder name="Collision"
-                     displayName="Collision"
-                     projectFiles="true"
-                     kind="SOURCE_LOGICAL_FOLDER">
-        <logicalFolder name="Shapes"
-                       displayName="Shapes"
-                       projectFiles="true"
-                       kind="SOURCE_LOGICAL_FOLDER">
+      <logicalFolder name="Collision" displayName="Collision" projectFiles="true">
+        <logicalFolder name="Shapes" displayName="Shapes" projectFiles="true">
+          <itemPath>Box2D/Collision/Shapes/b2CircleShape.cpp</itemPath>
           <itemPath>Box2D/Collision/Shapes/b2CircleShape.h</itemPath>
+          <itemPath>Box2D/Collision/Shapes/b2PolygonShape.cpp</itemPath>
           <itemPath>Box2D/Collision/Shapes/b2PolygonShape.h</itemPath>
           <itemPath>Box2D/Collision/Shapes/b2Shape.h</itemPath>
         </logicalFolder>
+        <itemPath>Box2D/Collision/b2BroadPhase.cpp</itemPath>
         <itemPath>Box2D/Collision/b2BroadPhase.h</itemPath>
+        <itemPath>Box2D/Collision/b2CollideCircle.cpp</itemPath>
+        <itemPath>Box2D/Collision/b2CollidePolygon.cpp</itemPath>
+        <itemPath>Box2D/Collision/b2Collision.cpp</itemPath>
         <itemPath>Box2D/Collision/b2Collision.h</itemPath>
+        <itemPath>Box2D/Collision/b2Distance.cpp</itemPath>
         <itemPath>Box2D/Collision/b2Distance.h</itemPath>
+        <itemPath>Box2D/Collision/b2DynamicTree.cpp</itemPath>
         <itemPath>Box2D/Collision/b2DynamicTree.h</itemPath>
+        <itemPath>Box2D/Collision/b2TimeOfImpact.cpp</itemPath>
         <itemPath>Box2D/Collision/b2TimeOfImpact.h</itemPath>
       </logicalFolder>
-      <logicalFolder name="Common"
-                     displayName="Common"
-                     projectFiles="true"
-                     kind="SOURCE_LOGICAL_FOLDER">
+      <logicalFolder name="Common" displayName="Common" projectFiles="true">
+        <itemPath>Box2D/Common/b2BlockAllocator.cpp</itemPath>
         <itemPath>Box2D/Common/b2BlockAllocator.h</itemPath>
+        <itemPath>Box2D/Common/b2Math.cpp</itemPath>
         <itemPath>Box2D/Common/b2Math.h</itemPath>
+        <itemPath>Box2D/Common/b2Settings.cpp</itemPath>
         <itemPath>Box2D/Common/b2Settings.h</itemPath>
+        <itemPath>Box2D/Common/b2StackAllocator.cpp</itemPath>
         <itemPath>Box2D/Common/b2StackAllocator.h</itemPath>
       </logicalFolder>
-      <logicalFolder name="Dynamics"
-                     displayName="Dynamics"
-                     projectFiles="true"
-                     kind="SOURCE_LOGICAL_FOLDER">
-        <logicalFolder name="Contacts"
-                       displayName="Contacts"
-                       projectFiles="true"
-                       kind="SOURCE_LOGICAL_FOLDER">
+      <logicalFolder name="Dynamics" displayName="Dynamics" projectFiles="true">
+        <logicalFolder name="Contacts" displayName="Contacts" projectFiles="true">
+          <itemPath>Box2D/Dynamics/Contacts/b2CircleContact.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Contacts/b2CircleContact.h</itemPath>
+          <itemPath>Box2D/Dynamics/Contacts/b2Contact.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Contacts/b2Contact.h</itemPath>
+          <itemPath>Box2D/Dynamics/Contacts/b2ContactSolver.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Contacts/b2ContactSolver.h</itemPath>
+          <itemPath>Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Contacts/b2PolygonAndCircleContact.h</itemPath>
+          <itemPath>Box2D/Dynamics/Contacts/b2PolygonContact.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Contacts/b2PolygonContact.h</itemPath>
+          <itemPath>Box2D/Dynamics/Contacts/b2TOISolver.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Contacts/b2TOISolver.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="Joints"
-                       displayName="Joints"
-                       projectFiles="true"
-                       kind="SOURCE_LOGICAL_FOLDER">
+        <logicalFolder name="Joints" displayName="Joints" projectFiles="true">
+          <itemPath>Box2D/Dynamics/Joints/b2DistanceJoint.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Joints/b2DistanceJoint.h</itemPath>
+          <itemPath>Box2D/Dynamics/Joints/b2FrictionJoint.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Joints/b2FrictionJoint.h</itemPath>
+          <itemPath>Box2D/Dynamics/Joints/b2GearJoint.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Joints/b2GearJoint.h</itemPath>
+          <itemPath>Box2D/Dynamics/Joints/b2Joint.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Joints/b2Joint.h</itemPath>
+          <itemPath>Box2D/Dynamics/Joints/b2LineJoint.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Joints/b2LineJoint.h</itemPath>
+          <itemPath>Box2D/Dynamics/Joints/b2MouseJoint.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Joints/b2MouseJoint.h</itemPath>
+          <itemPath>Box2D/Dynamics/Joints/b2PrismaticJoint.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Joints/b2PrismaticJoint.h</itemPath>
+          <itemPath>Box2D/Dynamics/Joints/b2PulleyJoint.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Joints/b2PulleyJoint.h</itemPath>
+          <itemPath>Box2D/Dynamics/Joints/b2RevoluteJoint.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Joints/b2RevoluteJoint.h</itemPath>
+          <itemPath>Box2D/Dynamics/Joints/b2WeldJoint.cpp</itemPath>
           <itemPath>Box2D/Dynamics/Joints/b2WeldJoint.h</itemPath>
         </logicalFolder>
+        <itemPath>Box2D/Dynamics/b2Body.cpp</itemPath>
         <itemPath>Box2D/Dynamics/b2Body.h</itemPath>
+        <itemPath>Box2D/Dynamics/b2ContactManager.cpp</itemPath>
         <itemPath>Box2D/Dynamics/b2ContactManager.h</itemPath>
+        <itemPath>Box2D/Dynamics/b2Fixture.cpp</itemPath>
         <itemPath>Box2D/Dynamics/b2Fixture.h</itemPath>
+        <itemPath>Box2D/Dynamics/b2Island.cpp</itemPath>
         <itemPath>Box2D/Dynamics/b2Island.h</itemPath>
         <itemPath>Box2D/Dynamics/b2TimeStep.h</itemPath>
+        <itemPath>Box2D/Dynamics/b2World.cpp</itemPath>
         <itemPath>Box2D/Dynamics/b2World.h</itemPath>
+        <itemPath>Box2D/Dynamics/b2WorldCallbacks.cpp</itemPath>
         <itemPath>Box2D/Dynamics/b2WorldCallbacks.h</itemPath>
       </logicalFolder>
       <itemPath>Box2D/Box2D.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
-                   projectFiles="true"
-                   kind="SOURCE_LOGICAL_FOLDER">
+                   projectFiles="true">
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
-                   projectFiles="true"
-                   kind="SOURCE_LOGICAL_FOLDER">
+                   projectFiles="true">
     </logicalFolder>
     <logicalFolder name="TinyXML" displayName="TinyXML" projectFiles="true">
       <itemPath>TinyXML/tinystr.cpp</itemPath>
@@ -90,18 +105,12 @@
     <logicalFolder name="WasabiEngine"
                    displayName="WasabiEngine"
                    projectFiles="true">
-      <logicalFolder name="AIEngine"
-                     displayName="AIEngine"
-                     projectFiles="true"
-                     kind="SOURCE_LOGICAL_FOLDER">
+      <logicalFolder name="AIEngine" displayName="AIEngine" projectFiles="true">
         <logicalFolder name="FSM" displayName="FSM" projectFiles="true">
           <itemPath>WasabiEngine/AIEngine/FSM/State.h</itemPath>
           <itemPath>WasabiEngine/AIEngine/FSM/StateMachine.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="FuzzyModule"
-                       displayName="FuzzyModule"
-                       projectFiles="true"
-                       kind="SOURCE_LOGICAL_FOLDER">
+        <logicalFolder name="FuzzyModule" displayName="FuzzyModule" projectFiles="true">
           <itemPath>WasabiEngine/AIEngine/FuzzyModule/FSLeftShoulder.cpp</itemPath>
           <itemPath>WasabiEngine/AIEngine/FuzzyModule/FSLeftShoulder.h</itemPath>
           <itemPath>WasabiEngine/AIEngine/FuzzyModule/FSRightShoulder.cpp</itemPath>
@@ -131,10 +140,7 @@
           <itemPath>WasabiEngine/AIEngine/FuzzyModule/FzSet.h</itemPath>
           <itemPath>WasabiEngine/AIEngine/FuzzyModule/FzVery.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="f1"
-                       displayName="Goals"
-                       projectFiles="true"
-                       kind="SOURCE_LOGICAL_FOLDER">
+        <logicalFolder name="f1" displayName="Goals" projectFiles="true">
           <itemPath>WasabiEngine/AIEngine/Goals/Goal.h</itemPath>
           <itemPath>WasabiEngine/AIEngine/Goals/GoalComposite.h</itemPath>
         </logicalFolder>
@@ -145,10 +151,7 @@
           <itemPath>WasabiEngine/AIEngine/Routing/RoutePlanner.h</itemPath>
         </logicalFolder>
       </logicalFolder>
-      <logicalFolder name="EventEngine"
-                     displayName="EventEngine"
-                     projectFiles="true"
-                     kind="SOURCE_LOGICAL_FOLDER">
+      <logicalFolder name="EventEngine" displayName="EventEngine" projectFiles="true">
         <itemPath>WasabiEngine/EventEngine/ContactEventHandler.cpp</itemPath>
         <itemPath>WasabiEngine/EventEngine/ContactEventHandler.h</itemPath>
         <itemPath>WasabiEngine/EventEngine/Event.cpp</itemPath>
@@ -181,10 +184,7 @@
         <itemPath>WasabiEngine/EventEngine/VideoResizeEventHandler.cpp</itemPath>
         <itemPath>WasabiEngine/EventEngine/VideoResizeEventHandler.h</itemPath>
       </logicalFolder>
-      <logicalFolder name="GameEngine"
-                     displayName="GameEngine"
-                     projectFiles="true"
-                     kind="SOURCE_LOGICAL_FOLDER">
+      <logicalFolder name="GameEngine" displayName="GameEngine" projectFiles="true">
         <itemPath>WasabiEngine/GameEngine/Actor.h</itemPath>
         <itemPath>WasabiEngine/GameEngine/GameLoop.cpp</itemPath>
         <itemPath>WasabiEngine/GameEngine/GameLoop.h</itemPath>
@@ -213,8 +213,7 @@
       </logicalFolder>
       <logicalFolder name="GraphicEngine"
                      displayName="GraphicEngine"
-                     projectFiles="true"
-                     kind="SOURCE_LOGICAL_FOLDER">
+                     projectFiles="true">
         <logicalFolder name="GUI" displayName="GUI" projectFiles="true">
           <itemPath>WasabiEngine/GraphicEngine/GUI/CEGUIKeyboardInjectorHandler.cpp</itemPath>
           <itemPath>WasabiEngine/GraphicEngine/GUI/CEGUIKeyboardInjectorHandler.h</itemPath>
@@ -241,6 +240,8 @@
         <itemPath>WasabiEngine/GraphicEngine/GraphicObject.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/Light.cpp</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/Light.h</itemPath>
+        <itemPath>WasabiEngine/GraphicEngine/LightPoint.cpp</itemPath>
+        <itemPath>WasabiEngine/GraphicEngine/LightPoint.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/LinearParticleSystem.cpp</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/LinearParticleSystem.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/Material.cpp</itemPath>
@@ -311,10 +312,7 @@
         <itemPath>WasabiEngine/PhysicEngine/WorldContactListener.cpp</itemPath>
         <itemPath>WasabiEngine/PhysicEngine/WorldContactListener.h</itemPath>
       </logicalFolder>
-      <logicalFolder name="Utils"
-                     displayName="Utils"
-                     projectFiles="true"
-                     kind="SOURCE_LOGICAL_FOLDER">
+      <logicalFolder name="Utils" displayName="Utils" projectFiles="true">
         <itemPath>WasabiEngine/Utils/ConfigurationFileParser.cpp</itemPath>
         <itemPath>WasabiEngine/Utils/ConfigurationFileParser.h</itemPath>
         <itemPath>WasabiEngine/Utils/MathUtil.cpp</itemPath>
@@ -347,14 +345,14 @@
     <Elem>/home/fran/NetBeansProjects/WasabiEngine/TinyXML</Elem>
     <Elem>lib</Elem>
     <Elem>WasabiEngine/GraphicEngine/GUI</Elem>
+    <Elem>Box2D</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug-WIN" type="3">
       <toolsSet>
-        <developmentServer>localhost</developmentServer>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>MinGW|MinGW</compilerSet>
-        <platform>3</platform>
       </toolsSet>
       <compileType>
         <ccTool>
@@ -370,9 +368,8 @@
     </conf>
     <conf name="Release-WIN" type="3">
       <toolsSet>
-        <developmentServer>localhost</developmentServer>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>MinGW|MinGW</compilerSet>
-        <platform>3</platform>
       </toolsSet>
       <compileType>
         <cTool>
@@ -393,9 +390,8 @@
     </conf>
     <conf name="Debug-LINUX" type="3">
       <toolsSet>
-        <developmentServer>localhost</developmentServer>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>GNU|GNU</compilerSet>
-        <platform>2</platform>
       </toolsSet>
       <compileType>
         <ccTool>
@@ -414,9 +410,8 @@
     </conf>
     <conf name="Release-LINUX" type="3">
       <toolsSet>
-        <developmentServer>localhost</developmentServer>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>Cygwin|Cygwin</compilerSet>
-        <platform>3</platform>
       </toolsSet>
       <compileType>
         <archiverTool>

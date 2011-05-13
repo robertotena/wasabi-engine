@@ -61,6 +61,10 @@ WasVec3d WasVec3d::crossProduct(const WasVec3d& v) const {
     return WasVec3d(y * v.z - z * v.y, z * v.x - x * v.z, x * v.y - y * v.x);
 }
 
+float* WasVec3d::ptr(){
+    return &x;
+}
+
 WasVec3d WasVec3d::operator+(const WasVec3d& vector) const {
     return WasVec3d(this->x + vector.x, this->y + vector.y, this->z + vector.z);
 }
