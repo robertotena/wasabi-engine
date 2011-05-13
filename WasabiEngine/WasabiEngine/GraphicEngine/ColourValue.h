@@ -41,7 +41,7 @@ namespace WasabiEngine {
         /**
          * Pointer accessor to a float array [r,g,b,a]
          */
-        float* ptr();
+        const float* ptr() const;
     };
 
     inline void ColourValue::setBlue(float blue) {
@@ -76,7 +76,7 @@ namespace WasabiEngine {
         return alpha;
     }
 
-    inline float* ColourValue::ptr(){
+    inline const float* ColourValue::ptr() const{
         return &red;
     }
 }

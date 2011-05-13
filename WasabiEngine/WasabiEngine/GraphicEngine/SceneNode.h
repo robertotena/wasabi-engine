@@ -67,6 +67,7 @@ namespace WasabiEngine {
         void setVisible(bool visible);
         bool isVisible() const;
         void attachObject(MovableObject* object);
+        void insertObject(MovableObject* object, int index);
         void detachObject(MovableObject* object);
         void renderNode();
 

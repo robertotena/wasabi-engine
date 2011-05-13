@@ -68,13 +68,25 @@ Camera* SceneManager::getCamera(const std::string& name) {
     return NULL;
 }
 
-Light* SceneManager::createLight() {
-    //FIXME
-    return NULL;
+LightPoint* SceneManager::createLightPoint() {
+    int max_lights;
+    glGetIntegerv(GL_MAX_LIGHTS, &max_lights);
+    if (lights.size() < max_lights) {
+        LightPoint * light = new LightPoint(lights.size());
+        getRootSceneNode()->insertObject(light, 0);
+        lights.push_back(light);
+        return light;
+    } else
+        return NULL;
 }
 
 void SceneManager::destroyLight(Light* light) {
-    //FIXME
+    getRootSceneNode()->detachObject(light);
+    std::list<Light*>::iterator it = std::find(lights.begin(), lights.end(), light);
+    if (it != lights.end()) {
+        lights.erase(it);
+        delete(*it);
+    }
 }
 
 Entity* SceneManager::createEntity(const std::string& meshName) {
@@ -96,10 +108,10 @@ void SceneManager::destroyEntity(Entity* entity) {
 ParticleSystem* SceneManager::createParticleSystem(const ParticleSystemDef* def) {
     ParticleSystem* system = NULL;
     if (def->getType() == PARTICLE_LINEAR) {
-        system = new LinearParticleSystem(*((LinearParticleSystemDef*)def));
+        system = new LinearParticleSystem(*((LinearParticleSystemDef*) def));
         particleSystems.push_back(system);
     } else if (def->getType() == PARTICLE_RADIAL) {
-        system = new RadialParticleSystem(*((RadialParticleSystemDef*)def));
+        system = new RadialParticleSystem(*((RadialParticleSystemDef*) def));
         particleSystems.push_back(system);
     }
     return system;

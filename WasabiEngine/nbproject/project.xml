@@ -17,12 +17,25 @@
                 <sourceRootElem>/home/fran/NetBeansProjects/WasabiEngine/TinyXML</sourceRootElem>
                 <sourceRootElem>lib</sourceRootElem>
                 <sourceRootElem>WasabiEngine/GraphicEngine/GUI</sourceRootElem>
+                <sourceRootElem>Box2D</sourceRootElem>
             </sourceRootList>
             <confList>
-                <confElem>Debug-WIN</confElem>
-                <confElem>Release-WIN</confElem>
-                <confElem>Debug-LINUX</confElem>
-                <confElem>Release-LINUX</confElem>
+                <confElem>
+                    <name>Debug-WIN</name>
+                    <type>3</type>
+                </confElem>
+                <confElem>
+                    <name>Release-WIN</name>
+                    <type>3</type>
+                </confElem>
+                <confElem>
+                    <name>Debug-LINUX</name>
+                    <type>3</type>
+                </confElem>
+                <confElem>
+                    <name>Release-LINUX</name>
+                    <type>3</type>
+                </confElem>
             </confList>
         </data>
     </configuration>

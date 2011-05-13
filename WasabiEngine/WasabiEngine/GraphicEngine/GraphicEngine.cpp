@@ -32,6 +32,14 @@ void GraphicEngine::setAmbientLight(const ColourValue& colour, const WasVec3d& p
     sceneManager.setAmbientLight(colour, position);
 }
 
+LightPoint* GraphicEngine::createLightPoint(){
+    return sceneManager.createLightPoint();
+}
+        
+void GraphicEngine::destroyLight(Light* light){
+    sceneManager.destroyLight(light);
+}
+        
 void GraphicEngine::render() {
     sceneManager.render();
 }

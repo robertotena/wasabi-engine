@@ -15,7 +15,7 @@
 #include <WasabiEngine/GraphicEngine/Camera.h>
 #include <WasabiEngine/GraphicEngine/ColourValue.h>
 #include <WasabiEngine/GraphicEngine/Entity.h>
-#include <WasabiEngine/GraphicEngine/Light.h>
+#include <WasabiEngine/GraphicEngine/LightPoint.h>
 #include <WasabiEngine/GraphicEngine/RenderSystem.h>
 #include <WasabiEngine/GraphicEngine/MeshLoader.h>
 #include <WasabiEngine/GraphicEngine/SceneNode.h>
@@ -39,6 +39,8 @@ namespace WasabiEngine {
         ResourceFactory<Entity> entityFactory;
         ResourceFactory<Camera> cameraFactory;
         std::list<ParticleSystem*> particleSystems; //Particle systems have no factories due the amount of memory requiered
+        std::list<Light*> lights;
+        
         SceneManager(const SceneManager& orig);
     public:
         SceneManager();
@@ -50,7 +52,7 @@ namespace WasabiEngine {
         void setActiveCamera(Camera* camera);
         void setActiveCamera(const std::string& name);
         Camera* getCamera(const std::string& name);
-        Light* createLight();
+        LightPoint* createLightPoint();
         void destroyLight(Light* light);
         Entity* createEntity(const std::string& meshName);
         Entity* createEntity(PrefabType type);

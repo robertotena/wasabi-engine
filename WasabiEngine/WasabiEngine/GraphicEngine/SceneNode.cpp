@@ -112,7 +112,7 @@ void SceneNode::removeAllChildren() {
     children.clear();
 }
 
-SceneNode* SceneNode::getParentSceneNode(){
+SceneNode* SceneNode::getParentSceneNode() {
     return parent;
 }
 
@@ -133,11 +133,19 @@ void SceneNode::attachObject(MovableObject* object) {
     object->parentSceneNode = this;
 }
 
+void SceneNode::insertObject(MovableObject* object, int index) {
+    std::list<MovableObject*>::iterator it = objects.begin();
+    for (int i = 0; i < objects.size() && i < index; i++)
+        it++;
+    objects.insert(it, object);
+    object->parentSceneNode = this;
+}
+
 void SceneNode::detachObject(MovableObject* object) {
     std::list<MovableObject*>::iterator i = std::find(objects.begin(), objects.end(), object);
     if (i != objects.end()) {
-       objects.erase(i);
-       (*i)->parentSceneNode = NULL;
+        objects.erase(i);
+        (*i)->parentSceneNode = NULL;
     }
 }
 

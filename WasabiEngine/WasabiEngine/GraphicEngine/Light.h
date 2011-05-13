@@ -9,15 +9,33 @@
 #define	LIGHT_H
 
 #include <WasabiEngine/GraphicEngine/MovableObject.h>
+#include <WasabiEngine/GraphicEngine/ColourValue.h>
+#include <WasabiEngine/Utils/Vectors.h>
 
 namespace WasabiEngine {
 
     class Light : public MovableObject {
-    public:
-        Light();
+    private:
+        int index;
+        WasVec3d position;
+        ColourValue* ambient;
+        ColourValue* diffuse;
+        ColourValue* specular;
         Light(const Light& orig);
+    public:
+        Light(int index);
         ~Light();
-        void renderObject();
+        int getIndex() const;
+        WasVec3d getPosition() const;
+        void setPosition(const WasVec3d& position);
+        ColourValue const * const getAmbient() const;
+        void setAmbient(const ColourValue& ambient);
+        ColourValue const * const getDiffuse() const;
+        void setDiffuse(const ColourValue& diffuse);
+        ColourValue const * const getSpecular() const;
+        void setSpecular(const ColourValue& specular);
+        void renderObject() = 0;
+
     };
 }
 

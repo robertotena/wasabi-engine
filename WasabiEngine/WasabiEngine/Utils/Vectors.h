@@ -27,23 +27,27 @@ namespace WasabiEngine {
         float y;
         float z;
 
-    WasVec3d();
-    WasVec3d(const float& x, const float& y, const float& z);
-    WasVec3d(const WasVec3d p1, const WasVec3d p2);
-    WasVec3d(const WasVec3d& orig);
-    float module() const;
-    void normalize();
-    WasVec3d crossProduct(const WasVec3d& v) const;
-    WasVec3d operator+(const WasVec3d& vector) const;
-    WasVec3d operator-(const WasVec3d& vector) const;
-    WasVec3d operator*(const float& scalar) const;
-    WasVec3d operator/(const float& scalar) const;
-    WasVec3d& operator=(const WasVec3d& orig);
-    WasVec3d& operator+=(const WasVec3d vector);
-    WasVec3d& operator-=(const WasVec3d vector);
-    WasVec3d& operator*=(const float& scalar);
-    WasVec3d& operator/=(const float& scalar);
-};
+        WasVec3d();
+        WasVec3d(const float& x, const float& y, const float& z);
+        WasVec3d(const WasVec3d p1, const WasVec3d p2);
+        WasVec3d(const WasVec3d& orig);
+        float module() const;
+        void normalize();
+        /**
+         * Pointer accessor to a float array [x,y,z]
+         */
+        float* ptr(); //Jugando al limite, como rober xD
+        WasVec3d crossProduct(const WasVec3d& v) const;
+        WasVec3d operator+(const WasVec3d& vector) const;
+        WasVec3d operator-(const WasVec3d& vector) const;
+        WasVec3d operator*(const float& scalar) const;
+        WasVec3d operator/(const float& scalar) const;
+        WasVec3d& operator=(const WasVec3d& orig);
+        WasVec3d& operator+=(const WasVec3d vector);
+        WasVec3d& operator-=(const WasVec3d vector);
+        WasVec3d& operator*=(const float& scalar);
+        WasVec3d& operator/=(const float& scalar);
+    };
 
     /**
      * 2 Component vector.
@@ -57,27 +61,30 @@ namespace WasabiEngine {
         float x;
         float y;
 
-    WasVec2d();
-    WasVec2d(const float& x, const float& y);
-    WasVec2d(const WasVec2d p1, const WasVec2d p2);
-    WasVec2d(const b2Vec2 vector);
-    WasVec2d(const WasVec2d& orig);
-    float module() const;
-    void normalize();
-    float distance(const WasVec2d& v) const;
-    float crossProduct(const WasVec2d& v) const;
-    operator b2Vec2() const{return b2Vec2(x,y);}
-    WasVec2d operator+(const WasVec2d& vector) const;
-    WasVec2d operator-(const WasVec2d& vector) const;
-    WasVec2d operator*(const float& scalar) const;
-    WasVec2d operator/(const float& scalar) const;
-    WasVec2d& operator=(const WasVec2d& orig);
-    WasVec2d& operator+=(const WasVec2d vector);
-    WasVec2d& operator-=(const WasVec2d vector);
-    WasVec2d& operator*=(const float& scalar);
-    WasVec2d& operator/=(const float& scalar);
-};
- 
+        WasVec2d();
+        WasVec2d(const float& x, const float& y);
+        WasVec2d(const WasVec2d p1, const WasVec2d p2);
+        WasVec2d(const b2Vec2 vector);
+        WasVec2d(const WasVec2d& orig);
+        float module() const;
+        void normalize();
+        float distance(const WasVec2d& v) const;
+        float crossProduct(const WasVec2d& v) const;
+
+        operator b2Vec2() const {
+            return b2Vec2(x, y);
+        }
+        WasVec2d operator+(const WasVec2d& vector) const;
+        WasVec2d operator-(const WasVec2d& vector) const;
+        WasVec2d operator*(const float& scalar) const;
+        WasVec2d operator/(const float& scalar) const;
+        WasVec2d& operator=(const WasVec2d& orig);
+        WasVec2d& operator+=(const WasVec2d vector);
+        WasVec2d& operator-=(const WasVec2d vector);
+        WasVec2d& operator*=(const float& scalar);
+        WasVec2d& operator/=(const float& scalar);
+    };
+
 }
 
 #endif	/* VECTORS_H */

@@ -38,3 +38,14 @@ CND_ARTIFACT_PATH_Release-LINUX=dist/Release-LINUX//libwasabiengine.a
 CND_PACKAGE_DIR_Release-LINUX=dist/Release-LINUX//package
 CND_PACKAGE_NAME_Release-LINUX=WasabiEngine.tar
 CND_PACKAGE_PATH_Release-LINUX=dist/Release-LINUX//package/WasabiEngine.tar
+#
+# include compiler specific variables
+#
+# dmake command
+ROOT:sh = test -f nbproject/private/Makefile-variables.mk || \
+	(mkdir -p nbproject/private && touch nbproject/private/Makefile-variables.mk)
+#
+# gmake command
+.PHONY: $(shell test -f nbproject/private/Makefile-variables.mk || (mkdir -p nbproject/private && touch nbproject/private/Makefile-variables.mk))
+#
+include nbproject/private/Makefile-variables.mk
