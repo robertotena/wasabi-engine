@@ -41,7 +41,7 @@ namespace WasabiEngine {
     public:
         BodyType bodyType;
         WasVec2d position;
-        float rotation;
+        Degree rotation;
         WasVec2d linearVelocity;
         float angularVelocity;
         float linearDamping;

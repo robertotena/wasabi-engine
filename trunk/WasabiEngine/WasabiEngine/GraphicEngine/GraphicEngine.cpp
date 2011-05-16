@@ -32,14 +32,18 @@ void GraphicEngine::setAmbientLight(const ColourValue& colour, const WasVec3d& p
     sceneManager.setAmbientLight(colour, position);
 }
 
-LightPoint* GraphicEngine::createLightPoint(){
+LightPoint* GraphicEngine::createLightPoint() {
     return sceneManager.createLightPoint();
 }
-        
-void GraphicEngine::destroyLight(Light* light){
+
+SpotLight* GraphicEngine::createSpotLight() {
+    return sceneManager.createSpotLight();
+}
+
+void GraphicEngine::destroyLight(Light* light) {
     sceneManager.destroyLight(light);
 }
-        
+
 void GraphicEngine::render() {
     sceneManager.render();
 }
@@ -105,6 +109,8 @@ void GraphicEngine::init() {
     defaultConf.height = 600;
     defaultConf.wmCaption = "WasabiEngine";
     setVideoMode(defaultConf);
+
+    sceneManager.reserveLightMemory();
 
     /* Initialize CEGUI */
     CEGUISystem::getInstance()->init();

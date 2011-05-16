@@ -74,6 +74,7 @@ namespace WasabiEngine {
         void setWorldGeometry(const std::string& filePath);
         void setAmbientLight(const ColourValue& colour, const WasVec3d& position);
         LightPoint* createLightPoint();
+        SpotLight* createSpotLight();
         void destroyLight(Light* light);
         
         /**

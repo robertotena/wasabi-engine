@@ -271,6 +271,8 @@
         <itemPath>WasabiEngine/GraphicEngine/SceneManager.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/SceneNode.cpp</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/SceneNode.h</itemPath>
+        <itemPath>WasabiEngine/GraphicEngine/SpotLight.cpp</itemPath>
+        <itemPath>WasabiEngine/GraphicEngine/SpotLight.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/TextureLoader.cpp</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/TextureLoader.h</itemPath>
         <itemPath>WasabiEngine/GraphicEngine/objLoader.cpp</itemPath>

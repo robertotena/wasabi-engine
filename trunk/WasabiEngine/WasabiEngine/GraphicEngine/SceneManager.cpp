@@ -12,6 +12,7 @@ using namespace WasabiEngine;
 SceneManager::SceneManager() : cameraFactory(5) {
     worldGeometry = NULL;
     activeCamera = NULL;
+    lightMemoryReserved = false;
 }
 
 SceneManager::SceneManager(const SceneManager& orig) {
@@ -68,11 +69,53 @@ Camera* SceneManager::getCamera(const std::string& name) {
     return NULL;
 }
 
+void SceneManager::reserveLightMemory() {
+    int maxLights;
+    glGetIntegerv(GL_MAX_LIGHTS, &maxLights);
+    lights.reserve(maxLights);
+    if (lightMemoryReserved) {
+        for (int i = 1; i < maxLights; i++) {
+            delete lights[i];
+        }
+        lights.clear();
+    }
+    for (int i = 1; i < maxLights; i++) {
+        lights[i] = NULL;
+    }
+    lightMemoryReserved = true;
+}
+
 LightPoint* SceneManager::createLightPoint() {
-    int max_lights;
-    glGetIntegerv(GL_MAX_LIGHTS, &max_lights);
-    if (lights.size() < max_lights) {
-        LightPoint * light = new LightPoint(lights.size());
+    int unusedIndex = -1;
+    int maxLights;
+    glGetIntegerv(GL_MAX_LIGHTS, &maxLights);
+    for (int i = 1; i < maxLights; i++) { //FIXME: De momento pongo un +1 cutre para tener en cuenta la luz de ambiente
+        if (lights[i] == NULL) {
+            unusedIndex = i;
+            break;
+        }
+    }
+    if (unusedIndex != -1) {
+        LightPoint * light = new LightPoint(unusedIndex);
+        getRootSceneNode()->insertObject(light, 0);
+        lights.push_back(light);
+        return light;
+    } else
+        return NULL;
+}
+
+SpotLight* SceneManager::createSpotLight() {
+    int unusedIndex = -1;
+    int maxLights;
+    glGetIntegerv(GL_MAX_LIGHTS, &maxLights);
+    for (int i = 1; i < maxLights; i++) { //FIXME: De momento pongo un +1 cutre para tener en cuenta la luz de ambiente
+        if (lights[i] == NULL) {
+            unusedIndex = i;
+            break;
+        }
+    }
+    if (unusedIndex != -1) {
+        SpotLight * light = new SpotLight(unusedIndex);
         getRootSceneNode()->insertObject(light, 0);
         lights.push_back(light);
         return light;
@@ -82,7 +125,7 @@ LightPoint* SceneManager::createLightPoint() {
 
 void SceneManager::destroyLight(Light* light) {
     getRootSceneNode()->detachObject(light);
-    std::list<Light*>::iterator it = std::find(lights.begin(), lights.end(), light);
+    std::vector<Light*>::iterator it = std::find(lights.begin(), lights.end(), light);
     if (it != lights.end()) {
         lights.erase(it);
         delete(*it);
