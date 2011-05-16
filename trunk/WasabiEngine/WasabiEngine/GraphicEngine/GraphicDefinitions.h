@@ -20,6 +20,7 @@ namespace WasabiEngine {
     };
 
     enum PolygonType {
+        WASABI_LINES = GL_LINES,
         WASABI_TRIANGLES = GL_TRIANGLES,
         WASABI_QUADS = GL_QUADS
     };

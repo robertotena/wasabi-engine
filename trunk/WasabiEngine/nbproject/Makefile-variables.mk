@@ -23,13 +23,13 @@ CND_PACKAGE_DIR_Release-WIN=dist/Release-WIN/MinGW-Windows/package
 CND_PACKAGE_NAME_Release-WIN=WasabiEngine.tar
 CND_PACKAGE_PATH_Release-WIN=dist/Release-WIN/MinGW-Windows/package/WasabiEngine.tar
 # Debug-LINUX configuration
-CND_PLATFORM_Debug-LINUX=GNU-Linux-x86
-CND_ARTIFACT_DIR_Debug-LINUX=dist/Debug-LINUX/GNU-Linux-x86
+CND_PLATFORM_Debug-LINUX=GNU-Windows
+CND_ARTIFACT_DIR_Debug-LINUX=dist/Debug-LINUX/GNU-Windows
 CND_ARTIFACT_NAME_Debug-LINUX=libwasabiengine.a
-CND_ARTIFACT_PATH_Debug-LINUX=dist/Debug-LINUX/GNU-Linux-x86/libwasabiengine.a
-CND_PACKAGE_DIR_Debug-LINUX=dist/Debug-LINUX/GNU-Linux-x86/package
+CND_ARTIFACT_PATH_Debug-LINUX=dist/Debug-LINUX/GNU-Windows/libwasabiengine.a
+CND_PACKAGE_DIR_Debug-LINUX=dist/Debug-LINUX/GNU-Windows/package
 CND_PACKAGE_NAME_Debug-LINUX=WasabiEngine.tar
-CND_PACKAGE_PATH_Debug-LINUX=dist/Debug-LINUX/GNU-Linux-x86/package/WasabiEngine.tar
+CND_PACKAGE_PATH_Debug-LINUX=dist/Debug-LINUX/GNU-Windows/package/WasabiEngine.tar
 # Release-LINUX configuration
 CND_PLATFORM_Release-LINUX=
 CND_ARTIFACT_DIR_Release-LINUX=dist/Release-LINUX/

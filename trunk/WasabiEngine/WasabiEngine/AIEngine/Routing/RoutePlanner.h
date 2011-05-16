@@ -11,6 +11,8 @@
 #include <WasabiEngine/Utils/ResourceFactory.h>
 #include <WasabiEngine/Utils/PropertyMap.h>
 #include <WasabiEngine/AIEngine/Routing/RouteNode.h>
+#include <WasabiEngine/GameEngine/GameObject.h>
+#include <WasabiEngine/GraphicEngine/GraphicEngine.h>
 
 namespace WasabiEngine {
 
@@ -18,10 +20,12 @@ namespace WasabiEngine {
     * A Route planner.
     *
     */
-    class RoutePlanner {
+    class RoutePlanner : public GameObject {
     private:
         static const int DEFAULT_NUMBER_OF_NODES;
         
+        GraphicObject* debugGraphicObject;
+        bool debugDraw;
         ResourceFactory<RouteNode> factory;
         PropertyMap<RouteNode*> map;
         RoutePlanner(const RoutePlanner& orig);
@@ -32,6 +36,7 @@ namespace WasabiEngine {
         RouteNode* createNode(const int& nodeId, const WasVec2d& position);
         void destroyNode(RouteNode* node);
         RouteNode* closestNode(const WasVec2d& position);
+        void activateDebugDraw(bool activate);
     };
 }
 

@@ -61,6 +61,7 @@ namespace WasabiEngine {
         void destroyLight(Light* light);
         Entity* createEntity(const std::string& meshName);
         Entity* createEntity(PrefabType type);
+        Entity* createEntity(const MeshPrototype& prototype);
         void destroyEntity(Entity* entity);
         ParticleSystem* createParticleSystem(const ParticleSystemDef* def);
         void destroyParticleSystem(ParticleSystem* system);

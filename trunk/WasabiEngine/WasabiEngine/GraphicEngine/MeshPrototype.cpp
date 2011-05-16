@@ -19,12 +19,16 @@ MeshPrototype::MeshPrototype(PolygonType type) {
 void MeshPrototype::setPolygonsType(PolygonType type) {
     polygonType = type;
     switch (polygonType) {
+        case WASABI_LINES:
+            verticesPerFace = 2;
         case WASABI_TRIANGLES:
             verticesPerFace = 3;
             break;
         case WASABI_QUADS:
             verticesPerFace = 4;
             break;
+        default:
+            assert(false);
     }
 }
 
@@ -47,13 +51,12 @@ void MeshPrototype::addFace(const Face& face) {
     }
 }
 
-void MeshPrototype::setTextureId(unsigned int id)
-{
+void MeshPrototype::setTextureId(unsigned int id) {
     textureId = id;
 }
-void MeshPrototype::setMaterial(const Material& material)
-{
-    if(this->material != NULL)
+
+void MeshPrototype::setMaterial(const Material& material) {
+    if (this->material != NULL)
         delete this->material;
     this->material = new Material(material);
 }

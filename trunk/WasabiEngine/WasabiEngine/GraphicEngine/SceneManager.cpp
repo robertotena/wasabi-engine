@@ -144,6 +144,12 @@ Entity* SceneManager::createEntity(PrefabType type) {
     return entity;
 }
 
+Entity* SceneManager::createEntity(const MeshPrototype& prototype) {
+    Entity* entity = entityFactory.createResource();
+    entity->setMesh(MeshLoader::load(prototype));
+    return entity;
+}
+
 void SceneManager::destroyEntity(Entity* entity) {
     entityFactory.returnResource(entity);
 }

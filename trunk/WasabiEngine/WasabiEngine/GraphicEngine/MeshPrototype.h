@@ -9,6 +9,7 @@
 #define	MESHPROTOTYPE_H
 
 #include <vector>
+#include <assert.h>
 #include <WasabiEngine/Utils/Vectors.h>
 #include <WasabiEngine/GraphicEngine/Mesh.h>
 
