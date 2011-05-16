@@ -38,22 +38,7 @@ void GraphicObject::destroyCamera(Camera* camera) {
         GraphicEngine::getInstance()->sceneManager.destroyCamera(camera);
     }
 }
-/*
-LightPoint* GraphicObject::createLightPoint() {
-    Light* light = GraphicEngine::getInstance()->sceneManager.createLightPoint();
-    if(light)
-        lights.push_back(light);
-    return light;
-}
 
-void GraphicObject::destroyLight(Light* light) {
-    std::list<Light*>::iterator i = std::find(lights.begin(), lights.end(), light);
-    if (i != lights.end()) {
-        lights.erase(i);
-        GraphicEngine::getInstance()->sceneManager.destroyLight(light);
-    }
-}
-*/
 Entity* GraphicObject::createEntity(const std::string& meshName) {
     Entity* entity = GraphicEngine::getInstance()->sceneManager.createEntity(meshName);
     entities.push_back(entity);
@@ -63,6 +48,13 @@ Entity* GraphicObject::createEntity(const std::string& meshName) {
 
 Entity* GraphicObject::createEntity(PrefabType type) {
     Entity* entity = GraphicEngine::getInstance()->sceneManager.createEntity(type);
+    entities.push_back(entity);
+    sceneNode->attachObject(entity);
+    return entity;
+}
+
+Entity* GraphicObject::createEntity(const MeshPrototype& prototype) {
+    Entity* entity = GraphicEngine::getInstance()->sceneManager.createEntity(prototype);
     entities.push_back(entity);
     sceneNode->attachObject(entity);
     return entity;
@@ -133,15 +125,6 @@ void GraphicObject::clear() {
         currentCamera = nextCamera;
     }
     cameras.clear();
-/*
-    std::list<Light*>::iterator currentLight = lights.begin();
-    std::list<Light*>::iterator nextLight = currentLight++;
-    while(currentLight != lights.end()){
-        nextLight++;
-        destroyLight(*currentLight);
-        currentLight = nextLight;
-    }
-    lights.clear();*/
 
     std::list<Entity*>::iterator currentEntity = entities.begin();
     std::list<Entity*>::iterator nextEntity = currentEntity++;

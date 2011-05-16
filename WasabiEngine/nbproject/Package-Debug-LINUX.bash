@@ -6,10 +6,11 @@
 
 # Macros
 TOP=`pwd`
-CND_PLATFORM=GNU-Linux-x86
+CND_PLATFORM=GNU-Windows
 CND_CONF=Debug-LINUX
 CND_DISTDIR=dist
-NBTMPDIR=build/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
+CND_BUILDDIR=build
+NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
 OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libwasabiengine.a
 OUTPUT_BASENAME=libwasabiengine.a

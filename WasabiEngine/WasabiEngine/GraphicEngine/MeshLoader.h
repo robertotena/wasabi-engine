@@ -34,6 +34,7 @@ namespace WasabiEngine {
     public:
         static Mesh* load(const std::string& file);
         static Mesh* load(PrefabType type);
+        static Mesh* load(const MeshPrototype& prototype);
     };
 }
 #endif	/* MESHLOADER_H */

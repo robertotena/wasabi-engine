@@ -26,6 +26,7 @@ namespace WasabiEngine {
         static Mesh* get(const std::string& meshName);
         static Mesh* get(PrefabType type);
         static Mesh* set(const std::string meshName, const MeshPrototype& meshPrototype);
+        static Mesh* set(const MeshPrototype& meshPrototype); //Non-Cacheable
         /* Las mallas en principio no las sacamos de memoria automaticamente
          * hasta que cerremos el juego, por el costo que tiene cargarlas.
          * Aun asi, metemos un metodo manual por si acaso.

@@ -87,3 +87,7 @@ Mesh* MeshLoader::load(const std::string& file) {
 Mesh* MeshLoader::load(PrefabType type) {
     return MeshMap::get(type);
 }
+
+Mesh* MeshLoader::load(const MeshPrototype& prototype) {
+    return MeshMap::set(prototype);
+}

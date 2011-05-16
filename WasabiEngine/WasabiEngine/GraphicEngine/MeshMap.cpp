@@ -77,6 +77,16 @@ Mesh* MeshMap::set(const std::string meshName, const MeshPrototype& meshPrototyp
     return mesh;
 }
 
+Mesh* MeshMap::set(const MeshPrototype& meshPrototype) {
+    static int PROTOTYPE_COUNTER = 0;
+    Mesh* mesh = NULL;
+    mesh = meshFactory.createResource();
+    mesh->applyPrototype(meshPrototype);
+    meshMap.set("__WASABI_PROTOTYPE_"+PROTOTYPE_COUNTER, mesh);
+
+    return mesh;
+}
+
 void MeshMap::unloadAll(){
     std::list<Mesh*> meshes = meshMap.getItems();
     for(std::list<Mesh*>::iterator i = meshes.begin(); i != meshes.end(); i++ ){
