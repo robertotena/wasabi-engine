@@ -48,7 +48,7 @@ b2Body* Box2dWorld::createBody(PhysicObject* object, const PhysicBodyDef& defini
     else if (definition.bodyType == PHYSIC_DYNAMIC_BODY)
         bodyDefinition.type = b2_dynamicBody;
     bodyDefinition.position = (b2Vec2) definition.position;
-    bodyDefinition.angle = Degree(definition.rotation).valueRadians();
+    bodyDefinition.angle = definition.rotation.valueRadians();
     bodyDefinition.linearVelocity = (b2Vec2) definition.linearVelocity;
     bodyDefinition.angularVelocity = definition.angularVelocity;
     bodyDefinition.bullet = definition.bullet;

@@ -10,7 +10,8 @@
 using namespace WasabiEngine;
 
 Light::Light(int index) {
-    index = GL_LIGHT0 + index;
+    this->index = GL_LIGHT0 + index;
+    attenuation = 0;
     ambient = NULL;
     diffuse = NULL;
     specular = NULL;
@@ -21,6 +22,14 @@ Light::Light(const Light& orig) {
 }
 
 Light::~Light() {
+}
+
+float Light::getAttenuation() const{
+    return attenuation;
+}
+
+void Light::setAttenuation(float attenuation){
+    this->attenuation = attenuation;
 }
 
 ColourValue const * const Light::getAmbient() const {

@@ -47,15 +47,15 @@ OBJECTFILES= \
 	${OBJECTDIR}/Box2D/Common/b2Settings.o \
 	${OBJECTDIR}/WasabiEngine/Utils/Vectors.o \
 	${OBJECTDIR}/WasabiEngine/OptimizationEngine/LPSolver.o \
-	${OBJECTDIR}/WasabiEngine/GameEngine/GameLoop.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/LightPoint.o \
+	${OBJECTDIR}/WasabiEngine/GameEngine/GameLoop.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/MeshMap.o \
 	${OBJECTDIR}/WasabiEngine/EventEngine/SensorEventHandler.o \
 	${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FuzzyRule.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIMouseMotionInjectorHandler.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/Material.o \
-	${OBJECTDIR}/Box2D/Dynamics/Joints/b2PulleyJoint.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/GraphicObject.o \
+	${OBJECTDIR}/Box2D/Dynamics/Joints/b2PulleyJoint.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/ColourValue.o \
 	${OBJECTDIR}/TinyXML/tinyxmlparser.o \
 	${OBJECTDIR}/Box2D/Collision/b2CollideCircle.o \
@@ -82,8 +82,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FuzzyVariable.o \
 	${OBJECTDIR}/Box2D/Dynamics/Joints/b2FrictionJoint.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIMouseButtonInjectorHandler.o \
-	${OBJECTDIR}/WasabiEngine/GraphicEngine/Light.o \
 	${OBJECTDIR}/WasabiEngine/Utils/ConfigurationFileParser.o \
+	${OBJECTDIR}/WasabiEngine/GraphicEngine/Light.o \
 	${OBJECTDIR}/Box2D/Dynamics/Joints/b2RevoluteJoint.o \
 	${OBJECTDIR}/Box2D/Dynamics/Joints/b2PrismaticJoint.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/ParticleSystem.o \
@@ -108,14 +108,15 @@ OBJECTFILES= \
 	${OBJECTDIR}/WasabiEngine/EventEngine/HandlerRegistration.o \
 	${OBJECTDIR}/WasabiEngine/AIEngine/Routing/RoutePlanner.o \
 	${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FSTriangle.o \
-	${OBJECTDIR}/WasabiEngine/EventEngine/SDL_PumpEventsWrapper.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIResizeInjectorHandler.o \
-	${OBJECTDIR}/WasabiEngine/OptimizationEngine/LPProblem.o \
-	${OBJECTDIR}/Box2D/Collision/b2Distance.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUISystem.o \
 	${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FuzzyParser.o \
 	${OBJECTDIR}/Box2D/Common/b2Math.o \
+	${OBJECTDIR}/WasabiEngine/GraphicEngine/SpotLight.o \
 	${OBJECTDIR}/WasabiEngine/OptimizationEngine/LPPenalties.o \
+	${OBJECTDIR}/WasabiEngine/EventEngine/SDL_PumpEventsWrapper.o \
+	${OBJECTDIR}/WasabiEngine/OptimizationEngine/LPProblem.o \
+	${OBJECTDIR}/Box2D/Collision/b2Distance.o \
 	${OBJECTDIR}/Box2D/Dynamics/Contacts/b2ContactSolver.o \
 	${OBJECTDIR}/WasabiEngine/GameEngine/SceneryFactory.o \
 	${OBJECTDIR}/TinyXML/tinyxmlerror.o \
@@ -245,15 +246,15 @@ ${OBJECTDIR}/WasabiEngine/OptimizationEngine/LPSolver.o: WasabiEngine/Optimizati
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/OptimizationEngine/LPSolver.o WasabiEngine/OptimizationEngine/LPSolver.cpp
 
-${OBJECTDIR}/WasabiEngine/GameEngine/GameLoop.o: WasabiEngine/GameEngine/GameLoop.cpp 
-	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GameEngine
-	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GameEngine/GameLoop.o WasabiEngine/GameEngine/GameLoop.cpp
-
 ${OBJECTDIR}/WasabiEngine/GraphicEngine/LightPoint.o: WasabiEngine/GraphicEngine/LightPoint.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/LightPoint.o WasabiEngine/GraphicEngine/LightPoint.cpp
+
+${OBJECTDIR}/WasabiEngine/GameEngine/GameLoop.o: WasabiEngine/GameEngine/GameLoop.cpp 
+	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GameEngine
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GameEngine/GameLoop.o WasabiEngine/GameEngine/GameLoop.cpp
 
 ${OBJECTDIR}/WasabiEngine/GraphicEngine/MeshMap.o: WasabiEngine/GraphicEngine/MeshMap.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
@@ -280,15 +281,15 @@ ${OBJECTDIR}/WasabiEngine/GraphicEngine/Material.o: WasabiEngine/GraphicEngine/M
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/Material.o WasabiEngine/GraphicEngine/Material.cpp
 
-${OBJECTDIR}/Box2D/Dynamics/Joints/b2PulleyJoint.o: Box2D/Dynamics/Joints/b2PulleyJoint.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Box2D/Dynamics/Joints
-	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/Box2D/Dynamics/Joints/b2PulleyJoint.o Box2D/Dynamics/Joints/b2PulleyJoint.cpp
-
 ${OBJECTDIR}/WasabiEngine/GraphicEngine/GraphicObject.o: WasabiEngine/GraphicEngine/GraphicObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/GraphicObject.o WasabiEngine/GraphicEngine/GraphicObject.cpp
+
+${OBJECTDIR}/Box2D/Dynamics/Joints/b2PulleyJoint.o: Box2D/Dynamics/Joints/b2PulleyJoint.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Box2D/Dynamics/Joints
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/Box2D/Dynamics/Joints/b2PulleyJoint.o Box2D/Dynamics/Joints/b2PulleyJoint.cpp
 
 ${OBJECTDIR}/WasabiEngine/GraphicEngine/ColourValue.o: WasabiEngine/GraphicEngine/ColourValue.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
@@ -420,15 +421,15 @@ ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIMouseButtonInjectorHandler.o: W
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIMouseButtonInjectorHandler.o WasabiEngine/GraphicEngine/GUI/CEGUIMouseButtonInjectorHandler.cpp
 
-${OBJECTDIR}/WasabiEngine/GraphicEngine/Light.o: WasabiEngine/GraphicEngine/Light.cpp 
-	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
-	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/Light.o WasabiEngine/GraphicEngine/Light.cpp
-
 ${OBJECTDIR}/WasabiEngine/Utils/ConfigurationFileParser.o: WasabiEngine/Utils/ConfigurationFileParser.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/Utils
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/Utils/ConfigurationFileParser.o WasabiEngine/Utils/ConfigurationFileParser.cpp
+
+${OBJECTDIR}/WasabiEngine/GraphicEngine/Light.o: WasabiEngine/GraphicEngine/Light.cpp 
+	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/Light.o WasabiEngine/GraphicEngine/Light.cpp
 
 ${OBJECTDIR}/Box2D/Dynamics/Joints/b2RevoluteJoint.o: Box2D/Dynamics/Joints/b2RevoluteJoint.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Box2D/Dynamics/Joints
@@ -550,25 +551,10 @@ ${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FSTriangle.o: WasabiEngine/AIEngi
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FSTriangle.o WasabiEngine/AIEngine/FuzzyModule/FSTriangle.cpp
 
-${OBJECTDIR}/WasabiEngine/EventEngine/SDL_PumpEventsWrapper.o: WasabiEngine/EventEngine/SDL_PumpEventsWrapper.cpp 
-	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/EventEngine
-	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/EventEngine/SDL_PumpEventsWrapper.o WasabiEngine/EventEngine/SDL_PumpEventsWrapper.cpp
-
 ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIResizeInjectorHandler.o: WasabiEngine/GraphicEngine/GUI/CEGUIResizeInjectorHandler.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIResizeInjectorHandler.o WasabiEngine/GraphicEngine/GUI/CEGUIResizeInjectorHandler.cpp
-
-${OBJECTDIR}/WasabiEngine/OptimizationEngine/LPProblem.o: WasabiEngine/OptimizationEngine/LPProblem.cpp 
-	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/OptimizationEngine
-	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/OptimizationEngine/LPProblem.o WasabiEngine/OptimizationEngine/LPProblem.cpp
-
-${OBJECTDIR}/Box2D/Collision/b2Distance.o: Box2D/Collision/b2Distance.cpp 
-	${MKDIR} -p ${OBJECTDIR}/Box2D/Collision
-	${RM} $@.d
-	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/Box2D/Collision/b2Distance.o Box2D/Collision/b2Distance.cpp
 
 ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUISystem.o: WasabiEngine/GraphicEngine/GUI/CEGUISystem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI
@@ -585,10 +571,30 @@ ${OBJECTDIR}/Box2D/Common/b2Math.o: Box2D/Common/b2Math.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/Box2D/Common/b2Math.o Box2D/Common/b2Math.cpp
 
+${OBJECTDIR}/WasabiEngine/GraphicEngine/SpotLight.o: WasabiEngine/GraphicEngine/SpotLight.cpp 
+	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/SpotLight.o WasabiEngine/GraphicEngine/SpotLight.cpp
+
 ${OBJECTDIR}/WasabiEngine/OptimizationEngine/LPPenalties.o: WasabiEngine/OptimizationEngine/LPPenalties.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/OptimizationEngine
 	${RM} $@.d
 	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/OptimizationEngine/LPPenalties.o WasabiEngine/OptimizationEngine/LPPenalties.cpp
+
+${OBJECTDIR}/WasabiEngine/EventEngine/SDL_PumpEventsWrapper.o: WasabiEngine/EventEngine/SDL_PumpEventsWrapper.cpp 
+	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/EventEngine
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/EventEngine/SDL_PumpEventsWrapper.o WasabiEngine/EventEngine/SDL_PumpEventsWrapper.cpp
+
+${OBJECTDIR}/WasabiEngine/OptimizationEngine/LPProblem.o: WasabiEngine/OptimizationEngine/LPProblem.cpp 
+	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/OptimizationEngine
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/OptimizationEngine/LPProblem.o WasabiEngine/OptimizationEngine/LPProblem.cpp
+
+${OBJECTDIR}/Box2D/Collision/b2Distance.o: Box2D/Collision/b2Distance.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Box2D/Collision
+	${RM} $@.d
+	$(COMPILE.cc) -g -Wall -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/Box2D/Collision/b2Distance.o Box2D/Collision/b2Distance.cpp
 
 ${OBJECTDIR}/Box2D/Dynamics/Contacts/b2ContactSolver.o: Box2D/Dynamics/Contacts/b2ContactSolver.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Box2D/Dynamics/Contacts

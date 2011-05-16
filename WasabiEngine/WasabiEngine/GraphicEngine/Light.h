@@ -16,8 +16,9 @@ namespace WasabiEngine {
 
     class Light : public MovableObject {
     private:
-        int index;
+        GLuint index;
         WasVec3d position;
+        float attenuation;
         ColourValue* ambient;
         ColourValue* diffuse;
         ColourValue* specular;
@@ -28,6 +29,8 @@ namespace WasabiEngine {
         int getIndex() const;
         WasVec3d getPosition() const;
         void setPosition(const WasVec3d& position);
+        float getAttenuation() const;
+        void setAttenuation(float attenuation);
         ColourValue const * const getAmbient() const;
         void setAmbient(const ColourValue& ambient);
         ColourValue const * const getDiffuse() const;

@@ -9,6 +9,7 @@
 #define	SCENEMANAGER_H
 
 #include <string>
+#include <vector>
 #include <WasabiEngine/Utils/PropertyMap.h>
 #include <WasabiEngine/Utils/ResourceFactory.h>
 #include <WasabiEngine/GraphicEngine/Mesh.h>
@@ -16,6 +17,7 @@
 #include <WasabiEngine/GraphicEngine/ColourValue.h>
 #include <WasabiEngine/GraphicEngine/Entity.h>
 #include <WasabiEngine/GraphicEngine/LightPoint.h>
+#include <WasabiEngine/GraphicEngine/SpotLight.h>
 #include <WasabiEngine/GraphicEngine/RenderSystem.h>
 #include <WasabiEngine/GraphicEngine/MeshLoader.h>
 #include <WasabiEngine/GraphicEngine/SceneNode.h>
@@ -31,6 +33,7 @@ namespace WasabiEngine {
      */
     class SceneManager {
     private:
+        bool lightMemoryReserved;
         SceneNode rootNode;
         Camera* activeCamera;
         Entity* worldGeometry;
@@ -39,7 +42,7 @@ namespace WasabiEngine {
         ResourceFactory<Entity> entityFactory;
         ResourceFactory<Camera> cameraFactory;
         std::list<ParticleSystem*> particleSystems; //Particle systems have no factories due the amount of memory requiered
-        std::list<Light*> lights;
+        std::vector<Light*> lights;
         
         SceneManager(const SceneManager& orig);
     public:
@@ -52,7 +55,9 @@ namespace WasabiEngine {
         void setActiveCamera(Camera* camera);
         void setActiveCamera(const std::string& name);
         Camera* getCamera(const std::string& name);
+        void reserveLightMemory(); //We need a GL context to known de max amount of lights that we have.
         LightPoint* createLightPoint();
+        SpotLight* createSpotLight();
         void destroyLight(Light* light);
         Entity* createEntity(const std::string& meshName);
         Entity* createEntity(PrefabType type);
