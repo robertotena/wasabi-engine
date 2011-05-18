@@ -54,6 +54,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FuzzyRule.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIMouseMotionInjectorHandler.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/Material.o \
+	${OBJECTDIR}/Box2D/Dynamics/Joints/b2PulleyJoint.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/GraphicObject.o \
 	${OBJECTDIR}/Box2D/Dynamics/Joints/b2PulleyJoint.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/ColourValue.o \
@@ -82,7 +83,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FuzzyVariable.o \
 	${OBJECTDIR}/Box2D/Dynamics/Joints/b2FrictionJoint.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIMouseButtonInjectorHandler.o \
-	${OBJECTDIR}/WasabiEngine/Utils/ConfigurationFileParser.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/Light.o \
 	${OBJECTDIR}/Box2D/Dynamics/Joints/b2RevoluteJoint.o \
 	${OBJECTDIR}/Box2D/Dynamics/Joints/b2PrismaticJoint.o \
@@ -109,6 +109,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/WasabiEngine/AIEngine/Routing/RoutePlanner.o \
 	${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FSTriangle.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIResizeInjectorHandler.o \
+	${OBJECTDIR}/Box2D/Collision/b2Distance.o \
 	${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUISystem.o \
 	${OBJECTDIR}/WasabiEngine/AIEngine/FuzzyModule/FuzzyParser.o \
 	${OBJECTDIR}/Box2D/Common/b2Math.o \
@@ -281,6 +282,11 @@ ${OBJECTDIR}/WasabiEngine/GraphicEngine/Material.o: WasabiEngine/GraphicEngine/M
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/Material.o WasabiEngine/GraphicEngine/Material.cpp
 
+${OBJECTDIR}/Box2D/Dynamics/Joints/b2PulleyJoint.o: Box2D/Dynamics/Joints/b2PulleyJoint.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Box2D/Dynamics/Joints
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Box2D/Dynamics/Joints/b2PulleyJoint.o Box2D/Dynamics/Joints/b2PulleyJoint.cpp
+
 ${OBJECTDIR}/WasabiEngine/GraphicEngine/GraphicObject.o: WasabiEngine/GraphicEngine/GraphicObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
 	${RM} $@.d
@@ -421,15 +427,25 @@ ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIMouseButtonInjectorHandler.o: W
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIMouseButtonInjectorHandler.o WasabiEngine/GraphicEngine/GUI/CEGUIMouseButtonInjectorHandler.cpp
 
+${OBJECTDIR}/WasabiEngine/GraphicEngine/Light.o: WasabiEngine/GraphicEngine/Light.cpp 
+	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/Light.o WasabiEngine/GraphicEngine/Light.cpp
+
 ${OBJECTDIR}/WasabiEngine/Utils/ConfigurationFileParser.o: WasabiEngine/Utils/ConfigurationFileParser.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/Utils
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/Utils/ConfigurationFileParser.o WasabiEngine/Utils/ConfigurationFileParser.cpp
 
-${OBJECTDIR}/WasabiEngine/GraphicEngine/Light.o: WasabiEngine/GraphicEngine/Light.cpp 
-	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine
+${OBJECTDIR}/Box2D/Dynamics/Joints/b2RevoluteJoint.o: Box2D/Dynamics/Joints/b2RevoluteJoint.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Box2D/Dynamics/Joints
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/Light.o WasabiEngine/GraphicEngine/Light.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Box2D/Dynamics/Joints/b2RevoluteJoint.o Box2D/Dynamics/Joints/b2RevoluteJoint.cpp
+
+${OBJECTDIR}/Box2D/Dynamics/Joints/b2PrismaticJoint.o: Box2D/Dynamics/Joints/b2PrismaticJoint.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Box2D/Dynamics/Joints
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Box2D/Dynamics/Joints/b2PrismaticJoint.o Box2D/Dynamics/Joints/b2PrismaticJoint.cpp
 
 ${OBJECTDIR}/Box2D/Dynamics/Joints/b2RevoluteJoint.o: Box2D/Dynamics/Joints/b2RevoluteJoint.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Box2D/Dynamics/Joints
@@ -555,6 +571,11 @@ ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIResizeInjectorHandler.o: Wasabi
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUIResizeInjectorHandler.o WasabiEngine/GraphicEngine/GUI/CEGUIResizeInjectorHandler.cpp
+
+${OBJECTDIR}/Box2D/Collision/b2Distance.o: Box2D/Collision/b2Distance.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Box2D/Collision
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Box2D/Collision/b2Distance.o Box2D/Collision/b2Distance.cpp
 
 ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI/CEGUISystem.o: WasabiEngine/GraphicEngine/GUI/CEGUISystem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/WasabiEngine/GraphicEngine/GUI

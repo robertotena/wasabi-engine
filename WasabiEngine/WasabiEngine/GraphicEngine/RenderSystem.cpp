@@ -80,7 +80,8 @@ void RenderSystem::render(SceneNode* rootNode, Camera* camera) {
     applyFog();
 
     // render scene
-    camera->renderObject();
+    if(camera != NULL)
+        camera->renderObject();
 
     // draw axis
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
