@@ -24,6 +24,10 @@ void GraphicEngine::setVideoMode(const GraphicEngineConf& conf) {
     sceneManager.renderSystem.setVideoMode(conf);
 }
 
+GraphicEngineConf GraphicEngine::getGraphicEngineConfig() const{
+    return sceneManager.renderSystem.getGraphicEngineConfig();
+}
+
 void GraphicEngine::setWorldGeometry(const std::string& filePath) {
     sceneManager.setWorldGeometry(filePath);
 }
@@ -105,8 +109,9 @@ void GraphicEngine::init() {
     }
 
     GraphicEngineConf defaultConf;
-    defaultConf.width = 800;
-    defaultConf.height = 600;
+    defaultConf.width = 640;
+    defaultConf.height = 480;
+    defaultConf.fullscreen = false;
     defaultConf.wmCaption = "WasabiEngine";
     setVideoMode(defaultConf);
 

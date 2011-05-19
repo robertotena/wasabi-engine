@@ -31,6 +31,7 @@ namespace WasabiEngine {
 
     class RenderSystem {
     private:
+        GraphicEngineConf graphicConf;
         FogConf fogConf;
         unsigned int fogMode[3];
         ColourValue ambientLightColor;
@@ -42,6 +43,7 @@ namespace WasabiEngine {
         ~RenderSystem();
         void render(SceneNode* rootNode, Camera* camera);
         void setVideoMode(const GraphicEngineConf& conf);
+        GraphicEngineConf getGraphicEngineConfig() const;
         void setAmbientLight(const ColourValue& colour, const WasVec3d& position);
         void setFog(FogMode mode=FOG_NONE, const ColourValue& colour=ColourValue::WHITE, float density=1.0, float linearStart=0.0, float linearEnd=1.0);
     };

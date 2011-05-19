@@ -27,16 +27,22 @@ RenderSystem::~RenderSystem() {
 
 void RenderSystem::setVideoMode(const GraphicEngineConf& conf) {
     /* Create OpenGL screen */
-    if (SDL_SetVideoMode(conf.width, conf.height, 0, SDL_OPENGL) == NULL) {
+    int flags = SDL_OPENGL;
+    if (conf.fullscreen)
+        flags |= SDL_FULLSCREEN;
+
+    if (SDL_SetVideoMode(conf.width, conf.height, 0, flags) == NULL) {
         fprintf(stderr, "Unable to create OpenGL screen: %s\n", SDL_GetError());
         SDL_Quit();
         exit(2);
     }
 
+    graphicConf = conf;
+
     /* Throw a resize event */
     Event* event = EventFactory::getInstance()->create(VideoResizeEventHandler::EventName);
-    event->addProperty("width",conf.width);
-    event->addProperty("height",conf.height);
+    event->addProperty("width", conf.width);
+    event->addProperty("height", conf.height);
     event->setSystemEvent(true);
     EventEngine::getInstance()->broadcastEvent(event);
 
@@ -64,6 +70,10 @@ void RenderSystem::setVideoMode(const GraphicEngineConf& conf) {
     glMatrixMode(GL_MODELVIEW);
 }
 
+GraphicEngineConf RenderSystem::getGraphicEngineConfig() const {
+    return graphicConf;
+}
+
 void RenderSystem::render(SceneNode* rootNode, Camera* camera) {
     std::stack<SceneNode*> sceneStack;
     SceneNode* node;
@@ -80,7 +90,7 @@ void RenderSystem::render(SceneNode* rootNode, Camera* camera) {
     applyFog();
 
     // render scene
-    if(camera != NULL)
+    if (camera != NULL)
         camera->renderObject();
 
     // draw axis

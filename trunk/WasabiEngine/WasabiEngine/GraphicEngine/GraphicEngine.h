@@ -41,6 +41,7 @@ namespace WasabiEngine {
     public:
         GraphicEngine();
         void setVideoMode(const GraphicEngineConf& conf);
+        GraphicEngineConf getGraphicEngineConfig() const;
         ~GraphicEngine();
         /**
          * Obtains the item with the ID "id" or NULL if it not exists.

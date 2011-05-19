@@ -17,7 +17,7 @@
  * along with this library; if not, write to the Free Software Foundation,
  * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
-*/
+ */
 
 #ifndef SCENENODE_H
 #define	SCENENODE_H
@@ -36,6 +36,7 @@ namespace WasabiEngine {
      */
     class SceneNode {
     private:
+        const static float RENDER_DISTANCE;
         float translation[3];
         float scaleF[3];
         Quaternion rotation;
@@ -67,7 +68,7 @@ namespace WasabiEngine {
         void setVisible(bool visible);
         bool isVisible() const;
         void attachObject(MovableObject* object);
-        void insertObject(MovableObject* object, int index);
+        void insertObject(MovableObject* object, unsigned int index);
         void detachObject(MovableObject* object);
         void renderNode();
 

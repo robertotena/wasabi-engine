@@ -65,6 +65,11 @@ float* WasVec3d::ptr(){
     return &x;
 }
 
+float WasVec3d::distance(const WasVec3d& v) const {
+    WasVec3d r = *this - v;
+    return sqrt(r.x * r.x + r.y * r.y + r.z * r.z);
+}
+
 WasVec3d WasVec3d::operator+(const WasVec3d& vector) const {
     return WasVec3d(this->x + vector.x, this->y + vector.y, this->z + vector.z);
 }

@@ -73,7 +73,7 @@ void RoutePlanner::activateDebugDraw(bool activate) {
         for (std::list<RouteNode*>::iterator i = nodes.begin(); i != nodes.end(); i++) {
             //Draw node
             RouteNode* node = *i;
-            GraphicObject* object = debugGraphicObject->createChild(WasVec3d(node->position.x, 0, node->position.y));
+            GraphicObject* object = debugGraphicObject->createChild(WasVec3d(node->position.x, 0, -node->position.y));
             object->scale(WasVec3d(0.5, 0.5, 0.5));
             Entity* entity = object->createEntity(PT_CUBE);
             entity->setColor(ColourValue::BLUE);

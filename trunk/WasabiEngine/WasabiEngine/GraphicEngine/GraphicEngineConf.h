@@ -23,6 +23,10 @@ namespace WasabiEngine {
          */
         int height;
         /**
+         * Fullscreen flag
+         */
+        bool fullscreen;
+        /**
          * Window caption
          */
         std::string wmCaption;
