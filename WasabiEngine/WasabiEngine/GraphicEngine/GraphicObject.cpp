@@ -69,16 +69,14 @@ void GraphicObject::destroyEntity(Entity* entity) {
     }
 }
 
-ParticleSystem* GraphicObject::createParticleSystem(const ParticleSystemDef* def)
-{
+ParticleSystem* GraphicObject::createParticleSystem(const ParticleSystemDef* def) {
     ParticleSystem* system = GraphicEngine::getInstance()->sceneManager.createParticleSystem(def);
     particleSystems.push_back(system);
     sceneNode->attachObject(system);
     return system;
 }
 
-void GraphicObject::destroyParticleSystem(ParticleSystem* system)
-{
+void GraphicObject::destroyParticleSystem(ParticleSystem* system) {
     std::list<ParticleSystem*>::iterator i = std::find(particleSystems.begin(), particleSystems.end(), system);
     if (i != particleSystems.end()) {
         particleSystems.erase(i);
@@ -118,8 +116,8 @@ void GraphicObject::prepare() {
 
 void GraphicObject::clear() {
     std::list<Camera*>::iterator currentCamera = cameras.begin();
-    std::list<Camera*>::iterator nextCamera = currentCamera++;
-    while(currentCamera != cameras.end()){
+    std::list<Camera*>::iterator nextCamera = cameras.begin();
+    while (currentCamera != cameras.end()) {
         nextCamera++;
         destroyCamera(*currentCamera);
         currentCamera = nextCamera;
@@ -127,8 +125,8 @@ void GraphicObject::clear() {
     cameras.clear();
 
     std::list<Entity*>::iterator currentEntity = entities.begin();
-    std::list<Entity*>::iterator nextEntity = currentEntity++;
-    while(currentEntity != entities.end()){
+    std::list<Entity*>::iterator nextEntity = entities.begin();
+    while (currentEntity != entities.end()) {
         nextEntity++;
         destroyEntity(*currentEntity);
         currentEntity = nextEntity;
@@ -136,8 +134,8 @@ void GraphicObject::clear() {
     entities.clear();
 
     std::list<ParticleSystem*>::iterator currentSystem = particleSystems.begin();
-    std::list<ParticleSystem*>::iterator nextSystem = currentSystem++;
-    while(currentSystem != particleSystems.end()){
+    std::list<ParticleSystem*>::iterator nextSystem = particleSystems.begin();
+    while (currentSystem != particleSystems.end()) {
         nextSystem++;
         destroyParticleSystem(*currentSystem);
         currentSystem = nextSystem;

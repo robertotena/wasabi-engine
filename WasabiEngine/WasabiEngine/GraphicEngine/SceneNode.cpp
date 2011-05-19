@@ -6,8 +6,11 @@
  */
 
 #include "SceneNode.h"
+#include <WasabiEngine/GraphicEngine/GraphicEngine.h>
 
 using namespace WasabiEngine;
+
+const float SceneNode::RENDER_DISTANCE = 75;
 
 SceneNode::SceneNode() {
     translation[0] = 0;
@@ -133,9 +136,9 @@ void SceneNode::attachObject(MovableObject* object) {
     object->parentSceneNode = this;
 }
 
-void SceneNode::insertObject(MovableObject* object, int index) {
+void SceneNode::insertObject(MovableObject* object, unsigned int index) {
     std::list<MovableObject*>::iterator it = objects.begin();
-    for (int i = 0; i < objects.size() && i < index; i++)
+    for (unsigned int i = 0; i < objects.size() && i < index; i++)
         it++;
     objects.insert(it, object);
     object->parentSceneNode = this;
@@ -153,11 +156,14 @@ void SceneNode::renderNode() {
     Radian radRotation;
     WasVec3d axis;
 
-    glTranslatef(translation[0], translation[1], translation[2]); // Move object
-    rotation.toAngleAxis(radRotation, axis);
-    glRotatef(radRotation.valueDegrees(), axis.x, axis.y, axis.z);
-    glScalef(scaleF[0], scaleF[1], scaleF[2]);
-    std::list<MovableObject*>::iterator it;
-    for (it = objects.begin(); it != objects.end(); it++)
-        (*it)->renderObject();
+    Camera* activeCamera = GraphicEngine::getInstance()->getActiveCamera();
+    if (parent == NULL || activeCamera->getPosition().distance(WasVec3d(translation[0], translation[1], translation[2])) < RENDER_DISTANCE) {
+        glTranslatef(translation[0], translation[1], translation[2]); // Move object
+        rotation.toAngleAxis(radRotation, axis);
+        glRotatef(radRotation.valueDegrees(), axis.x, axis.y, axis.z);
+        glScalef(scaleF[0], scaleF[1], scaleF[2]);
+        std::list<MovableObject*>::iterator it;
+        for (it = objects.begin(); it != objects.end(); it++)
+            (*it)->renderObject();
+    }
 }

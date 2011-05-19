@@ -37,6 +37,7 @@ namespace WasabiEngine {
          * Pointer accessor to a float array [x,y,z]
          */
         float* ptr(); //Jugando al limite, como rober xD
+        float distance(const WasVec3d& v) const;
         WasVec3d crossProduct(const WasVec3d& v) const;
         WasVec3d operator+(const WasVec3d& vector) const;
         WasVec3d operator-(const WasVec3d& vector) const;

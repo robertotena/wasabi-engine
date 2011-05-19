@@ -46,8 +46,6 @@ namespace WasabiEngine {
         void setId(const int& id);
         Camera* createCamera(const std::string& name);
         void destroyCamera(Camera* camera);
-        //LightPoint* createLightPoint();
-        //void destroyLight(Light* light);
         Entity* createEntity(const std::string& meshName);
         Entity* createEntity(PrefabType type);
         /**
