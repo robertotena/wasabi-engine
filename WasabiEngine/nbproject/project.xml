@@ -15,9 +15,7 @@
                 <sourceRootElem>/home/fran/NetBeansProjects/WasabiEngine/Box2D</sourceRootElem>
                 <sourceRootElem>/home/fran/NetBeansProjects/WasabiEngine/WasabiEngine</sourceRootElem>
                 <sourceRootElem>/home/fran/NetBeansProjects/WasabiEngine/TinyXML</sourceRootElem>
-                <sourceRootElem>lib</sourceRootElem>
-                <sourceRootElem>WasabiEngine/GraphicEngine/GUI</sourceRootElem>
-                <sourceRootElem>Box2D</sourceRootElem>
+                <sourceRootElem>/home/fran/NetBeansProjects/WasabiEngine/lib</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

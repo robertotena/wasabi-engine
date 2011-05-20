@@ -345,16 +345,14 @@
     <Elem>/home/fran/NetBeansProjects/WasabiEngine/Box2D</Elem>
     <Elem>/home/fran/NetBeansProjects/WasabiEngine/WasabiEngine</Elem>
     <Elem>/home/fran/NetBeansProjects/WasabiEngine/TinyXML</Elem>
-    <Elem>lib</Elem>
-    <Elem>WasabiEngine/GraphicEngine/GUI</Elem>
-    <Elem>Box2D</Elem>
+    <Elem>/home/fran/NetBeansProjects/WasabiEngine/lib</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug-WIN" type="3">
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
-        <compilerSet>MinGW|MinGW</compilerSet>
+        <compilerSet>GNU|GNU</compilerSet>
       </toolsSet>
       <compileType>
         <ccTool>
@@ -413,9 +411,15 @@
     <conf name="Release-LINUX" type="3">
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
-        <compilerSet>Cygwin|Cygwin</compilerSet>
+        <compilerSet>GNU|GNU</compilerSet>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <developmentMode>6</developmentMode>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
         <archiverTool>
         </archiverTool>
       </compileType>
