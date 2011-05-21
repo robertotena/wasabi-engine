@@ -376,7 +376,11 @@
           <developmentMode>5</developmentMode>
         </cTool>
         <ccTool>
-          <developmentMode>5</developmentMode>
+          <developmentMode>6</developmentMode>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+          <commandLine>-mwindows -Dmain=SDLmain</commandLine>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
