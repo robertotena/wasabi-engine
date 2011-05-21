@@ -12,9 +12,11 @@ using namespace WasabiEngine;
 const float RouteNode::SENSOR_RADIUS = 3.0f;
 
 RouteNode::RouteNode() {
+    sensor = NULL;
 }
 
 RouteNode::RouteNode(const RouteNode& orig) {
+    sensor = NULL;
 }
 
 RouteNode::~RouteNode() {
@@ -29,8 +31,10 @@ void RouteNode::prepare(const int& nodeId, const WasVec2d& position){
 
 void RouteNode::clear(){
     if(sensor != NULL)
+    {
         SensorFactory::getInstance()->destroy(sensor);
-    sensor = NULL;
+        sensor = NULL;
+    }
     routeMap.clear();
 }
 

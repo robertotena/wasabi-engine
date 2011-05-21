@@ -77,6 +77,10 @@ namespace WasabiEngine {
          */
         void sendEvent(Event* event, unsigned int receiverId, int delay = 0);
         /**
+         * Clears the queued events to be fired.
+         */
+        void clearQueuedUserEvents();
+        /**
          * Pumps new events to the queue and fires the current system events.
          */
         void updateSystemEvents();

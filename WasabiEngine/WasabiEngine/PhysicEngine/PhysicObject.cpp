@@ -67,8 +67,8 @@ void PhysicObject::destroyJoint(const std::string& name) {
             ((PhysicObject*) i->second->GetBodyA()->GetUserData())->joints.erase(i->first);
         if (i->second->GetBodyB() && (PhysicObject*) i->second->GetBodyB()->GetUserData() != this)
             ((PhysicObject*) i->second->GetBodyB()->GetUserData())->joints.erase(i->first);
-        joints.erase(i);
         PhysicEngine::getInstance()->world.destroyJoint(i->second);
+        joints.erase(i);
     }
 }
 
@@ -118,6 +118,7 @@ bool PhysicObject::isVisible(const WasVec2d& worldPoint) {
 }
 
 void PhysicObject::clear() {
+    generateContactEvents(false);
     for (std::map<std::string, b2Joint*>::iterator i = joints.begin(); i != joints.end(); i++) {
         if (i->second->GetBodyA() && (PhysicObject*) i->second->GetBodyA()->GetUserData() != this)
             ((PhysicObject*) i->second->GetBodyA()->GetUserData())->joints.erase(i->first);
@@ -132,7 +133,6 @@ void PhysicObject::clear() {
     bodies.clear();
 
     mainBody = NULL;
-//    generateContactEvents(false);
 }
 
 void PhysicObject::generateContactEvents(bool value) {

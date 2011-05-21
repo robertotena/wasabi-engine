@@ -22,6 +22,8 @@ RoutePlanner::RoutePlanner(const RoutePlanner& orig) {
 }
 
 RoutePlanner::~RoutePlanner() {
+    activateDebugDraw(false);
+    destroyAllNodes();
 }
 
 RouteNode* RoutePlanner::getNode(const int& nodeId) {
@@ -41,6 +43,16 @@ RouteNode* RoutePlanner::createNode(const int& nodeId, const WasVec2d& position)
 void RoutePlanner::destroyNode(RouteNode* node) {
     map.remove(node->getNodeId());
     factory.returnResource(node);
+}
+
+void RoutePlanner::destroyAllNodes()
+{
+    std::list<RouteNode*> nodes = map.getItems();
+    while(!nodes.empty())
+    {
+        destroyNode(*nodes.begin());
+        nodes.erase(nodes.begin());
+    }
 }
 
 RouteNode* RoutePlanner::closestNode(const WasVec2d& position) {

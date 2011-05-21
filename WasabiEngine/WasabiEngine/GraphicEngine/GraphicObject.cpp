@@ -115,32 +115,14 @@ void GraphicObject::prepare() {
 }
 
 void GraphicObject::clear() {
-    std::list<Camera*>::iterator currentCamera = cameras.begin();
-    std::list<Camera*>::iterator nextCamera = cameras.begin();
-    while (currentCamera != cameras.end()) {
-        nextCamera++;
-        destroyCamera(*currentCamera);
-        currentCamera = nextCamera;
-    }
-    cameras.clear();
+    while(!cameras.empty())
+        destroyCamera(*cameras.begin());
 
-    std::list<Entity*>::iterator currentEntity = entities.begin();
-    std::list<Entity*>::iterator nextEntity = entities.begin();
-    while (currentEntity != entities.end()) {
-        nextEntity++;
-        destroyEntity(*currentEntity);
-        currentEntity = nextEntity;
-    }
-    entities.clear();
+    while(!entities.empty())
+        destroyEntity(*entities.begin());
 
-    std::list<ParticleSystem*>::iterator currentSystem = particleSystems.begin();
-    std::list<ParticleSystem*>::iterator nextSystem = particleSystems.begin();
-    while (currentSystem != particleSystems.end()) {
-        nextSystem++;
-        destroyParticleSystem(*currentSystem);
-        currentSystem = nextSystem;
-    }
-    particleSystems.clear();
+    while(!particleSystems.empty())
+        destroyParticleSystem(*particleSystems.begin());
 
     removeAllChildren();
     if (sceneNode) {

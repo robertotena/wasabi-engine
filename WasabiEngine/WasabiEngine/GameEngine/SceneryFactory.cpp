@@ -53,14 +53,24 @@ Scenery* SceneryFactory::create(const SceneryDefinition& definition) {
 }
 
 void SceneryFactory::destroy(Scenery* scenery) {
-    if (factory->returnResource(scenery)) {
-        PhysicEngine::getInstance()->destroyObject(PhysicEngine::getInstance()->getItem(scenery->getId()));
-        GraphicEngine::getInstance()->destroyObject(GraphicEngine::getInstance()->getItem(scenery->getId()));
-    }
+    PhysicObject* physic = PhysicEngine::getInstance()->getItem(scenery->getId());
+    GraphicObject* graphic = GraphicEngine::getInstance()->getItem(scenery->getId());
+    if(physic)
+        PhysicEngine::getInstance()->destroyObject(physic);
+    if(graphic)
+        GraphicEngine::getInstance()->destroyObject(graphic);
+    factory->returnResource(scenery);
+//    if (factory->returnResource(scenery)) {
+//        PhysicEngine::getInstance()->destroyObject(PhysicEngine::getInstance()->getItem(scenery->getId()));
+//        GraphicEngine::getInstance()->destroyObject(GraphicEngine::getInstance()->getItem(scenery->getId()));
+//    }
 }
 
 void SceneryFactory::clear() {
-    for (std::set<Scenery*>::iterator i = factory->getResources().begin(); i != factory->getResources().end(); i++) {
-        destroy(*i);
-    }
+    std::set<Scenery*>& scenery = factory->getResources();
+    while(!scenery.empty())
+        destroy(*scenery.begin());
+//    for (std::set<Scenery*>::iterator i = factory->getResources().begin(); i != factory->getResources().end(); i++) {
+//        destroy(*i);
+//    }
 }
