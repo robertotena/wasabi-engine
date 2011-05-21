@@ -127,6 +127,21 @@ void EventEngine::sendEvent(Event* event, unsigned int receiverId, int delay) {
         userEventQueue.push(event);
 }
 
+void EventEngine::clearQueuedUserEvents() {
+    Event* event;
+    //Delete queued events
+//    while (!systemEventQueue.empty()) {
+//        event = systemEventQueue.top();
+//        systemEventQueue.pop();
+//        EventFactory::getInstance()->destroy(event);
+//    }
+    while (!userEventQueue.empty()) {
+        event = userEventQueue.top();
+        userEventQueue.pop();
+        EventFactory::getInstance()->destroy(event);
+    }
+}
+
 void EventEngine::fireEvents(EventQueue& queue) {
     Event* dispatch;
     unsigned int now = WasabiTime::getTicks();

@@ -35,6 +35,7 @@ namespace WasabiEngine {
         RouteNode* getNode(const int& nodeId);
         RouteNode* createNode(const int& nodeId, const WasVec2d& position);
         void destroyNode(RouteNode* node);
+        void destroyAllNodes();
         RouteNode* closestNode(const WasVec2d& position);
         void activateDebugDraw(bool activate);
     };

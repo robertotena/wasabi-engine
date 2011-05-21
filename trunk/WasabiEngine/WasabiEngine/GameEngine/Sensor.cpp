@@ -44,11 +44,17 @@ void Sensor::clear() {
         object->setContactListener(NULL); //FIXME: This patch is a fucking shit. We should merge SensorContactLister with ObjectContactListener
         PhysicEngine::getInstance()->destroyObject(object);
     }
-    if(eventHandler)
-        delete eventHandler;
-    eventHandler = NULL;
     if(handlerRegistration)
+    {
         handlerRegistration->removeHandler();
+        handlerRegistration = NULL;
+    }
+    
+    if(eventHandler)
+    {
+        delete eventHandler;
+        eventHandler = NULL;
+    }
     handlersMap.clear();
 }
 

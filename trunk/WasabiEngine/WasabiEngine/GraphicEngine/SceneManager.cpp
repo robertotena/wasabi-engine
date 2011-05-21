@@ -124,11 +124,14 @@ SpotLight* SceneManager::createSpotLight() {
 }
 
 void SceneManager::destroyLight(Light* light) {
-    getRootSceneNode()->detachObject(light);
-    std::vector<Light*>::iterator it = std::find(lights.begin(), lights.end(), light);
-    if (it != lights.end()) {
-        lights.erase(it);
-        delete(*it);
+    int maxLights;
+    glGetIntegerv(GL_MAX_LIGHTS, &maxLights);
+    for ( int i = 1; i < maxLights; i++ ) {
+        if(lights[i] == light) {
+            lights[i] = NULL;
+            getRootSceneNode()->detachObject(light);
+            delete light;
+        }
     }
 }
 
@@ -170,7 +173,7 @@ void SceneManager::destroyParticleSystem(ParticleSystem* system) {
     std::list<ParticleSystem*>::iterator it = std::find(particleSystems.begin(), particleSystems.end(), system);
     if (it != particleSystems.end()) {
         particleSystems.erase(it);
-        delete(*it);
+        delete(system);
     }
 }
 
