@@ -9,14 +9,9 @@
 
 using namespace WasabiEngine;
 
-PropertyMap<unsigned int, std::string> TextureLoader::textureMap;
+std::map<std::string, unsigned int> TextureLoader::textureMap;
 
-unsigned int TextureLoader::load(const std::string& file) {
-    unsigned int textureId;
-    unsigned int* id = textureMap.get(file);
-    if (id != NULL)
-        return *id;
-
+unsigned int TextureLoader::bind(unsigned int textureId, const std::string& file) {
     SDL_Surface *image;
     SDL_RWops* rwop;
     GLint format;
@@ -54,8 +49,6 @@ unsigned int TextureLoader::load(const std::string& file) {
             return GL_INVALID_VALUE;
     }
 
-    glGenTextures(1, &textureId);
-    textureMap.set(file, textureId);
     glBindTexture(GL_TEXTURE_2D, textureId); // Typical Texture Generation Using Data From The Bitmap
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); // Linear Filtering
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); // Linear Filtering
@@ -67,9 +60,32 @@ unsigned int TextureLoader::load(const std::string& file) {
     return textureId;
 }
 
+unsigned int TextureLoader::load(const std::string& file) {
+    unsigned int textureId;
+    if (textureMap.find(file) != textureMap.end())
+        return textureMap[file];
+
+    glGenTextures(1, &textureId);
+    if (bind(textureId, file) == textureId) {
+        textureMap[file] = textureId;
+        return textureId;
+    } else
+        return GL_INVALID_VALUE;
+}
+
+void TextureLoader::reload() {
+    std::map<std::string, unsigned int>::iterator it = textureMap.begin();
+    while (it != textureMap.end()) {
+        bind(it->second, it->first);
+        it++;
+    }
+}
+
 void TextureLoader::unloadAll() {
+    std::map<std::string, unsigned int>::iterator it = textureMap.begin();
+    while (it != textureMap.end()) {
+        glDeleteTextures(1, &(it->second));
+        it++;
+    }
     textureMap.clear();
-    std::list<unsigned int> textureList = textureMap.getItems();
-    for (std::list<unsigned int>::iterator it = textureList.begin(); it != textureList.end(); it++)
-        glDeleteTextures(1, &(*it));
 }

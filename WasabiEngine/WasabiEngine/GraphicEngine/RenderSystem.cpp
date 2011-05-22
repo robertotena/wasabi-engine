@@ -6,6 +6,7 @@
  */
 
 #include "RenderSystem.h"
+#include "TextureLoader.h"
 #include <iostream>
 
 using namespace WasabiEngine;
@@ -46,6 +47,9 @@ void RenderSystem::setVideoMode(const GraphicEngineConf& conf) {
     event->setSystemEvent(true);
     EventEngine::getInstance()->broadcastEvent(event);
 
+    /* Reload textures */
+    TextureLoader::reload();
+    
     /* Set the title bar in environments that support it */
     SDL_WM_SetCaption(conf.wmCaption.c_str(), NULL);
 

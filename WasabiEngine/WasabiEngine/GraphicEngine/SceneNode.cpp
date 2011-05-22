@@ -12,6 +12,14 @@ using namespace WasabiEngine;
 
 const float SceneNode::RENDER_DISTANCE = 75;
 
+namespace {
+
+    bool resortFunctor(SceneNode* a, SceneNode * b) {
+        Camera* activeCamera = GraphicEngine::getInstance()->getActiveCamera();
+        return activeCamera->getPosition().distance(a->getPosition()) > activeCamera->getPosition().distance(b->getPosition());
+    }
+}
+
 SceneNode::SceneNode() {
     translation[0] = 0;
     translation[1] = 0;
@@ -21,6 +29,7 @@ SceneNode::SceneNode() {
     scaleF[2] = 1;
     visible = true;
     parent = NULL;
+    needsResort = false;
 }
 
 SceneNode::SceneNode(const SceneNode& orig) {
@@ -55,6 +64,7 @@ void SceneNode::setPosition(const WasVec3d& position) {
     translation[0] = position.x;
     translation[1] = position.y;
     translation[2] = position.z;
+    needsResort = true;
 }
 
 WasVec3d SceneNode::getPosition() const {
@@ -97,6 +107,8 @@ SceneNode* SceneNode::createChild(const WasVec3d& translation) {
     node->parent = this;
     node->translate(translation);
     children.push_back(node);
+    if(parent != NULL)
+        parent->needsResort = true;
     return node;
 }
 
@@ -165,5 +177,9 @@ void SceneNode::renderNode() {
         std::list<MovableObject*>::iterator it;
         for (it = objects.begin(); it != objects.end(); it++)
             (*it)->renderObject();
+        if (needsResort) {
+            children.sort(resortFunctor);
+            needsResort = false;
+        }
     }
 }
