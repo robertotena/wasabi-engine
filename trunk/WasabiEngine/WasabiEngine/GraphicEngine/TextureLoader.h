@@ -11,18 +11,19 @@
 #include <string>
 #include <iostream>
 #include <stdio.h>
+#include <map>
 #include <SDL/SDL_opengl.h>
 #include <SDL/SDL_image.h>
-#include <WasabiEngine/Utils/PropertyMap.h>
-
 namespace WasabiEngine
 {
 
 class TextureLoader {
 private:
-    static PropertyMap<unsigned int, std::string> textureMap;
+    static std::map<std::string, unsigned int> textureMap;
+    static unsigned int bind(unsigned int textureId, const std::string& file);
 public:
     static unsigned int load(const std::string& file);
+    static void reload();
     static void unloadAll();
 };
 

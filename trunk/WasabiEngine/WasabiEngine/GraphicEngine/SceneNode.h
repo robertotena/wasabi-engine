@@ -41,6 +41,7 @@ namespace WasabiEngine {
         float scaleF[3];
         Quaternion rotation;
         bool visible;
+        bool needsResort;
         std::list<SceneNode*> children;
         std::list<MovableObject*> objects;
         SceneNode* parent;
