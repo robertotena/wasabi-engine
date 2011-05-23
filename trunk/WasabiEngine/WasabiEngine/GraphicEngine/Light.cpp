@@ -24,6 +24,12 @@ Light::Light(const Light& orig) {
 
 Light::~Light() {
     glDisable(this->index);
+    if(ambient != NULL)
+        delete ambient;
+    if(diffuse != NULL)
+        delete diffuse;
+    if(specular != NULL)
+        delete specular;
 }
 
 float Light::getAttenuation() const{

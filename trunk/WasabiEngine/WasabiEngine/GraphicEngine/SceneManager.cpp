@@ -97,6 +97,7 @@ LightPoint* SceneManager::createLightPoint() {
     }
     if (unusedIndex != -1) {
         LightPoint * light = new LightPoint(unusedIndex);
+        lights[unusedIndex] = light;
         getRootSceneNode()->insertObject(light, 0);
         lights.push_back(light);
         return light;
@@ -116,8 +117,8 @@ SpotLight* SceneManager::createSpotLight() {
     }
     if (unusedIndex != -1) {
         SpotLight * light = new SpotLight(unusedIndex);
+        lights[unusedIndex] = light;
         getRootSceneNode()->insertObject(light, 0);
-        lights.push_back(light);
         return light;
     } else
         return NULL;
@@ -131,6 +132,7 @@ void SceneManager::destroyLight(Light* light) {
             lights[i] = NULL;
             getRootSceneNode()->detachObject(light);
             delete light;
+            break;
         }
     }
 }
