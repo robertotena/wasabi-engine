@@ -89,7 +89,6 @@ GraphicObject* GraphicObject::createChild(const WasVec3d& positionRelativeToPare
     GraphicObject* object = GraphicEngine::getInstance()->objectFactory.createResource();
     object->setId(id);
     object->sceneNode = sceneNode->createChild(positionRelativeToParent);
-    object->setPosition(positionRelativeToParent);
     children.push_back(object);
     return object;
 }
