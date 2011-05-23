@@ -68,7 +68,13 @@ void SceneNode::setPosition(const WasVec3d& position) {
 }
 
 WasVec3d SceneNode::getPosition() const {
-    return WasVec3d(translation[0], translation[1], translation[2]);
+    WasVec3d position(translation[0], translation[1], translation[2]);
+    SceneNode* parentNode = parent;
+    while(parentNode != NULL){
+        position += WasVec3d(parentNode->translation[0], parentNode->translation[1], parentNode->translation[2]);
+        parentNode = parentNode->parent;
+    }
+    return position;
 }
 
 void SceneNode::scale(const WasVec3d& vector) {
@@ -169,7 +175,7 @@ void SceneNode::renderNode() {
     WasVec3d axis;
 
     Camera* activeCamera = GraphicEngine::getInstance()->getActiveCamera();
-    if (parent == NULL || activeCamera->getPosition().distance(WasVec3d(translation[0], translation[1], translation[2])) < RENDER_DISTANCE) {
+    if (parent == NULL || activeCamera->getPosition().distance(getPosition()) < RENDER_DISTANCE) {
         glTranslatef(translation[0], translation[1], translation[2]); // Move object
         rotation.toAngleAxis(radRotation, axis);
         glRotatef(radRotation.valueDegrees(), axis.x, axis.y, axis.z);
