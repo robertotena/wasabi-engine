@@ -15,6 +15,7 @@ Light::Light(int index) {
     ambient = NULL;
     diffuse = NULL;
     specular = NULL;
+    glEnable(this->index);
 }
 
 Light::Light(const Light& orig) {
@@ -22,6 +23,7 @@ Light::Light(const Light& orig) {
 }
 
 Light::~Light() {
+    glDisable(this->index);
 }
 
 float Light::getAttenuation() const{
